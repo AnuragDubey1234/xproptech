@@ -1,9 +1,15 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 
-const fadeInUp = { initial: { opacity: 0, y: 24 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.5 } };
-const stagger = { animate: { transition: { staggerChildren: 0.1, delayChildren: 0.05 } } };
+const fadeInUp: Variants = {
+  initial: { opacity: 0, y: 24 },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
+const stagger: Variants = {
+  initial: {},
+  animate: { transition: { staggerChildren: 0.1, delayChildren: 0.05 } },
+};
 
 const whyCards = [
   { title: 'No platform connects developers, investors, founders, operators', icon: '🔗' },

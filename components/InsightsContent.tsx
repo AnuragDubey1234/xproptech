@@ -2,10 +2,16 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 
-const fadeInUp = { initial: { opacity: 0, y: 24 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.5 } };
-const stagger = { animate: { transition: { staggerChildren: 0.08, delayChildren: 0.05 } } };
+const fadeInUp: Variants = {
+  initial: { opacity: 0, y: 24 },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
+const stagger: Variants = {
+  initial: {},
+  animate: { transition: { staggerChildren: 0.08, delayChildren: 0.05 } },
+};
 
 const articles = [
   { title: 'How AI Failed 90% of PropTech Startups (And What Works)', author: 'Rohan Sharma', date: 'Jan 28, 2026', readTime: '12 min read', excerpt: "We analyzed 247 PropTech failures. Here's the tech stack that actually scales...", categories: ['Case Study', 'Tech Stack', 'Funding'], image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80' },
