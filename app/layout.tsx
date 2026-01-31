@@ -55,7 +55,7 @@ export default function RootLayout({
       </head>
       <body className={`${inter.variable} font-sans antialiased bg-white text-neutral-900`}>
         <Header />
-        <main className="min-h-screen pt-[73px]">{children}</main>
+        <main className="min-h-screen pt-20">{children}</main>
         <Footer />
       </body>
     </html>

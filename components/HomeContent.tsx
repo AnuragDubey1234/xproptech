@@ -44,12 +44,6 @@ const stagger: Variants = {
   },
 };
 
-const pillarCards = [
-  { title: 'Awareness', href: '/awareness', description: 'Learn PropTech fundamentals, evolution, and market trends', icon: '📚' },
-  { title: 'Insights', href: '/insights', description: 'Real case studies, honest discussions, no hype', icon: '💡' },
-  { title: 'Connect', href: '/connect', description: 'Developers ↔ Investors ↔ Founders hub', icon: '🤝' },
-];
-
 const updates = [
   { title: 'AI Valuation Tools Raise $5M Series A', excerpt: 'Pune-based PropTech startup secures funding for AI-powered property valuation platform.', date: 'Jan 28, 2026' },
   { title: 'RERA Compliance SaaS Hits 10K Users', excerpt: 'Compliance automation platform sees rapid adoption among Tier 2 developers.', date: 'Jan 25, 2026' },
@@ -63,6 +57,16 @@ const updates = [
   { title: 'PropTech Accelerator Announces Cohort 6', excerpt: 'Applications open for 20 startups; focus on sustainability and affordability.', date: 'Jan 8, 2026' },
   { title: 'AI-Powered Due Diligence Tool Gains Traction', excerpt: 'Legal tech startup automates property verification for faster closings.', date: 'Jan 6, 2026' },
   { title: 'Rental Yield Analytics Platform Crosses 50K Users', excerpt: 'Investor-focused platform helps analyze rental returns across Indian cities.', date: 'Jan 4, 2026' },
+  { title: 'PropTech M&A Activity Hits Record in 2025', excerpt: 'Consolidation wave sees 45 deals; proptech infra and SaaS lead acquirer interest.', date: 'Jan 2, 2026' },
+  { title: 'Green Building Tech Mandate for Top 8 Cities', excerpt: 'Govt. mandates energy monitoring and smart meters for new commercial projects.', date: 'Dec 30, 2025' },
+  { title: 'PropTech VC Fund Closes $80M for India Focus', excerpt: 'New fund to back 25–30 early-stage proptech and construction-tech startups.', date: 'Dec 28, 2025' },
+  { title: 'NoBroker Labs Spins Off Rental Tech Unit', excerpt: 'Rental management and tenant verification product to operate as separate brand.', date: 'Dec 26, 2025' },
+  { title: 'Housing.com Launches Builder CRM Suite', excerpt: 'All-in-one sales, inventory, and customer management for mid-tier developers.', date: 'Dec 24, 2025' },
+  { title: 'Land Title Digitization Completes Phase 2 in 12 States', excerpt: 'DLR and proptech firms integrate with state land records for instant verification.', date: 'Dec 22, 2025' },
+  { title: 'Co-working Operator Ties Up With Proptech for Flex Leases', excerpt: 'Short-term, tech-driven leases to help landlords fill vacant commercial space.', date: 'Dec 20, 2025' },
+  { title: 'Student Housing Proptech Raises $15M Series B', excerpt: 'Platform manages 50K beds across 30 cities; eyes Southeast Asia expansion.', date: 'Dec 18, 2025' },
+  { title: 'Construction Tech Startup Wins National Innovation Award', excerpt: 'AI-based project scheduling and cost tracking adopted by 5 major developers.', date: 'Dec 16, 2025' },
+  { title: 'PropTech India Report: Sector to Cross $5B by 2028', excerpt: 'Report highlights growth in SaaS, marketplaces, and embedded fintech.', date: 'Dec 14, 2025' },
 ];
 
 export function HomeContent() {
@@ -109,28 +113,6 @@ export function HomeContent() {
             <Link href="/contact" className="inline-flex items-center justify-center bg-primary-600 hover:bg-primary-700 text-white py-4 px-8 rounded-2xl font-semibold shadow-lg transition-all hover:scale-105">
               Submit Startup
             </Link>
-          </motion.div>
-        </div>
-      </section>
-
-      <section className="py-24 px-6 md:px-16 lg:px-24 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <motion.div className="grid grid-cols-1 md:grid-cols-3 gap-8" initial="initial" whileInView="animate" viewport={{ once: true, margin: '-100px' }} variants={stagger}>
-            {pillarCards.map((card) => (
-              <motion.div
-                key={card.title}
-                variants={fadeInUp}
-                whileHover={{ y: -12, scale: 1.02, transition: { duration: 0.3 } }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <Link href={card.href} className="block bg-white border border-neutral-200 shadow-lg hover:shadow-xl rounded-3xl p-8 h-full transition-all duration-300">
-                  <motion.span className="text-4xl mb-4 block" whileHover={{ scale: 1.2, rotate: 5 }}>{card.icon}</motion.span>
-                  <h3 className="text-2xl md:text-3xl font-bold text-neutral-900 mb-4">{card.title}</h3>
-                  <p className="text-neutral-700 leading-relaxed">{card.description}</p>
-                  <span className="inline-block mt-4 text-primary-600 font-semibold">Learn more →</span>
-                </Link>
-              </motion.div>
-            ))}
           </motion.div>
         </div>
       </section>
