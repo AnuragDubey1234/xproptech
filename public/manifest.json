@@ -1,0 +1,18 @@
+{
+  "name": "XPropTech - India's First PropTech Community",
+  "short_name": "XPropTech",
+  "description": "Where real estate meets technology, capital, and execution.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fafbff",
+  "theme_color": "#3b82f6",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon",
+      "purpose": "any"
+    }
+  ]
+}
