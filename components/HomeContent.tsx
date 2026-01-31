@@ -10,6 +10,34 @@ const fadeInUp = {
   transition: { duration: 0.5 },
 };
 
+const heroTitle = {
+  initial: { opacity: 0, y: 48, scale: 0.96 },
+  animate: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+const heroSubtitle = {
+  initial: { opacity: 0, y: 32 },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.9, delay: 0.7, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+const heroButtons = {
+  initial: { opacity: 0, y: 24 },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, delay: 1.1, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
 const stagger = {
   animate: {
     transition: { staggerChildren: 0.1, delayChildren: 0.05 },
@@ -59,7 +87,7 @@ export function HomeContent() {
         <div className="absolute inset-0 bg-white/40" />
         <div className="relative z-20 flex flex-col items-center justify-center text-center max-w-4xl mx-auto">
           <motion.h1
-            variants={fadeInUp}
+            variants={heroTitle}
             initial="initial"
             animate="animate"
             className="text-5xl md:text-6xl lg:text-7xl font-black text-neutral-900 mb-6"
@@ -67,12 +95,14 @@ export function HomeContent() {
             India&apos;s First PropTech Community
           </motion.h1>
           <motion.p
-            variants={fadeInUp}
+            variants={heroSubtitle}
+            initial="initial"
+            animate="animate"
             className="text-xl md:text-2xl lg:text-3xl text-neutral-700 mb-10 max-w-2xl mx-auto"
           >
             Where real estate meets technology, capital, and execution.
           </motion.p>
-          <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4 justify-center">
+          <motion.div variants={heroButtons} initial="initial" animate="animate" className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/connect" className="inline-flex items-center justify-center bg-primary-600 hover:bg-primary-700 text-white py-4 px-8 rounded-2xl font-semibold shadow-lg transition-all hover:scale-105">
               Join Community
             </Link>
