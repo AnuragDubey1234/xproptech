@@ -30,15 +30,15 @@ export function LoginModal({ isOpen, onClose, onSignupClick }: LoginModalProps) 
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    className="fixed inset-0 z-[9999] flex items-center justify-center p-4 md:p-8"
+                    className="fixed inset-0 z-[9999] p-4 flex items-center justify-center overflow-hidden"
                 >
                     {/* Backdrop */}
                     <div
-                        className="absolute inset-0 bg-black/40 backdrop-blur-sm"
+                        className="fixed inset-0 bg-black/40 backdrop-blur-sm"
                         onClick={onClose}
                     />
 
-                    {/* Modal Content - The Login Card */}
+                    {/* Modal Content - Perfectly Centered & Stationary */}
                     <motion.div
                         initial={{ scale: 0.95, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}

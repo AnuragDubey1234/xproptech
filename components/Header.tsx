@@ -124,15 +124,13 @@ export function Header() {
             <SearchIcon className="w-5 h-5" />
           </button>
 
-          {/* REPOSITORY BUTTON */}
-          <Link
-            href="https://github.com/AnuragDubey1234/xproptech.git"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="gibson-bold-nav hidden sm:inline-flex text-lg font-bold text-gray-800 hover:text-fire-red px-4 py-2 whitespace-nowrap transition-colors"
+          {/* JOIN BUTTON - DISABLED NAVIGATION */}
+          <button
+            type="button"
+            className="gibson-bold-nav hidden sm:inline-flex text-lg font-bold text-gray-800 hover:text-fire-red px-4 py-2 whitespace-nowrap transition-colors cursor-default"
           >
-            Repository
-          </Link>
+            Join
+          </button>
 
           <button
             onClick={openLogin}
@@ -183,15 +181,12 @@ export function Header() {
                 >
                   Login
                 </button>
-                <Link
-                  href="https://github.com/AnuragDubey1234/xproptech.git"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => setMobileOpen(false)}
-                  className="block w-full text-left px-3 py-2.5 text-gray-700 hover:bg-gray-100 rounded-lg font-medium"
+                <button
+                  type="button"
+                  className="block w-full text-left px-3 py-2.5 text-gray-700 hover:bg-gray-100 rounded-lg font-medium cursor-default"
                 >
-                  Repository
-                </Link>
+                  Join
+                </button>
               </div>
             </div>
           </motion.div>
