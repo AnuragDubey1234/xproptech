@@ -16,13 +16,13 @@ export function Footer() {
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           <div>
-            <Link href="/" className="inline-block mb-4" aria-label="XProptech Home">
+            <Link href="/" className="inline-block mb-4 h-40 flex items-center" aria-label="XProptech Home">
               <Image
                 src="/logo.png"
                 alt="XProptech"
-                width={180}
-                height={48}
-                className="h-12 w-auto object-contain"
+                width={300}
+                height={100}
+                className="h-40 w-auto object-contain flex-shrink-0"
               />
             </Link>
             <p className="text-neutral-700 text-base leading-relaxed">

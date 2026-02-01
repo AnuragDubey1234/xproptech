@@ -42,13 +42,13 @@ export function Header() {
   return (
     <nav className="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-red-200 shadow-lg h-16">
       <div className="max-w-[1400px] mx-auto px-4 h-full flex items-center justify-between">
-        <Link href="/" className="flex-shrink-0 ml-[-2px] flex items-center" aria-label="XProptech Home">
+        <Link href="/" className="flex-shrink-0 ml-[-4px] h-40 flex items-center" aria-label="XProptech Home">
           <Image
             src="/logo.png"
             alt="XProptech"
-            width={180}
-            height={48}
-            className="h-12 w-auto object-contain"
+            width={300}
+            height={100}
+            className="h-40 w-auto object-contain flex-shrink-0 ml-[-4px]"
             priority
           />
         </Link>
