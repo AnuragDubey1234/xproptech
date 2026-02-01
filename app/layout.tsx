@@ -71,9 +71,9 @@ export default function RootLayout({
       <body className={`${inter.variable} ${notoSans.variable} ${plusJakartaSans.variable} font-sans antialiased bg-white text-neutral-900`}>
         <SectionTitleProvider>
           <Header />
-          <main className="min-h-screen pt-14 px-2 md:px-3 lg:px-4 pb-12">
-          <div className="max-w-[1440px] mx-auto">{children}</div>
-        </main>
+          <main className="min-h-screen pt-16 px-2 md:px-3 lg:px-4 pb-12">
+            <div className="max-w-[1440px] mx-auto">{children}</div>
+          </main>
           <Footer />
         </SectionTitleProvider>
       </body>
