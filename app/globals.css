@@ -88,6 +88,6 @@ body {
 }
 
 /* Exact Inc42 spacing: 4px between link elements */
-.space-x-1 > * + * {
+.space-x-1>*+* {
   margin-left: 0.25rem;
 }

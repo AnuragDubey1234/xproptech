@@ -1,3 +1,4 @@
+import React, { Suspense } from 'react';
 import type { Metadata } from 'next';
 import { Inter, Noto_Sans, Plus_Jakarta_Sans } from 'next/font/google';
 import './globals.css';
@@ -70,10 +71,12 @@ export default function RootLayout({
       </head>
       <body className={`${inter.variable} ${notoSans.variable} ${plusJakartaSans.variable} font-sans antialiased bg-white text-neutral-900`}>
         <SectionTitleProvider>
-          <Header />
+          <Suspense fallback={<div className="h-16 bg-white border-b border-red-200" />}>
+            <Header />
+          </Suspense>
           <main className="min-h-screen pt-16 px-2 md:px-3 lg:px-4 pb-12">
-          <div className="max-w-[1440px] mx-auto">{children}</div>
-        </main>
+            <div className="max-w-[1440px] mx-auto">{children}</div>
+          </main>
           <Footer />
         </SectionTitleProvider>
       </body>
