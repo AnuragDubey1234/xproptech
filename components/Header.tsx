@@ -72,7 +72,7 @@ export function Header() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 h-16 transition-all duration-300">
+    <nav className="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-red-200 shadow-lg h-16 transition-all duration-300">
 
       {/* AUTH MODALS */}
       <LoginModal
@@ -89,20 +89,19 @@ export function Header() {
 
       <div className="max-w-[1400px] mx-auto px-4 h-full flex items-center justify-between">
 
-        {/* LOGO - LEFT */}
-        <div className="flex-shrink-0 flex items-center mr-8">
-          <Link href="/" className="relative w-40 h-8">
-            <Image
-              src="/Protech-logo.png"
-              alt="XPropTech Logo"
-              fill
-              className="object-contain object-left"
-              priority
-            />
-          </Link>
-        </div>
+        {/* LOGO - LEFT-ALIGNED per remote */}
+        <Link href="/" className="flex-shrink-0 ml-[-4px] h-40 flex items-center" aria-label="XProptech Home">
+          <Image
+            src="/logo.png"
+            alt="XProptech"
+            width={300}
+            height={100}
+            className="h-40 w-auto object-contain flex-shrink-0 ml-[-4px]"
+            priority
+          />
+        </Link>
 
-        {/* NAVIGATION - CENTER (Restoring original styling classes) */}
+        {/* NAVIGATION - CENTER */}
         <div className="hidden md:flex items-center justify-center flex-1 space-x-1 ml-6 lg:ml-8">
           {mainNavLinks.map(({ label, href }) => {
             const isActive = pathname === href;
@@ -110,9 +109,8 @@ export function Header() {
               <Link
                 key={label}
                 href={href}
-                className={`gibson-bold-nav nav-link px-4 py-3 text-lg font-bold transition-all duration-200 whitespace-nowrap border-b-2 border-transparent 
-                  ${isActive ? 'active-nav' : 'text-gray-800 hover:text-fire-red hover:border-fire-red'}
-                `}
+                className={`gibson-bold-nav nav-link px-4 py-3 text-lg font-bold transition-all duration-200 whitespace-nowrap border-b-2 border-transparent ${isActive ? 'active-nav' : 'text-gray-800 hover:text-fire-red hover:border-fire-red'
+                  }`}
               >
                 {label}
               </Link>
@@ -120,7 +118,7 @@ export function Header() {
           })}
         </div>
 
-        {/* RIGHT CTAs - FLUSH RIGHT */}
+        {/* RIGHT CTAs */}
         <div className="flex items-center space-x-2 mr-[-2px] flex-shrink-0">
           <button type="button" className="p-2 text-gray-600 hover:text-fire-red transition-colors" aria-label="Search">
             <SearchIcon className="w-5 h-5" />
@@ -138,7 +136,7 @@ export function Header() {
 
           <button
             onClick={openLogin}
-            className="gibson-bold-nav text-lg font-bold text-white bg-black hover:bg-gray-800 px-4 py-2 rounded-md h-10 inline-flex items-center justify-center transition-colors whitespace-nowrap"
+            className="gibson-bold-nav text-lg font-bold text-white bg-fire-red hover:bg-fire-red-dark px-6 py-2 rounded-lg h-11 inline-flex items-center justify-center transition-all duration-200 shadow-md hover:shadow-lg hover:scale-105 whitespace-nowrap ml-2"
           >
             Login
           </button>
@@ -161,7 +159,7 @@ export function Header() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2 }}
-            className="md:hidden bg-white border-t border-gray-200 overflow-hidden shadow-lg"
+            className="md:hidden bg-white border-t border-red-200 overflow-hidden shadow-lg"
           >
             <div className="px-4 py-3 space-y-1">
               {allNavLinks.map(({ label, href }) => {
@@ -171,9 +169,8 @@ export function Header() {
                     key={href}
                     href={href}
                     onClick={() => setMobileOpen(false)}
-                    className={`gibson-bold-nav block px-3 py-2.5 transition-colors rounded-lg 
-                      ${isActive ? 'text-black bg-gray-100 border-l-2 border-black' : 'text-gray-700 hover:bg-gray-100'}
-                    `}
+                    className={`gibson-bold-nav block px-3 py-2.5 transition-colors rounded-lg ${isActive ? 'text-fire-red bg-red-50 border-l-2 border-fire-red' : 'text-gray-700 hover:bg-red-50'
+                      }`}
                   >
                     {label}
                   </Link>
@@ -186,7 +183,6 @@ export function Header() {
                 >
                   Login
                 </button>
-                {/* MOBILE REPOSITORY */}
                 <Link
                   href="https://github.com/AnuragDubey1234/xproptech.git"
                   target="_blank"
@@ -202,6 +198,6 @@ export function Header() {
         )}
       </AnimatePresence>
 
-    </header>
+    </nav>
   );
 }

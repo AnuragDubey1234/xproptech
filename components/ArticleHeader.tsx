@@ -1,15 +1,20 @@
 'use client';
 
+import { useState } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import type { NewsArticle } from '@/lib/news-data';
 import { ShareButtons } from './ShareButtons';
+
+const FALLBACK_IMAGE = 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80';
 
 type ArticleHeaderProps = {
   article: NewsArticle;
 };
 
 export function ArticleHeader({ article }: ArticleHeaderProps) {
+  const [imgSrc, setImgSrc] = useState(article.image);
+
   return (
     <header className="mb-8">
       <motion.div
@@ -19,12 +24,13 @@ export function ArticleHeader({ article }: ArticleHeaderProps) {
         className="relative aspect-[21/9] rounded-xl overflow-hidden bg-neutral-200"
       >
         <Image
-          src={article.image}
+          src={imgSrc}
           alt={article.title}
           fill
           className="object-cover"
           sizes="(max-width: 768px) 100vw, 80vw"
           priority
+          onError={() => setImgSrc(FALLBACK_IMAGE)}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
       </motion.div>

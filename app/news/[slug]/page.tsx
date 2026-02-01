@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { news, getArticleBySlug, getRelatedArticles } from '@/lib/news-data';
 import { ArticlePageContent } from '@/components/ArticlePageContent';
-import { TrendingSidebar } from '@/components/TrendingSidebar';
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -56,16 +55,9 @@ export default async function ArticlePage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <div className="py-6 md:py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-10 gap-6 md:gap-8">
-          <article className="lg:col-span-7">
-            <ArticlePageContent article={article} related={related} />
-          </article>
-          <aside className="lg:col-span-3 order-first lg:order-last">
-            <div className="lg:sticky lg:top-24">
-              <TrendingSidebar />
-            </div>
-          </aside>
-        </div>
+        <article className="max-w-4xl mx-auto">
+          <ArticlePageContent article={article} related={related} />
+        </article>
       </div>
     </>
   );
