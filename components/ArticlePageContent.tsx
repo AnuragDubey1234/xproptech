@@ -1,9 +1,11 @@
 'use client';
 
+import { useEffect } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ArticleHeader } from '@/components/ArticleHeader';
 import { NewsCard } from '@/components/NewsCard';
+import { useSectionTitle } from '@/contexts/SectionTitleContext';
 import type { NewsArticle } from '@/lib/news-data';
 
 type ArticlePageContentProps = {
@@ -13,6 +15,12 @@ type ArticlePageContentProps = {
 
 export function ArticlePageContent({ article, related }: ArticlePageContentProps) {
   const body = article.body ?? article.excerpt;
+  const { setSectionTitle } = useSectionTitle();
+
+  useEffect(() => {
+    setSectionTitle(article.title);
+    return () => setSectionTitle(null);
+  }, [article.title, setSectionTitle]);
 
   return (
     <>

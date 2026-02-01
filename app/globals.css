@@ -20,6 +20,7 @@
   --color-neutral-700: #334155;
   --color-neutral-900: #1e293b;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-gibson: var(--font-noto-sans), ui-sans-serif, system-ui, sans-serif;
 }
 
 body {
@@ -36,4 +37,50 @@ body {
 
 .glass-card:hover {
   box-shadow: 0 20px 50px -15px rgba(59, 130, 246, 0.15);
+}
+
+/* Full-width navbar title - Gibson Bold style (Noto Sans Bold from layout) */
+.gibson-bold {
+  font-family: var(--font-gibson), ui-sans-serif, sans-serif;
+  font-weight: 700;
+}
+
+/* Navbar: Plus Jakarta Sans Bold (Gibson-like) + larger size */
+.gibson-bold-nav {
+  font-family: var(--font-nav), ui-sans-serif, system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: -0.01em;
+}
+
+@media (max-width: 768px) {
+  .gibson-bold-nav {
+    font-size: 16px !important;
+  }
+}
+
+.active-nav {
+  color: black !important;
+  border-bottom: 2px solid black !important;
+}
+
+/* Same underline as active (News) when hovering any nav link */
+.nav-link:hover {
+  color: black !important;
+  border-bottom: 2px solid black !important;
+}
+
+/* Inc42-style nav links - exact spacing */
+.nav-link {
+  border-bottom: 2px solid transparent;
+}
+
+.nav-link.active {
+  color: #000 !important;
+  border-bottom-color: #000 !important;
+}
+
+/* Exact Inc42 spacing: 4px between link elements */
+.space-x-1 > * + * {
+  margin-left: 0.25rem;
 }
