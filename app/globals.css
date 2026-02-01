@@ -1,15 +1,22 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-primary-50: #eff6ff;
-  --color-primary-100: #dbeafe;
-  --color-primary-200: #bfdbfe;
-  --color-primary-400: #60a5fa;
-  --color-primary-500: #3b82f6;
-  --color-primary-600: #2563eb;
-  --color-primary-700: #1d4ed8;
-  --color-primary-800: #1e40af;
-  --color-primary-900: #1e3a8a;
+  /* Fire Engine Red + Yellow palette */
+  --color-fire-red: #DC2626;
+  --color-fire-red-dark: #B91C1C;
+  --color-safety-yellow: #F59E0B;
+  --color-yellow-bright: #FCD34D;
+  --color-gray-dark: #1F2937;
+  /* Legacy primary (kept for compatibility, map to red) */
+  --color-primary-50: #fef2f2;
+  --color-primary-100: #fee2e2;
+  --color-primary-200: #fecaca;
+  --color-primary-400: #f87171;
+  --color-primary-500: #ef4444;
+  --color-primary-600: #DC2626;
+  --color-primary-700: #B91C1C;
+  --color-primary-800: #991b1b;
+  --color-primary-900: #7f1d1d;
   --color-teal-500: #0d9488;
   --color-teal-600: #0f766e;
   --color-teal-700: #0d5d56;
@@ -20,7 +27,7 @@
   --color-neutral-700: #334155;
   --color-neutral-900: #1e293b;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-gibson: var(--font-noto-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-gibson: var(--font-nav), ui-sans-serif, system-ui, sans-serif;
 }
 
 body {
@@ -36,7 +43,7 @@ body {
 }
 
 .glass-card:hover {
-  box-shadow: 0 20px 50px -15px rgba(59, 130, 246, 0.15);
+  box-shadow: 0 20px 50px -15px rgba(220, 38, 38, 0.2);
 }
 
 /* Full-width navbar title - Gibson Bold style (Noto Sans Bold from layout) */
@@ -60,14 +67,14 @@ body {
 }
 
 .active-nav {
-  color: black !important;
-  border-bottom: 2px solid black !important;
+  color: var(--color-fire-red) !important;
+  border-bottom: 2px solid var(--color-fire-red) !important;
 }
 
-/* Same underline as active (News) when hovering any nav link */
+/* Same underline as active when hovering any nav link */
 .nav-link:hover {
-  color: black !important;
-  border-bottom: 2px solid black !important;
+  color: var(--color-fire-red) !important;
+  border-bottom: 2px solid var(--color-fire-red) !important;
 }
 
 /* Inc42-style nav links - exact spacing */

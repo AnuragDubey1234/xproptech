@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -39,14 +40,17 @@ export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 w-full z-50 bg-white border-b border-gray-200 shadow-sm h-14">
+    <nav className="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-red-200 shadow-lg h-16">
       <div className="max-w-[1400px] mx-auto px-4 h-full flex items-center justify-between">
-        {/* LOGO - LEFTMOST (Exact Inc42 position) */}
-        <Link href="/" className="flex-shrink-0 ml-[-2px] flex items-center h-10" aria-label="XProptech Home">
-          <div className="h-9 w-9 md:h-10 md:w-10 bg-[#1E3A8A] rounded-lg flex items-center justify-center flex-shrink-0">
-            <span className="gibson-bold-nav text-white text-base">X</span>
-          </div>
-          <span className="gibson-bold-nav ml-2 text-gray-900 hidden sm:inline whitespace-nowrap">XProptech</span>
+        <Link href="/" className="flex-shrink-0 ml-[-2px] flex items-center" aria-label="XProptech Home">
+          <Image
+            src="/logo.png"
+            alt="XProptech"
+            width={180}
+            height={48}
+            className="h-12 w-auto object-contain"
+            priority
+          />
         </Link>
 
         {/* MAIN NAV LINKS - LEFT-ALIGNED, underline on hover */}
@@ -57,8 +61,8 @@ export function Header() {
               <Link
                 key={href}
                 href={href}
-                className={`gibson-bold-nav nav-link px-3 py-2 text-lg font-bold transition-all duration-200 whitespace-nowrap border-b-2 border-transparent ${
-                  isActive ? 'active-nav' : 'text-gray-800 hover:text-black hover:border-black'
+                className={`gibson-bold-nav nav-link px-4 py-3 text-lg font-bold transition-all duration-200 whitespace-nowrap border-b-2 border-transparent ${
+                  isActive ? 'active-nav' : 'text-gray-800 hover:text-fire-red hover:border-fire-red'
                 }`}
               >
                 {label}
@@ -69,18 +73,18 @@ export function Header() {
 
         {/* RIGHT CTAs - FLUSH RIGHT */}
         <div className="flex items-center space-x-2 mr-[-2px] flex-shrink-0">
-          <button type="button" className="p-2 text-gray-600 hover:text-black transition-colors" aria-label="Search">
+          <button type="button" className="p-2 text-gray-600 hover:text-fire-red transition-colors" aria-label="Search">
             <SearchIcon className="w-5 h-5" />
           </button>
           <Link
             href="/contact"
-            className="gibson-bold-nav hidden sm:inline-flex text-lg font-bold text-gray-800 hover:text-black px-3 py-2 whitespace-nowrap transition-colors"
+            className="gibson-bold-nav hidden sm:inline-flex text-lg font-bold text-gray-800 hover:text-fire-red px-4 py-2 whitespace-nowrap transition-colors"
           >
             Join
           </Link>
           <Link
             href="/contact"
-            className="gibson-bold-nav text-lg font-bold text-white bg-black hover:bg-gray-800 px-4 py-2 rounded-md h-10 inline-flex items-center justify-center transition-colors whitespace-nowrap"
+            className="gibson-bold-nav text-lg font-bold text-white bg-fire-red hover:bg-fire-red-dark px-6 py-2 rounded-lg h-11 inline-flex items-center justify-center transition-all duration-200 shadow-md hover:shadow-lg hover:scale-105 whitespace-nowrap"
           >
             Login
           </Link>
@@ -103,7 +107,7 @@ export function Header() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2 }}
-            className="md:hidden bg-white border-t border-gray-200 overflow-hidden"
+            className="md:hidden bg-white border-t border-red-200 overflow-hidden"
           >
             <div className="px-4 py-3 space-y-0">
               {allNavLinks.map(({ label, href }) => {
@@ -114,7 +118,7 @@ export function Header() {
                     href={href}
                     onClick={() => setMobileOpen(false)}
                     className={`gibson-bold-nav block px-3 py-2.5 transition-colors rounded-lg ${
-                      isActive ? 'text-black bg-gray-100 border-l-2 border-black' : 'text-gray-700 hover:bg-gray-100'
+                      isActive ? 'text-fire-red bg-red-50 border-l-2 border-fire-red' : 'text-gray-700 hover:bg-red-50'
                     }`}
                   >
                     {label}

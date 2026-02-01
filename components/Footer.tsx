@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 
 const socialLinks = [
   { href: 'https://linkedin.com', label: 'LinkedIn', icon: 'M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z' },
@@ -15,9 +16,15 @@ export function Footer() {
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           <div>
-            <h3 className="text-2xl font-bold text-neutral-900 mb-4">
-              XPropTech<span className="text-primary-600">.in</span>
-            </h3>
+            <Link href="/" className="inline-block mb-4" aria-label="XProptech Home">
+              <Image
+                src="/logo.png"
+                alt="XProptech"
+                width={180}
+                height={48}
+                className="h-12 w-auto object-contain"
+              />
+            </Link>
             <p className="text-neutral-700 text-base leading-relaxed">
               India&apos;s First PropTech Community. Where real estate meets technology, capital, and execution.
             </p>
@@ -29,7 +36,7 @@ export function Footer() {
                 <li key={i}>
                   <Link
                     href={label === 'Home' ? '/' : `/${label.toLowerCase()}`}
-                    className="text-neutral-700 hover:text-primary-600 transition-colors"
+                    className="text-neutral-700 hover:text-fire-red transition-colors"
                   >
                     {label}
                   </Link>
@@ -43,11 +50,11 @@ export function Footer() {
               <input
                 type="email"
                 placeholder="Your email"
-                className="flex-1 px-4 py-3 rounded-xl bg-white border border-neutral-200 text-neutral-900 placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                className="flex-1 px-4 py-3 rounded-xl bg-white border border-neutral-200 text-neutral-900 placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-fire-red"
               />
               <button
                 type="submit"
-                className="px-6 py-3 rounded-xl bg-primary-600 hover:bg-primary-700 font-semibold text-white transition-colors shadow-lg"
+                className="px-6 py-3 rounded-xl bg-fire-red hover:bg-fire-red-dark font-semibold text-white transition-colors shadow-lg"
               >
                 Join
               </button>
@@ -56,7 +63,7 @@ export function Footer() {
         </div>
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 pt-8 border-t border-neutral-200">
           <p className="text-neutral-700 text-sm">
-            © 2026 XPropTech.in | <Link href="#" className="hover:text-primary-600 transition-colors">Privacy Policy</Link> | <Link href="#" className="hover:text-primary-600 transition-colors">Terms of Service</Link> | Pune, India
+            © 2026 XPropTech.in | <Link href="#" className="hover:text-fire-red transition-colors">Privacy Policy</Link> | <Link href="#" className="hover:text-fire-red transition-colors">Terms of Service</Link> | Pune, India
           </p>
           <div className="flex gap-4">
             {socialLinks.map((s) => (
@@ -65,7 +72,7 @@ export function Footer() {
                 href={s.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-neutral-200 flex items-center justify-center hover:bg-primary-500 hover:text-white text-neutral-700 transition-colors"
+                className="w-10 h-10 rounded-full bg-neutral-200 flex items-center justify-center hover:bg-fire-red hover:text-white text-neutral-700 transition-colors"
                 aria-label={s.label}
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
