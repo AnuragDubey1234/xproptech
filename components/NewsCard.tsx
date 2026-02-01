@@ -1,9 +1,12 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import type { NewsArticle } from '@/lib/news-data';
+
+const FALLBACK_IMAGE = 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80';
 
 type NewsCardProps = {
   article: NewsArticle;
@@ -11,20 +14,31 @@ type NewsCardProps = {
 };
 
 export function NewsCard({ article, size = 'default' }: NewsCardProps) {
+  const [imgSrc, setImgSrc] = useState(article.image);
+  const [imgError, setImgError] = useState(false);
+
+  const handleImageError = () => {
+    if (!imgError) {
+      setImgError(true);
+      setImgSrc(FALLBACK_IMAGE);
+    }
+  };
+
   return (
     <motion.article
       whileHover={{ scale: 1.02, y: -4, transition: { duration: 0.2 } }}
       className="group bg-white/80 backdrop-blur-sm rounded-2xl border border-red-100 hover:border-fire-red shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden"
     >
       <Link href={`/news/${article.slug}`} className="block">
-        <div className={`relative w-full overflow-hidden ${size === 'large' ? 'aspect-[16/10]' : 'aspect-video'}`}>
+        <div className={`relative w-full overflow-hidden bg-neutral-200 ${size === 'large' ? 'aspect-[16/10]' : 'aspect-video'}`}>
           <Image
-            src={article.image}
+            src={imgSrc}
             alt={article.title}
             fill
             className="object-cover group-hover:scale-105 transition-transform duration-300"
             sizes={size === 'large' ? '(max-width: 768px) 100vw, 50vw' : '(max-width: 768px) 100vw, 350px'}
             loading="lazy"
+            onError={handleImageError}
           />
           <span className="absolute top-3 left-3 px-2.5 py-1 rounded-md text-xs font-semibold bg-fire-red text-white shadow-sm">
             {article.category}
