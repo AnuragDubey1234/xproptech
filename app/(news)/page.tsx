@@ -24,19 +24,21 @@ export default function HomePage() {
   const featuredFallback = featured.length >= 2 ? featured : globalNews.slice(0, 2);
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-10 gap-6 md:gap-8">
-      <main className="lg:col-span-7 min-w-0 order-1">
-        <HeroBanner />
-        <HomeNewsContent
-          latestNews={latestNews}
-          gccDeals={gccDeals}
-          indiaLaunches={indiaLaunches}
-          featured={featuredFallback}
-        />
-      </main>
-      <aside className="lg:col-span-3 order-2">
-        <TrendingSidebar />
-      </aside>
+    <div className="max-w-[1440px] mx-auto px-4 pt-10 md:pt-20">
+      <div className="grid grid-cols-1 lg:grid-cols-10 gap-6 md:gap-8">
+        <main className="lg:col-span-7 min-w-0 order-1">
+          <HeroBanner />
+          <HomeNewsContent
+            latestNews={latestNews}
+            gccDeals={gccDeals}
+            indiaLaunches={indiaLaunches}
+            featured={featuredFallback}
+          />
+        </main>
+        <aside className="lg:col-span-3 order-2">
+          <TrendingSidebar />
+        </aside>
+      </div>
     </div>
   );
 }

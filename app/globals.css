@@ -123,9 +123,10 @@ body {
 }
 
 /* Mobile Performance: Disable animation to save battery/CPU */
-@media (max-width: 768px) {
+/* Mobile Performance: Disable animation to save battery/CPU - ENABLED PER USER REQUEST */
+/* @media (max-width: 768px) {
   .animate-zoom-loop {
     animation: none !important;
     transform: scale(1) !important;
   }
-}
+} */
