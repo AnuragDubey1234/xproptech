@@ -83,7 +83,12 @@ type HomeNewsContentProps = {
   featured: NewsArticle[];
 };
 
-export function HomeNewsContent({ latestNews, gccDeals, indiaLaunches, featured }: HomeNewsContentProps) {
+export function HomeNewsContent({
+  latestNews = [],
+  gccDeals = [],
+  indiaLaunches = [],
+  featured = []
+}: HomeNewsContentProps) {
   return (
     <>
       {/* Section 1: Latest PropTech News - 4 large premium cards, 2x2 grid */}

@@ -27,8 +27,8 @@ function MenuIcon({ className }: { className?: string }) {
 // Order: news, india, gcc, funding, buzz, features, startup, insights, policy (left to right)
 const mainNavLinks = [
   { label: 'News', href: '/' },
-  { label: 'India', href: '/?cat=india' },
-  { label: 'GCC', href: '/?cat=gcc' },
+  { label: 'India', href: '/india' },
+  { label: 'GCC', href: '/gcc' },
   { label: 'Funding', href: '/?cat=funding' },
   { label: 'Buzz', href: '/buzz' },
   { label: 'Features', href: '/features' },

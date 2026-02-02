@@ -26,6 +26,8 @@ const plusJakartaSans = Plus_Jakarta_Sans({
   display: 'swap',
 });
 
+import { MainLayoutWrapper } from '@/components/MainLayoutWrapper';
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://xproptech.in'),
   title: {
@@ -59,24 +61,25 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://xproptech.in' },
 };
 
+import { SmoothScroll } from '@/components/SmoothScroll';
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="bg-white scroll-smooth">
+    <html lang="en" className="bg-white">
       <head>
         <link rel="manifest" href="/manifest.json" />
       </head>
       <body className={`${inter.variable} ${notoSans.variable} ${plusJakartaSans.variable} font-sans antialiased bg-white text-neutral-900`}>
         <SectionTitleProvider>
+          <SmoothScroll />
           <Suspense fallback={<div className="h-16 bg-white border-b border-red-200" />}>
             <Header />
           </Suspense>
-          <main className="min-h-screen pt-16 px-2 md:px-3 lg:px-4 pb-12">
-            <div className="max-w-[1440px] mx-auto">{children}</div>
-          </main>
+          <MainLayoutWrapper>{children}</MainLayoutWrapper>
           <Footer />
         </SectionTitleProvider>
       </body>
