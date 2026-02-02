@@ -31,7 +31,7 @@ export function LoginCard({ onSignupClick, onClose }: LoginCardProps) {
     const [showPassword, setShowPassword] = useState(false);
 
     return (
-        <div className="relative w-full max-w-md p-8 bg-white/70 backdrop-blur-xl border border-white/50 shadow-2xl rounded-2xl">
+        <div className="relative w-full max-w-md p-8 bg-white md:bg-white/70 md:backdrop-blur-xl border border-gray-200 md:border-white/50 shadow-2xl rounded-2xl">
             {/* Close Button */}
             {onClose && (
                 <button

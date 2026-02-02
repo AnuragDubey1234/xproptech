@@ -6,25 +6,20 @@ import Image from 'next/image';
 export function IndiaHero() {
     return (
         <section className="relative w-full h-[85vh] min-h-[500px] md:min-h-[600px] mb-0 isolate text-white overflow-hidden shadow-2xl z-10">
-            {/* Background Image with continuous zoom loop */}
-            <motion.div
-                className="absolute inset-0 -z-20 will-change-transform transform-gpu"
-                animate={{ scale: [1, 1.15, 1] }}
-                transition={{ duration: 20, ease: 'linear', repeat: Infinity }}
-            >
+            {/* Background Image with continuous zoom loop - Desktop Only (CSS Driven) */}
+            <div className="absolute inset-0 -z-20 will-change-transform transform-gpu animate-zoom-loop">
                 <Image
-                    src="https://images.unsplash.com/photo-1548602088-9d12a4f9c10f?q=80&w=2069&auto=format&fit=crop"
+                    src="https://images.unsplash.com/photo-1548602088-9d12a4f9c10f?q=80&auto=format&fit=crop"
                     alt="India Cityscape"
                     fill
                     priority
-                    quality={90}
+                    quality={75}
                     className="object-cover"
                     sizes="100vw"
                 />
-                {/* Glossy Overlay Effect - Optimized with transform-gpu */}
+                {/* Glossy Overlay Effect - Optimized */}
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/5 to-black/40 mix-blend-overlay transform-gpu" />
-                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-soft-light transform-gpu" />
-            </motion.div>
+            </div>
 
             {/* Premium Gradient Overlay for readability (Low Eye Strain) */}
             <div className="absolute inset-0 -z-10 bg-gradient-to-t from-neutral-900 via-neutral-900/40 to-transparent" />

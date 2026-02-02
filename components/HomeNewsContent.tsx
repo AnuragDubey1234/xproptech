@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { motion, type Variants } from 'framer-motion';
+
 import { NewsCard } from '@/components/NewsCard';
 import type { NewsArticle } from '@/lib/news-data';
 
@@ -66,15 +66,7 @@ const editorsPick: Record<string, { title: string; slug: string }[]> = {
   ],
 };
 
-const fadeInUp: Variants = {
-  initial: { opacity: 0, y: 24 },
-  animate: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-};
 
-const stagger: Variants = {
-  initial: {},
-  animate: { transition: { staggerChildren: 0.06, delayChildren: 0.1 } },
-};
 
 type HomeNewsContentProps = {
   latestNews: NewsArticle[];
@@ -94,89 +86,58 @@ export function HomeNewsContent({
       {/* Section 1: Latest PropTech News - 4 large premium cards, 2x2 grid */}
       <section className="mt-4">
         <h2 className="text-2xl md:text-3xl font-bold text-neutral-900 mb-6">Latest PropTech News</h2>
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6"
-          initial="initial"
-          whileInView="animate"
-          viewport={{ once: true, margin: '-50px' }}
-          variants={stagger}
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
           {latestNews.map((article) => (
-            <motion.div key={article.slug} variants={fadeInUp}>
+            <div key={article.slug}>
               <NewsCard article={article} size="large" />
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </section>
 
       {/* Section 2: GCC Deals Today */}
       <section className="mt-14">
         <h2 className="text-2xl md:text-3xl font-bold text-neutral-900 mb-6">GCC Deals Today</h2>
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5"
-          initial="initial"
-          whileInView="animate"
-          viewport={{ once: true }}
-          variants={stagger}
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
           {gccDeals.map((article) => (
-            <motion.div key={article.slug} variants={fadeInUp}>
+            <div key={article.slug}>
               <NewsCard article={article} size="large" compactHeadline />
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </section>
 
       {/* Section 3: India Launches */}
       <section className="mt-14">
         <h2 className="text-2xl md:text-3xl font-bold text-neutral-900 mb-6">India Launches</h2>
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5"
-          initial="initial"
-          whileInView="animate"
-          viewport={{ once: true }}
-          variants={stagger}
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
           {indiaLaunches.map((article) => (
-            <motion.div key={article.slug} variants={fadeInUp}>
+            <div key={article.slug}>
               <NewsCard article={article} compactHeadline />
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </section>
 
       {/* Section 4: Featured Analysis (2 hero cards) */}
       <section className="mt-14">
         <h2 className="text-2xl md:text-3xl font-bold text-neutral-900 mb-6">Featured Analysis</h2>
-        <motion.div
-          className="grid grid-cols-1 lg:grid-cols-2 gap-6"
-          initial="initial"
-          whileInView="animate"
-          viewport={{ once: true }}
-          variants={stagger}
-        >
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {featured.map((article) => (
-            <motion.div key={article.slug} variants={fadeInUp}>
+            <div key={article.slug}>
               <NewsCard article={article} size="large" />
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </section>
 
       {/* Section 5: Editors Pick - grouped by industry tags */}
       <section className="mt-14">
         <h2 className="text-2xl md:text-3xl font-bold text-neutral-900 mb-8">Editor&apos;s Pick</h2>
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
-          initial="initial"
-          whileInView="animate"
-          viewport={{ once: true }}
-          variants={stagger}
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {Object.entries(editorsPick).map(([tag, items]) => (
-            <motion.div
+            <div
               key={tag}
-              variants={fadeInUp}
               className="bg-white border border-neutral-200 rounded-xl p-5 shadow-sm hover:border-fire-red/30 transition-colors"
             >
               <h3 className="text-base md:text-lg font-bold text-fire-red mb-4 pb-2 border-b-2 border-neutral-200">
@@ -195,9 +156,9 @@ export function HomeNewsContent({
                   </li>
                 ))}
               </ul>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </section>
     </>
   );

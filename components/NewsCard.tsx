@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+
 import type { NewsArticle } from '@/lib/news-data';
 
 const FALLBACK_IMAGE = 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80';
@@ -26,9 +26,8 @@ export function NewsCard({ article, size = 'default', compactHeadline = false }:
   };
 
   return (
-    <motion.article
-      whileHover={{ y: -8, transition: { duration: 0.3, ease: 'easeOut' } }}
-      className="group bg-white rounded-2xl border border-neutral-100 hover:border-fire-red/40 shadow-sm hover:shadow-2xl transition-all duration-300 overflow-hidden flex flex-col h-full"
+    <article
+      className="group bg-white rounded-2xl border border-neutral-100 hover:border-fire-red/40 shadow-sm hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 overflow-hidden flex flex-col h-full"
     >
       <Link href={`/news/${article.slug}`} className="block flex-grow flex flex-col h-full">
         <div className={`relative w-full overflow-hidden bg-neutral-100 ${size === 'large' ? 'aspect-[16/9]' : 'aspect-[4/3]'} flex-shrink-0`}>
@@ -52,8 +51,8 @@ export function NewsCard({ article, size = 'default', compactHeadline = false }:
             <span className="text-xs font-bold uppercase text-neutral-400 tracking-widest">{article.date}</span>
           </div>
           <h3 className={`font-bold text-neutral-900 group-hover:text-fire-red transition-colors duration-200 ${compactHeadline
-              ? 'text-sm md:text-base line-clamp-3 leading-snug'
-              : `line-clamp-2 leading-tight ${size === 'large' ? 'text-2xl md:text-3xl' : 'text-lg md:text-xl'}`
+            ? 'text-sm md:text-base line-clamp-3 leading-snug'
+            : `line-clamp-2 leading-tight ${size === 'large' ? 'text-2xl md:text-3xl' : 'text-lg md:text-xl'}`
             }`}>
             {article.title}
           </h3>
@@ -64,6 +63,6 @@ export function NewsCard({ article, size = 'default', compactHeadline = false }:
           )}
         </div>
       </Link>
-    </motion.article>
+    </article>
   );
 }

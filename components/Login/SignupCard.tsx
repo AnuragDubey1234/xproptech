@@ -91,7 +91,7 @@ export function SignupCard({ onLoginClick, onClose }: SignupCardProps) {
                 )}
 
                 {/* Subtle backlight */}
-                <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-fire-red/5 blur-[120px] pointer-events-none" />
+                <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-fire-red/5 blur-[120px] pointer-events-none hidden md:block" />
 
                 {/* Header */}
                 <div className="text-center mb-7 relative z-10">
