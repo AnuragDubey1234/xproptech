@@ -11,9 +11,10 @@ const FALLBACK_IMAGE = 'https://images.unsplash.com/photo-1486406146926-c627a92a
 type NewsCardProps = {
   article: NewsArticle;
   size?: 'default' | 'large';
+  compactHeadline?: boolean;
 };
 
-export function NewsCard({ article, size = 'default' }: NewsCardProps) {
+export function NewsCard({ article, size = 'default', compactHeadline = false }: NewsCardProps) {
   const [imgSrc, setImgSrc] = useState(article.image);
   const [imgError, setImgError] = useState(false);
 
@@ -49,7 +50,11 @@ export function NewsCard({ article, size = 'default' }: NewsCardProps) {
             <div className="w-2 h-2 bg-fire-red rounded-full flex-shrink-0" />
             <span className="text-xs font-bold uppercase text-fire-red tracking-wider">{article.date}</span>
           </div>
-          <h3 className={`gibson-bold text-gray-dark group-hover:text-fire-red transition-colors line-clamp-2 ${size === 'large' ? 'text-xl md:text-2xl' : 'text-lg'}`}>
+          <h3 className={`gibson-bold text-gray-dark group-hover:text-fire-red transition-colors ${
+            compactHeadline
+              ? 'text-sm md:text-base line-clamp-4'
+              : `line-clamp-2 ${size === 'large' ? 'text-xl md:text-2xl' : 'text-lg'}`
+          }`}>
             {article.title}
           </h3>
           <p className="mt-2 text-neutral-600 text-sm line-clamp-2 leading-relaxed">{article.excerpt}</p>

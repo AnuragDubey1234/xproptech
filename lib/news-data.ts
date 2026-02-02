@@ -67,6 +67,35 @@ export const news: NewsArticle[] = [
   { slug: 'sector-report-5b', title: 'Proptech India Report: Sector to Cross $5B by 2028', excerpt: 'Report highlights growth in SaaS, marketplaces, and embedded fintech.', category: 'Analysis', image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80', author: 'Arjun Kapoor', date: 'Jan 6, 2026' },
 ];
 
+export type Region = 'global' | 'india' | 'gcc';
+
+function getRegion(article: NewsArticle): Region {
+  const cat = article.category;
+  const text = `${article.title} ${article.excerpt}`.toLowerCase();
+  if (cat === 'India Launches') return 'india';
+  if (cat === 'GCC Deals') return 'gcc';
+  const gccKeywords = ['gcc', 'uae', 'saudi', 'dubai', 'abu dhabi', 'oman', 'bahrain', 'middle east', 'neom', 'difc', 'gulf', 'dld'];
+  const indiaKeywords = ['india', 'indian', 'rera', 'pune', 'tier 2', 'maharashtra', 'coimbatore', 'indore', 'jaipur', 'dlr', 'pmay'];
+  if (gccKeywords.some((k) => text.includes(k))) return 'gcc';
+  if (indiaKeywords.some((k) => text.includes(k))) return 'india';
+  return 'global';
+}
+
+export function getGlobalNews(limit?: number): NewsArticle[] {
+  const filtered = news.filter((a) => getRegion(a) === 'global');
+  return limit ? filtered.slice(0, limit) : filtered;
+}
+
+export function getIndiaNews(limit?: number): NewsArticle[] {
+  const filtered = news.filter((a) => getRegion(a) === 'india');
+  return limit ? filtered.slice(0, limit) : filtered;
+}
+
+export function getGCCNews(limit?: number): NewsArticle[] {
+  const filtered = news.filter((a) => getRegion(a) === 'gcc');
+  return limit ? filtered.slice(0, limit) : filtered;
+}
+
 export function getArticleBySlug(slug: string): NewsArticle | undefined {
   return news.find((a) => a.slug === slug);
 }

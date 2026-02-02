@@ -21,16 +21,20 @@ function MenuIcon({ className }: { className?: string }) {
     <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
     </svg>
-  )
+  );
 }
 
-// RESTORING ORIGINAL LINKS
+// Order: news, india, gcc, funding, buzz, features, startup, insights, policy (left to right)
 const mainNavLinks = [
   { label: 'News', href: '/' },
+  { label: 'India', href: '/?cat=india' },
+  { label: 'GCC', href: '/?cat=gcc' },
+  { label: 'Funding', href: '/?cat=funding' },
   { label: 'Buzz', href: '/buzz' },
   { label: 'Features', href: '/features' },
-  { label: 'Startups', href: '/startups' },
+  { label: 'Startup', href: '/startups' },
   { label: 'Insights', href: '/insights' },
+  { label: 'Policy', href: '/?cat=policy' },
 ];
 
 const allNavLinks = [
@@ -71,6 +75,8 @@ export function Header() {
     router.replace(pathname + '?login=true', { scroll: false });
   };
 
+  const isLinkActive = (href: string) => pathname === href;
+
   return (
     <nav className="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-red-200 shadow-lg h-16 transition-all duration-300">
 
@@ -104,7 +110,7 @@ export function Header() {
         {/* NAVIGATION - CENTER */}
         <div className="hidden md:flex items-center justify-center flex-1 space-x-1 ml-6 lg:ml-8">
           {mainNavLinks.map(({ label, href }) => {
-            const isActive = pathname === href;
+            const isActive = isLinkActive(href);
             return (
               <Link
                 key={label}
@@ -161,7 +167,7 @@ export function Header() {
           >
             <div className="px-4 py-3 space-y-1">
               {allNavLinks.map(({ label, href }) => {
-                const isActive = pathname === href;
+                const isActive = isLinkActive(href);
                 return (
                   <Link
                     key={href}

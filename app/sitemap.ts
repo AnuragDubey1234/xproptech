@@ -5,6 +5,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const base = 'https://xproptech.in';
   const staticPages: MetadataRoute.Sitemap = [
     { url: base, lastModified: new Date(), changeFrequency: 'daily', priority: 1 },
+    { url: `${base}/india`, lastModified: new Date(), changeFrequency: 'daily', priority: 0.95 },
+    { url: `${base}/gcc`, lastModified: new Date(), changeFrequency: 'daily', priority: 0.95 },
     { url: `${base}/buzz`, lastModified: new Date(), changeFrequency: 'daily', priority: 0.9 },
     { url: `${base}/features`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.9 },
     { url: `${base}/startups`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.9 },

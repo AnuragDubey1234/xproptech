@@ -36,8 +36,8 @@ export function TrendingSidebar() {
   return (
     <aside className="space-y-10">
       <div className="bg-white rounded-2xl border border-neutral-200 shadow-lg p-6 md:p-7">
-        <h3 className="text-xl font-bold text-neutral-900 mb-2">Trending</h3>
-        <p className="text-sm text-neutral-600 mb-5 leading-relaxed">
+        <h3 className="text-3xl md:text-4xl font-extrabold text-neutral-900 mb-3">Trending</h3>
+        <p className="text-base md:text-lg font-semibold text-neutral-600 mb-5 leading-relaxed">
           Most-read PropTech stories this week—funding, policy, and market moves across India and GGC markets.
         </p>
         <ul className="space-y-3">
@@ -52,8 +52,8 @@ export function TrendingSidebar() {
                 href={`/news/${article.slug}`}
                 className="block py-3 border-b border-neutral-100 last:border-0 hover:text-fire-red transition-colors"
               >
-                <span className="text-xs font-bold text-fire-red mr-2">{i + 1}</span>
-                <span className="text-sm font-medium text-neutral-900 line-clamp-2">{article.title}</span>
+                <span className="text-base font-extrabold text-fire-red mr-2">{i + 1}</span>
+                <span className="text-lg md:text-xl font-extrabold text-neutral-900 line-clamp-2">{article.title}</span>
               </Link>
             </motion.li>
           ))}
@@ -61,8 +61,8 @@ export function TrendingSidebar() {
       </div>
 
       <div className="bg-white rounded-2xl border border-red-100 shadow-lg p-6 md:p-7">
-        <h3 className="text-xl font-bold text-neutral-900 mb-2">Facts & Insights</h3>
-        <p className="text-sm text-neutral-600 mb-5 leading-relaxed">
+        <h3 className="text-2xl font-bold text-neutral-900 mb-3">Facts & Insights</h3>
+        <p className="text-base text-neutral-600 mb-5 leading-relaxed">
           Key numbers shaping Indian PropTech—market size, adoption, and policy tailwinds in the India & GGC context.
         </p>
         <ul className="space-y-4">
@@ -74,19 +74,19 @@ export function TrendingSidebar() {
               transition={{ delay: i * 0.025 }}
               className="flex gap-3 items-start py-3 border-b border-neutral-100 last:border-0"
             >
-              <span className="flex-shrink-0 w-12 text-sm font-bold text-fire-red">{item.stat}</span>
-              <span className="text-sm text-neutral-700 leading-snug">{item.label}</span>
+              <span className="flex-shrink-0 w-14 text-base md:text-lg font-bold text-fire-red">{item.stat}</span>
+              <span className="text-base md:text-lg font-semibold text-neutral-800 leading-snug">{item.label}</span>
             </motion.li>
           ))}
         </ul>
-        <p className="text-xs text-neutral-500 mt-5 pt-4 border-t border-neutral-100 leading-relaxed">
+        <p className="text-base text-neutral-500 mt-5 pt-4 border-t border-neutral-100 leading-relaxed">
           Sources: industry reports, government releases, and XProptech analysis. Updated periodically.
         </p>
       </div>
 
       <div className="bg-white rounded-2xl border border-amber-100 shadow-lg p-6 md:p-7">
-        <h3 className="text-xl font-bold text-neutral-900 mb-2">Upcoming Events & Infrastructure</h3>
-        <p className="text-sm text-neutral-600 mb-5 leading-relaxed">
+        <h3 className="text-2xl font-bold text-neutral-900 mb-3">Upcoming Events & Infrastructure</h3>
+        <p className="text-base text-neutral-600 mb-5 leading-relaxed">
           Conferences, roadshows, and big-ticket infrastructure that will drive PropTech growth in India.
         </p>
         <ul className="space-y-5">
@@ -98,23 +98,23 @@ export function TrendingSidebar() {
               transition={{ delay: i * 0.04 }}
               className="py-4 border-b border-neutral-100 last:border-0"
             >
-              <span className={`inline-block px-2.5 py-1 rounded-md text-xs font-semibold mb-2 ${item.tag === 'Event' ? 'bg-amber-100 text-amber-800' : 'bg-sky-100 text-sky-800'}`}>
+              <span className={`inline-block px-2.5 py-1 rounded-md text-sm font-bold mb-2 ${item.tag === 'Event' ? 'bg-amber-100 text-amber-800' : 'bg-sky-100 text-sky-800'}`}>
                 {item.tag}
               </span>
-              <p className="text-sm font-semibold text-neutral-900 leading-snug">{item.title}</p>
-              <p className="text-xs text-neutral-500 mt-1">{item.detail}</p>
-              <p className="text-xs text-neutral-600 mt-2 leading-relaxed">{item.summary}</p>
+              <p className="text-base md:text-lg font-bold text-neutral-900 leading-snug">{item.title}</p>
+              <p className="text-sm md:text-base text-neutral-600 mt-1 font-medium">{item.detail}</p>
+              <p className="text-sm md:text-base text-neutral-700 mt-2 leading-relaxed">{item.summary}</p>
             </motion.li>
           ))}
         </ul>
       </div>
 
       <div className="bg-white rounded-2xl border border-neutral-200 shadow-lg p-6 md:p-7">
-        <h3 className="text-xl font-bold text-neutral-900 mb-2">Newsletter</h3>
-        <p className="text-sm text-neutral-600 mb-4 leading-relaxed">
+        <h3 className="text-2xl md:text-3xl font-bold text-neutral-900 mb-3">Newsletter</h3>
+        <p className="text-base text-neutral-600 mb-4 leading-relaxed">
           Get PropTech news, funding rounds, policy updates, and analysis in your inbox. No spam—curated for builders and investors.
         </p>
-        <ul className="text-xs text-neutral-500 space-y-2 mb-6">
+        <ul className="text-base font-semibold text-neutral-700 space-y-2 mb-6">
           <li>· Weekly digest of top stories</li>
           <li>· Early access to reports and events</li>
           <li>· India & GGC market briefs</li>
@@ -123,13 +123,13 @@ export function TrendingSidebar() {
           <input
             type="email"
             placeholder="Your email"
-            className="w-full px-4 py-3.5 rounded-lg border border-neutral-200 text-neutral-900 text-sm focus:outline-none focus:ring-2 focus:ring-fire-red"
+            className="w-full px-4 py-3.5 rounded-lg border border-neutral-200 text-neutral-900 text-base focus:outline-none focus:ring-2 focus:ring-fire-red"
           />
           <motion.button
             type="submit"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="w-full py-3.5 rounded-lg bg-fire-red hover:bg-fire-red-dark text-white font-semibold text-sm transition-colors"
+            className="w-full py-3.5 rounded-lg bg-fire-red hover:bg-fire-red-dark text-white font-bold text-base transition-colors"
           >
             Subscribe
           </motion.button>
