@@ -5,6 +5,8 @@ import './globals.css';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { SectionTitleProvider } from '@/contexts/SectionTitleContext';
+import { MainLayoutWrapper } from '@/components/MainLayoutWrapper';
+import { SmoothScroll } from '@/components/SmoothScroll';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -64,12 +66,11 @@ export default function RootLayout({
       </head>
       <body className={`${inter.variable} ${plusJakartaSans.variable} font-sans antialiased bg-white text-neutral-900`}>
         <SectionTitleProvider>
+          <SmoothScroll />
           <Suspense fallback={<div className="h-16 bg-white border-b border-red-200" />}>
             <Header />
           </Suspense>
-          <main className="min-h-screen pt-0 pb-12">
-            {children}
-          </main>
+          <MainLayoutWrapper>{children}</MainLayoutWrapper>
           <Footer />
         </SectionTitleProvider>
       </body>

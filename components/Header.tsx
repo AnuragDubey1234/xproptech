@@ -28,7 +28,7 @@ function MenuIcon({ className }: { className?: string }) {
 const mainNavLinks = [
   { label: 'News', href: '/' },
   { label: 'India', href: '/india' },
-  { label: 'GCC', href: '/?cat=gcc' },
+  { label: 'GCC', href: '/gcc' },
   { label: 'Funding', href: '/?cat=funding' },
   { label: 'Buzz', href: '/buzz' },
   { label: 'Features', href: '/features' },
