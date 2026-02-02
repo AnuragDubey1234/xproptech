@@ -5,10 +5,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import dynamic from 'next/dynamic';
-
-const LoginModal = dynamic(() => import('@/components/Login/LoginModal').then(mod => mod.LoginModal), { ssr: false });
-const SignupModal = dynamic(() => import('@/components/Login/SignupModal').then(mod => mod.SignupModal), { ssr: false });
+import { LoginModal } from '@/components/Login/LoginModal';
+import { SignupModal } from '@/components/Login/SignupModal';
 
 function SearchIcon({ className }: { className?: string }) {
   return (
@@ -29,8 +27,8 @@ function MenuIcon({ className }: { className?: string }) {
 // Order: news, india, gcc, funding, buzz, features, startup, insights, policy (left to right)
 const mainNavLinks = [
   { label: 'News', href: '/' },
-  { label: 'India', href: '/india' },
-  { label: 'GCC', href: '/gcc' },
+  { label: 'India', href: '/?cat=india' },
+  { label: 'GCC', href: '/?cat=gcc' },
   { label: 'Funding', href: '/?cat=funding' },
   { label: 'Buzz', href: '/buzz' },
   { label: 'Features', href: '/features' },
@@ -80,7 +78,7 @@ export function Header() {
   const isLinkActive = (href: string) => pathname === href;
 
   return (
-    <nav className="fixed top-0 w-full z-50 bg-white md:bg-white/80 md:backdrop-blur-md border-b border-red-200 shadow-lg h-16 transition-all duration-300">
+    <nav className="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-red-200 shadow-lg h-16 transition-all duration-300">
 
       {/* AUTH MODALS */}
       <LoginModal

@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import type { Metadata } from 'next';
-import { Inter, Plus_Jakarta_Sans } from 'next/font/google';
+import { Inter, Noto_Sans, Plus_Jakarta_Sans } from 'next/font/google';
 import './globals.css';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -12,15 +12,19 @@ const inter = Inter({
   display: 'swap',
 });
 
+const notoSans = Noto_Sans({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-noto-sans',
+  display: 'swap',
+});
+
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ['latin'],
   weight: ['600', '700'],
   variable: '--font-nav',
   display: 'swap',
 });
-
-import { MainLayoutWrapper } from '@/components/MainLayoutWrapper';
-import { SmoothScroll } from '@/components/SmoothScroll';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://xproptech.in'),
@@ -45,7 +49,7 @@ export const metadata: Metadata = {
     url: 'https://xproptech.in',
     siteName: 'XPropTech.in',
     images: [{ url: '/opengraph-image', width: 1200, height: 630 }],
-    locale: 'en_',
+    locale: 'en_IN',
     type: 'website',
   },
   twitter: {
@@ -61,17 +65,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="bg-white">
+    <html lang="en" className="bg-white scroll-smooth">
       <head>
         <link rel="manifest" href="/manifest.json" />
       </head>
-      <body className={`${inter.variable} ${plusJakartaSans.variable} font-sans antialiased bg-white text-neutral-900`}>
+      <body className={`${inter.variable} ${notoSans.variable} ${plusJakartaSans.variable} font-sans antialiased bg-white text-neutral-900`}>
         <SectionTitleProvider>
-          <SmoothScroll />
           <Suspense fallback={<div className="h-16 bg-white border-b border-red-200" />}>
             <Header />
           </Suspense>
-          <MainLayoutWrapper>{children}</MainLayoutWrapper>
+          <main className="min-h-screen pt-16 px-2 md:px-3 lg:px-4 pb-12">
+            <div className="max-w-[1440px] mx-auto">{children}</div>
+          </main>
           <Footer />
         </SectionTitleProvider>
       </body>

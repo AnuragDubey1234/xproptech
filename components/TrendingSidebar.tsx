@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 import { getTrending } from '@/lib/news-data';
 
 const factsAndInsights = [
@@ -41,7 +42,12 @@ export function TrendingSidebar() {
         </p>
         <ul className="space-y-3">
           {trending.map((article, i) => (
-            <li key={article.slug}>
+            <motion.li
+              key={article.slug}
+              initial={{ opacity: 0, x: 10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: i * 0.04 }}
+            >
               <Link
                 href={`/news/${article.slug}`}
                 className="block py-3 border-b border-neutral-100 last:border-0 hover:text-fire-red transition-colors"
@@ -49,7 +55,7 @@ export function TrendingSidebar() {
                 <span className="text-base font-extrabold text-fire-red mr-2">{i + 1}</span>
                 <span className="text-lg md:text-xl font-extrabold text-neutral-900 line-clamp-2">{article.title}</span>
               </Link>
-            </li>
+            </motion.li>
           ))}
         </ul>
       </div>
@@ -61,13 +67,16 @@ export function TrendingSidebar() {
         </p>
         <ul className="space-y-4">
           {factsAndInsights.map((item, i) => (
-            <li
+            <motion.li
               key={i}
+              initial={{ opacity: 0, x: 8 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: i * 0.025 }}
               className="flex gap-3 items-start py-3 border-b border-neutral-100 last:border-0"
             >
               <span className="flex-shrink-0 w-14 text-base md:text-lg font-bold text-fire-red">{item.stat}</span>
               <span className="text-base md:text-lg font-semibold text-neutral-800 leading-snug">{item.label}</span>
-            </li>
+            </motion.li>
           ))}
         </ul>
         <p className="text-base text-neutral-500 mt-5 pt-4 border-t border-neutral-100 leading-relaxed">
@@ -82,8 +91,11 @@ export function TrendingSidebar() {
         </p>
         <ul className="space-y-5">
           {upcomingEventsAndInfra.map((item, i) => (
-            <li
+            <motion.li
               key={i}
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.04 }}
               className="py-4 border-b border-neutral-100 last:border-0"
             >
               <span className={`inline-block px-2.5 py-1 rounded-md text-sm font-bold mb-2 ${item.tag === 'Event' ? 'bg-amber-100 text-amber-800' : 'bg-sky-100 text-sky-800'}`}>
@@ -92,7 +104,7 @@ export function TrendingSidebar() {
               <p className="text-base md:text-lg font-bold text-neutral-900 leading-snug">{item.title}</p>
               <p className="text-sm md:text-base text-neutral-600 mt-1 font-medium">{item.detail}</p>
               <p className="text-sm md:text-base text-neutral-700 mt-2 leading-relaxed">{item.summary}</p>
-            </li>
+            </motion.li>
           ))}
         </ul>
       </div>
@@ -113,12 +125,14 @@ export function TrendingSidebar() {
             placeholder="Your email"
             className="w-full px-4 py-3.5 rounded-lg border border-neutral-200 text-neutral-900 text-base focus:outline-none focus:ring-2 focus:ring-fire-red"
           />
-          <button
+          <motion.button
             type="submit"
-            className="w-full py-3.5 rounded-lg bg-fire-red hover:bg-fire-red-dark text-white font-bold text-base transition-colors hover:scale-[1.02] active:scale-[0.98] transform duration-150"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="w-full py-3.5 rounded-lg bg-fire-red hover:bg-fire-red-dark text-white font-bold text-base transition-colors"
           >
             Subscribe
-          </button>
+          </motion.button>
         </form>
       </div>
     </aside>
