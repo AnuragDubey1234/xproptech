@@ -1,6 +1,9 @@
 import type { Metadata } from 'next';
 import { getIndiaNews } from '@/lib/news-data';
 import { TrendingSidebar } from '@/components/TrendingSidebar';
+import { IndiaHero } from '@/components/IndiaHero';
+import { ScrollingMarquee } from '@/components/ScrollingMarquee';
+import { InnovationSpotlight } from '@/components/InnovationSpotlight';
 import { RegionNewsGrid } from '@/components/RegionNewsGrid';
 
 export const metadata: Metadata = {
@@ -18,17 +21,33 @@ export default function IndiaPage() {
   const indiaNews = getIndiaNews();
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-10 gap-6 md:gap-8">
-      <main className="lg:col-span-7 min-w-0 order-1">
-        <RegionNewsGrid
-          title="India PropTech News"
-          description="Launches, policy, and market updates from India's PropTech ecosystem."
-          articles={indiaNews}
-        />
-      </main>
-      <aside className="lg:col-span-3 order-2">
-        <TrendingSidebar />
-      </aside>
+    <div className="w-full overflow-x-hidden pb-24">
+      {/* Hero & Marquee Unified Wrapper */}
+      <div className="relative w-full pt-16 rounded-b-[3rem] overflow-hidden shadow-2xl z-10 bg-neutral-900">
+        <IndiaHero />
+        <ScrollingMarquee />
+      </div>
+
+      {/* Content Wrapper */}
+      <div className="w-full max-w-[1600px] mx-auto">
+        {/* Engaging Feature Section */}
+        <InnovationSpotlight />
+
+        {/* Simplified News Grid */}
+        <div className="px-6 md:px-12 lg:px-24">
+          <RegionNewsGrid
+            title="Latest Updates"
+            description="Curated selection of the most impactful PropTech stories in India."
+            articles={indiaNews.slice(0, 8)}
+            cardSize="large"
+          />
+          <div className="mt-12 text-center">
+            <button className="px-8 py-3 border-2 border-neutral-900 text-neutral-900 font-bold rounded-full hover:bg-neutral-900 hover:text-white transition-all">
+              View All Stories
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

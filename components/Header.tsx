@@ -27,8 +27,8 @@ function MenuIcon({ className }: { className?: string }) {
 // Order: news, india, gcc, funding, buzz, features, startup, insights, policy (left to right)
 const mainNavLinks = [
   { label: 'News', href: '/' },
-  { label: 'India', href: '/?cat=india' },
-  { label: 'GCC', href: '/?cat=gcc' },
+  { label: 'India', href: '/india' },
+  { label: 'GCC', href: '/gcc' },
   { label: 'Funding', href: '/?cat=funding' },
   { label: 'Buzz', href: '/buzz' },
   { label: 'Features', href: '/features' },
@@ -78,7 +78,7 @@ export function Header() {
   const isLinkActive = (href: string) => pathname === href;
 
   return (
-    <nav className="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-red-200 shadow-lg h-16 transition-all duration-300">
+    <nav className="fixed top-0 w-full z-50 bg-white md:bg-white/95 md:backdrop-blur-md border-b border-red-200 shadow-lg h-16 transition-all duration-300">
 
       {/* AUTH MODALS */}
       <LoginModal

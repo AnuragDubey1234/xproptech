@@ -7,16 +7,7 @@
   --color-safety-yellow: #F59E0B;
   --color-yellow-bright: #FCD34D;
   --color-gray-dark: #1F2937;
-  /* Legacy primary (kept for compatibility, map to red) */
-  --color-primary-50: #fef2f2;
-  --color-primary-100: #fee2e2;
-  --color-primary-200: #fecaca;
-  --color-primary-400: #f87171;
-  --color-primary-500: #ef4444;
-  --color-primary-600: #DC2626;
-  --color-primary-700: #B91C1C;
-  --color-primary-800: #991b1b;
-  --color-primary-900: #7f1d1d;
+
   --color-teal-500: #0d9488;
   --color-teal-600: #0f766e;
   --color-teal-700: #0d5d56;
@@ -91,3 +82,51 @@ body {
 .space-x-1>*+* {
   margin-left: 0.25rem;
 }
+
+/* Performance: GPU-accelerated Zoom Loop (replaces JS Framer Motion) */
+@keyframes zoom-loop {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.15);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animate-zoom-loop {
+  animation: zoom-loop 20s linear infinite;
+  will-change: transform;
+  /* Force hardware acceleration */
+  transform: translateZ(0);
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  white-space: nowrap;
+  animation: marquee 30s linear infinite;
+  will-change: transform;
+}
+
+/* Mobile Performance: Disable animation to save battery/CPU */
+/* Mobile Performance: Disable animation to save battery/CPU - ENABLED PER USER REQUEST */
+/* @media (max-width: 768px) {
+  .animate-zoom-loop {
+    animation: none !important;
+    transform: scale(1) !important;
+  }
+} */

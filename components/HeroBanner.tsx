@@ -22,8 +22,8 @@ export function HeroBanner() {
   }, []);
 
   return (
-    <section className="relative bg-primary-900 rounded-2xl overflow-hidden min-h-[200px] md:min-h-[260px] flex items-center justify-center px-6 pt-12 md:pt-16 pb-6 md:pb-8">
-      <div className="absolute inset-0 bg-gradient-to-br from-primary-800/90 to-primary-900/95" />
+    <section className="relative bg-fire-red rounded-2xl overflow-hidden min-h-[200px] md:min-h-[260px] flex items-center justify-center px-6 pt-12 md:pt-16 pb-6 md:pb-8">
+      <div className="absolute inset-0 bg-gradient-to-br from-fire-red/90 to-fire-red-dark/95" />
       <div className="relative z-10 max-w-4xl mx-auto text-center">
         <AnimatePresence mode="wait">
           <motion.div
