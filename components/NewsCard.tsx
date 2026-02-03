@@ -38,9 +38,10 @@ type NewsCardProps = {
   size?: 'default' | 'large';
   compactHeadline?: boolean;
   variant?: 'default' | 'gcc';
+  priority?: boolean;
 };
 
-export function NewsCard({ article, size = 'default', compactHeadline = false, variant = 'default' }: NewsCardProps) {
+export function NewsCard({ article, size = 'default', compactHeadline = false, variant = 'default', priority = false }: NewsCardProps) {
   const s = variantStyles[variant];
   const [imgSrc, setImgSrc] = useState(article.image);
   const [imgError, setImgError] = useState(false);
@@ -74,6 +75,7 @@ export function NewsCard({ article, size = 'default', compactHeadline = false, v
             src={imgSrc}
             alt={article.title}
             fill
+            priority={priority}
             className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
             sizes={size === 'large' ? '(max-width: 768px) 100vw, 50vw' : '(max-width: 768px) 100vw, 350px'}
             loading="lazy"

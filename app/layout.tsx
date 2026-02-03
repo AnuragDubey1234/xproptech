@@ -60,7 +60,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="bg-white scroll-smooth">
+    <html lang="en" className="bg-white">
       <head>
         <link rel="manifest" href="/manifest.json" />
       </head>

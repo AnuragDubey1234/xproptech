@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { getGCCNews } from '@/lib/news-data';
-import { TrendingSidebar } from '@/components/TrendingSidebar';
+import { InsightsSidebar } from '@/components/InsightsSidebar';
 import { GCCHeroBanner } from '@/components/gcc/GCCHeroBanner';
 import { GCCNewsContent } from '@/components/gcc/GCCNewsContent';
 
@@ -25,7 +25,7 @@ export default function GCCPage() {
         <GCCNewsContent articles={gccNews} />
       </main>
       <aside className="lg:col-span-3 order-2">
-        <TrendingSidebar />
+        <InsightsSidebar />
       </aside>
     </div>
   );

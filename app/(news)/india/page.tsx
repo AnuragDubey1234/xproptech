@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import { getIndiaNews } from '@/lib/news-data';
-import { TrendingSidebar } from '@/components/TrendingSidebar';
 import { IndiaHero } from '@/components/IndiaHero';
 import { ScrollingMarquee } from '@/components/ScrollingMarquee';
 import { InnovationSpotlight } from '@/components/InnovationSpotlight';
