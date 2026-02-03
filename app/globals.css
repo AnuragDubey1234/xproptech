@@ -47,6 +47,22 @@ body {
   font-weight: 700;
 }
 
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 40s linear infinite;
+  will-change: transform;
+}
+
+/* Scrollbar Hide */
 /* Navbar: Plus Jakarta Sans Bold (Gibson-like) + larger size */
 .gibson-bold-nav {
   font-family: var(--font-nav), ui-sans-serif, system-ui, sans-serif;
