@@ -29,12 +29,7 @@ const mainNavLinks = [
   { label: 'News', href: '/' },
   { label: 'India', href: '/india' },
   { label: 'GCC', href: '/gcc' },
-  { label: 'Funding', href: '/?cat=funding' },
-  { label: 'Buzz', href: '/buzz' },
-  { label: 'Features', href: '/features' },
   { label: 'Startup', href: '/startups' },
-  { label: 'Insights', href: '/insights' },
-  { label: 'Policy', href: '/?cat=policy' },
 ];
 
 const allNavLinks = [
@@ -108,17 +103,24 @@ export function Header() {
         </Link>
 
         {/* NAVIGATION - CENTER */}
-        <div className="hidden md:flex items-center justify-center flex-1 space-x-1 ml-6 lg:ml-8">
+        <div className="hidden md:flex items-center justify-center flex-1 space-x-2 ml-6 lg:ml-8">
           {mainNavLinks.map(({ label, href }) => {
             const isActive = isLinkActive(href);
             return (
               <Link
                 key={label}
                 href={href}
-                className={`gibson-bold-nav nav-link px-4 py-3 text-lg font-bold transition-all duration-200 whitespace-nowrap border-b-2 border-transparent ${isActive ? 'active-nav' : 'text-gray-800 hover:text-fire-red hover:border-fire-red'
+                className={`gibson-bold-nav relative px-4 py-2 text-lg font-bold transition-colors duration-300 rounded-md hover:bg-gray-50 ${isActive ? 'text-fire-red' : 'text-gray-800 hover:text-fire-red'
                   }`}
               >
                 {label}
+                {isActive && (
+                  <motion.span
+                    layoutId="navbar-indicator"
+                    className="absolute bottom-0 left-0 right-0 h-[3px] bg-fire-red rounded-t-full"
+                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                  />
+                )}
               </Link>
             );
           })}
