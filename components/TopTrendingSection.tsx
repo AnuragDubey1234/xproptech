@@ -150,14 +150,14 @@ export function TopTrendingSection({ trending, india, gcc }: TopTrendingSectionP
                                 </div>
 
                                 {/* Mobile Content (Right Side) */}
-                                <div className="md:hidden absolute right-0 top-0 bottom-0 left-[120px] p-4 bg-white dark:bg-neutral-900 flex flex-col justify-center">
-                                    <div className="flex items-center gap-2 mb-1">
+                                <div className="md:hidden absolute right-0 top-0 bottom-0 left-[120px] p-4 bg-white dark:bg-[#0a0a0a] flex flex-col justify-center border-l border-neutral-100 dark:border-neutral-800">
+                                    <div className="flex items-center gap-2 mb-1.5">
                                         <span className="text-[10px] font-bold text-fire-red uppercase tracking-wider">{article.category}</span>
                                     </div>
-                                    <h3 className="text-sm font-bold text-neutral-900 dark:text-neutral-50 leading-snug line-clamp-2 mb-1">
+                                    <h3 className="text-sm font-bold text-neutral-900 dark:text-neutral-100 leading-snug line-clamp-2 mb-1.5 tracking-tight">
                                         {article.title}
                                     </h3>
-                                    <p className="text-xs text-neutral-500 dark:text-neutral-400 line-clamp-1">
+                                    <p className="text-xs text-neutral-400 dark:text-neutral-500 line-clamp-1 font-medium">
                                         {article.date} • {article.author}
                                     </p>
                                 </div>
