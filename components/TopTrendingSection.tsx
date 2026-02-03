@@ -115,7 +115,8 @@ export function TopTrendingSection({ trending, india, gcc }: TopTrendingSectionP
                                         src={article.image}
                                         alt={article.title}
                                         fill
-                                        sizes="50vw"
+                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                                        priority={i === 0}
                                         className="object-cover transition-transform duration-1000 group-hover:scale-110"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-90" />
@@ -127,7 +128,8 @@ export function TopTrendingSection({ trending, india, gcc }: TopTrendingSectionP
                                         src={article.image}
                                         alt={article.title}
                                         fill
-                                        sizes="150px"
+                                        sizes="120px"
+                                        priority={i === 0}
                                         className="object-cover"
                                     />
                                 </div>
