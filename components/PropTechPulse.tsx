@@ -36,7 +36,10 @@ export function PropTechPulse() {
     const outerStocks = stocks.slice(5);
 
     return (
-        <section className="relative w-full h-[600px] mt-8 rounded-[3rem] overflow-hidden bg-[#0a0a0a] border border-neutral-800 perspective-1000 group">
+        <section
+            className="relative w-full h-[600px] mt-8 rounded-[3rem] overflow-hidden bg-[#0a0a0a] border border-neutral-800 perspective-1000 group"
+            style={{ contentVisibility: 'auto', containIntrinsicSize: '0 600px' }}
+        >
 
             {/* 1. Dynamic Background Grid */}
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-indigo-900/20 via-[#0a0a0a] to-black" />
@@ -272,6 +275,12 @@ function TiltCard({ stock, index, side, onClick }: { stock: Stock, index: number
             ref={ref}
             layoutId={stock.symbol}
             onClick={onClick}
+            onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    onClick();
+                }
+            }}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
             style={{
@@ -284,6 +293,9 @@ function TiltCard({ stock, index, side, onClick }: { stock: Stock, index: number
             transition={{ delay: 0.1, duration: 0.5 }}
             whileHover={{ scale: 1.15, zIndex: 100 }} // The "Pop" effect
             className="relative w-56 cursor-pointer"
+            role="button"
+            tabIndex={0}
+            aria-label={`View details for ${stock.name} (${stock.symbol})`}
         >
             <div
                 style={{ transform: "translateZ(20px)" }}

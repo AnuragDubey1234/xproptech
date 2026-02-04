@@ -32,6 +32,7 @@ export function HeroBanner() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.5 }}
+            aria-live="polite"
           >
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2">
               {headlines[index].text}

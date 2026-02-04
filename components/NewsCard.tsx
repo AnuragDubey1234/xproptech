@@ -78,7 +78,7 @@ export function NewsCard({ article, size = 'default', compactHeadline = false, v
             priority={priority}
             className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
             sizes={size === 'large' ? '(max-width: 768px) 100vw, 50vw' : '(max-width: 768px) 100vw, 350px'}
-            loading="lazy"
+            loading={priority ? 'eager' : 'lazy'}
             onError={handleImageError}
           />
           {variant === 'default' && (

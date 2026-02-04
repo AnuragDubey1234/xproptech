@@ -53,6 +53,7 @@ export default function HomePage() {
         <aside className="lg:col-span-3 order-2">
           <InsightsSidebar />
         </aside>
+
       </div>
     </div>
   );

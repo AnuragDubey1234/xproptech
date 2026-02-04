@@ -4,9 +4,9 @@ import type { Metadata } from 'next';
 import { AboutContent } from '@/components/AboutContent';
 
 export const metadata: Metadata = {
-  title: 'About - XPropTech Mission & Founder',
+  title: 'About - XPropTech | Defining Real Estate Intelligence',
   description:
-    "Building India's PropTech future, one real connection at a time. Rohan Sharma - ex-Housing.com, NoBroker. Why XPropTech exists.",
+    "XPropTech is the convergence of concrete infrastructure and digital innovation. Meet the founder, Anurag Dubey, and our mission to revolutionize Indian Real Estate.",
   openGraph: { title: 'About | XPropTech.in', url: 'https://xproptech.in/about' },
 };
 

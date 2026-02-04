@@ -2,27 +2,40 @@
 
 import Link from 'next/link';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import Image from 'next/image';
 import { Send, Linkedin, Twitter, MessageCircle, Instagram, ArrowUp } from 'lucide-react';
 
 const socialLinks = [
-  { href: 'https://linkedin.com', label: 'LinkedIn', icon: Linkedin },
+  { href: 'https://www.linkedin.com/company/xproptech/', label: 'LinkedIn', icon: Linkedin },
   { href: 'https://x.com', label: 'X (Twitter)', icon: Twitter },
-  { href: 'https://instagram.com', label: 'Instagram', icon: Instagram },
-  { href: 'https://discord.com', label: 'Discord', icon: MessageCircle },
+  { href: 'https://www.instagram.com/xproptech?igsh=MXdsb211bHhsYnJxcA==', label: 'Instagram', icon: Instagram },
 ];
 
 const footerLinks = [
   {
     title: "Platform",
-    links: ["Home", "Buzz", "Features", "Startups", "Insights"]
+    links: [
+      { label: "Home", href: "/" },
+      { label: "Features", href: "/features" },
+      { label: "Startups", href: "/startups" },
+    ]
   },
   {
     title: "Company",
-    links: ["About Us", "Careers", "Contact", "Partners"]
+    links: [
+      { label: "About Us", href: "/about" },
+      { label: "Careers", href: "/careers" },
+      { label: "Contact", href: "/contact" },
+      { label: "Partners", href: "/partners" },
+    ]
   },
   {
     title: "Legal",
-    links: ["Privacy Policy", "Terms of Service", "Cookie Policy"]
+    links: [
+      { label: "Privacy Policy", href: "/privacy" },
+      { label: "Terms of Service", href: "/terms" },
+      { label: "Cookie Policy", href: "/cookies" },
+    ]
   }
 ];
 
@@ -46,8 +59,16 @@ export function Footer() {
           {/* Brand Column */}
           <div className="lg:col-span-5 space-y-8">
             <Link href="/" className="inline-block relative group">
-              <span className="text-3xl font-black tracking-tighter text-white">XPROP<span className="text-fire-red">TECH</span></span>
-              <div className="absolute -bottom-2 left-0 w-12 h-1 bg-fire-red rounded-full group-hover:w-full transition-all duration-500 ease-out" />
+              <div className="relative h-10 w-48 md:h-12 md:w-56">
+                <Image
+                  src="/logoxproptec.png"
+                  alt="XPropTech Logo"
+                  fill
+                  className="object-contain object-left"
+                  priority
+                />
+              </div>
+              <div className="absolute -bottom-2 left-0 w-12 h-1 bg-fire-red rounded-full group-hover:w-40 md:group-hover:w-48 transition-all duration-500 ease-out" />
             </Link>
             <p className="text-neutral-400 text-lg leading-relaxed max-w-md font-light">
               Pioneering the digital transformation of real estate. We bridge the gap between concrete infrastructure and digital innovation.
@@ -77,9 +98,9 @@ export function Footer() {
                 <h4 className="font-bold text-white mb-6 uppercase tracking-wider text-xs opacity-70">{section.title}</h4>
                 <ul className="space-y-4">
                   {section.links.map((link) => (
-                    <li key={link}>
-                      <Link href="#" className="text-neutral-500 hover:text-white transition-colors text-sm hover:translate-x-1 inline-block duration-200">
-                        {link}
+                    <li key={link.label}>
+                      <Link href={link.href} className="text-neutral-500 hover:text-white transition-colors text-sm hover:translate-x-1 inline-block duration-200">
+                        {link.label}
                       </Link>
                     </li>
                   ))}
@@ -121,9 +142,8 @@ export function Footer() {
           </button>
 
           <div className="flex gap-8">
+            <span>MUMBAI</span>
             <span>PUNE</span>
-            <span>DUBAI</span>
-            <span>LONDON</span>
           </div>
         </div>
       </div>

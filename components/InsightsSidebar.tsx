@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 const factsAndInsights = [
     { stat: '$5B+', label: 'Indian PropTech market size by 2028 (GGC projection)' },
@@ -67,13 +68,18 @@ export function InsightsSidebar() {
                             initial={{ opacity: 0, y: 6 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: i * 0.04 }}
-                            className="py-4 border-b border-neutral-100 last:border-0"
+                            className="border-b border-neutral-100 last:border-0"
                         >
-                            <span className={`inline-block px-2.5 py-1 rounded-md text-xs font-bold mb-2 ${item.tag === 'Event' ? 'bg-amber-100 text-amber-800' : 'bg-sky-100 text-sky-800'}`}>
-                                {item.tag}
-                            </span>
-                            <p className="text-base font-bold text-neutral-900 leading-snug">{item.title}</p>
-                            <p className="text-sm text-neutral-600 mt-1">{item.detail}</p>
+                            <Link
+                                href={`/news/${item.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
+                                className="block py-4 hover:bg-neutral-50 transition-colors rounded-lg px-2 -mx-2"
+                            >
+                                <span className={`inline-block px-2.5 py-1 rounded-md text-xs font-bold mb-2 ${item.tag === 'Event' ? 'bg-amber-100 text-amber-800' : 'bg-sky-100 text-sky-800'}`}>
+                                    {item.tag}
+                                </span>
+                                <p className="text-base font-bold text-neutral-900 leading-snug group-hover:text-fire-red transition-colors">{item.title}</p>
+                                <p className="text-sm text-neutral-600 mt-1">{item.detail}</p>
+                            </Link>
                         </motion.li>
                     ))}
                 </ul>

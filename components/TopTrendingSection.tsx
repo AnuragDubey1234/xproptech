@@ -36,7 +36,10 @@ export function TopTrendingSection({ trending, india, gcc }: TopTrendingSectionP
     const data = getActiveData();
 
     return (
-        <section className="mb-16 mt-0 perspective-1000">
+        <section
+            className="mb-16 mt-0 perspective-1000"
+            style={{ contentVisibility: 'auto', containIntrinsicSize: '0 500px' }}
+        >
             <div className="flex flex-col items-center md:flex-row md:items-end justify-between mb-6">
                 <div className="text-center md:text-left">
                     <h2 className="text-5xl font-extrabold text-neutral-900 tracking-tight mb-2">

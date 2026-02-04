@@ -8,13 +8,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { LoginModal } from '@/components/Login/LoginModal';
 import { SignupModal } from '@/components/Login/SignupModal';
 
-function SearchIcon({ className }: { className?: string }) {
-  return (
-    <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-    </svg>
-  );
-}
+
 
 function MenuIcon({ className }: { className?: string }) {
   return (
@@ -128,17 +122,7 @@ export function Header() {
 
         {/* RIGHT CTAs */}
         <div className="flex items-center space-x-2 mr-[-2px] flex-shrink-0">
-          <button type="button" className="p-2 text-gray-600 hover:text-fire-red transition-colors" aria-label="Search">
-            <SearchIcon className="w-5 h-5" />
-          </button>
 
-          {/* JOIN BUTTON - DISABLED NAVIGATION */}
-          <button
-            type="button"
-            className="gibson-bold-nav hidden sm:inline-flex text-lg font-bold text-gray-800 hover:text-fire-red px-4 py-2 whitespace-nowrap transition-colors cursor-default"
-          >
-            Join
-          </button>
 
           <button
             onClick={openLogin}
@@ -189,12 +173,7 @@ export function Header() {
                 >
                   Login
                 </button>
-                <button
-                  type="button"
-                  className="block w-full text-left px-3 py-2.5 text-gray-700 hover:bg-gray-100 rounded-lg font-medium cursor-default"
-                >
-                  Join
-                </button>
+
               </div>
             </div>
           </motion.div>

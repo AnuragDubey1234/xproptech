@@ -8,7 +8,8 @@ export type NewsArticle = {
   date: string;
   readTime?: string;
   views?: number;
-  body?: string;
+  body?: string; // Legacy field, keeping for compatibility if used elsewhere
+  content?: string; // New field for full HTML content
 };
 
 export const NEWS_CATEGORIES = ['GCC Deals', 'India Launches', 'Funding', 'Policy', 'Analysis', 'Startups'] as const;
