@@ -32,7 +32,7 @@ export function Footer() {
   };
 
   return (
-    <footer className="relative bg-[#050505] text-white pt-12 pb-12 mt-0 overflow-hidden border-t border-white/5 font-sans">
+    <footer className="relative bg-[#050505] text-white pt-12 pb-4 mt-0 overflow-hidden border-t border-white/5 font-sans">
 
       {/* Background Grid & Gloam */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none opacity-20" />
@@ -41,7 +41,7 @@ export function Footer() {
       <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[600px] h-[600px] bg-fire-red/5 blur-[150px] rounded-full pointer-events-none" />
 
       <div className="max-w-[1600px] mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-24">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-6">
 
           {/* Brand Column */}
           <div className="lg:col-span-5 space-y-8">
@@ -108,7 +108,7 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar & Back to Top */}
-        <div className="border-t border-white/5 py-8 flex flex-col md:flex-row justify-between items-center gap-6 text-xs text-neutral-600 font-mono relative">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-xs text-neutral-600 font-mono relative pt-2">
           <p>© 2026 XPropTech Inc. All rights reserved.</p>
 
           {/* Back to Top - The "Closure" Button */}
@@ -126,13 +126,6 @@ export function Footer() {
             <span>LONDON</span>
           </div>
         </div>
-      </div>
-
-      {/* Massive Watermark - Revised for Visibility & Layout */}
-      <div className="w-full overflow-hidden leading-none opacity-[0.05] pointer-events-none select-none absolute bottom-[2%] left-0 right-0 text-center z-0">
-        <span className="text-[18vw] font-black text-white tracking-tighter block translate-y-[10%]">
-          XPROPTECH
-        </span>
       </div>
     </footer>
   );
