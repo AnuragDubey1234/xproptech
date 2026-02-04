@@ -1,15 +1,15 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 import { Quote, TrendingUp, Users, Target, Rocket } from 'lucide-react';
 import Image from 'next/image';
 
-const fadeInUp = {
+const fadeInUp: Variants = {
   initial: { opacity: 0, y: 30 },
   animate: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
 };
 
-const stagger = {
+const stagger: Variants = {
   initial: {},
   animate: { transition: { staggerChildren: 0.15 } },
 };
