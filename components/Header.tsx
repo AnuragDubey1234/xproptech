@@ -82,7 +82,7 @@ export function Header() {
         onLoginClick={switchToLogin}
       />
 
-      <div className="max-w-[1400px] mx-auto px-4 h-full flex items-center justify-between">
+      <div className="w-full h-full flex items-center justify-between px-0 md:px-2">
 
         {/* LOGO - LEFT-ALIGNED per remote */}
         <Link href="/" className="flex-shrink-0 ml-[-4px] h-40 flex items-center" aria-label="XProptech Home">
@@ -91,7 +91,7 @@ export function Header() {
             alt="XProptech"
             width={300}
             height={100}
-            className="h-40 w-auto object-contain flex-shrink-0 ml-[-4px]"
+            className="h-40 w-auto object-contain flex-shrink-0"
             priority
           />
         </Link>

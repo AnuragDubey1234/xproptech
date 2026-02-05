@@ -53,7 +53,7 @@ export function Footer() {
       {/* Spotlight Effect behind Newsletter - The Von Restorff Effect */}
       <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[600px] h-[600px] bg-fire-red/5 blur-[150px] rounded-full pointer-events-none" />
 
-      <div className="max-w-[1600px] mx-auto px-6 relative z-10">
+      <div className="w-full px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-6">
 
           {/* Brand Column */}

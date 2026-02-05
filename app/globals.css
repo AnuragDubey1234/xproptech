@@ -143,6 +143,15 @@ body {
 }
 
 /* Mobile Performance: Disable animation to save battery/CPU */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 /* Mobile Performance: Disable animation to save battery/CPU - ENABLED PER USER REQUEST */
 /* @media (max-width: 768px) {
   .animate-zoom-loop {
