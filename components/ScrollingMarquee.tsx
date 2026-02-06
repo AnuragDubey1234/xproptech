@@ -21,7 +21,8 @@ export function ScrollingMarquee() {
             <div className="absolute inset-0 bg-gradient-to-r from-neutral-900 via-transparent to-neutral-900 z-10 pointer-events-none" />
             <div className="flex whitespace-nowrap overflow-hidden">
                 <motion.div
-                    className="flex items-center gap-16 text-neutral-400/50 font-bold text-lg md:text-xl uppercase tracking-[0.2em]"
+                    className="flex items-center gap-16 text-neutral-400/50 font-bold text-lg md:text-xl uppercase tracking-[0.2em] transform-gpu"
+                    style={{ willChange: 'transform' }}
                     variants={marqueeVariants}
                     animate="animate"
                 >

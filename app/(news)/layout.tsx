@@ -9,5 +9,6 @@ export default function NewsLayout({
   const pathname = usePathname();
   const isIndiaPage = pathname === '/india';
 
-  return <div className={isIndiaPage ? '' : "pt-10 pb-4 md:pb-6"}>{children}</div>;
+  const isFullBleed = pathname === '/' || pathname === '/india' || pathname === '/startups';
+  return <div className={isFullBleed ? '' : "pt-10 pb-4 md:pb-6"}>{children}</div>;
 }

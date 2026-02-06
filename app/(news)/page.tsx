@@ -4,6 +4,7 @@ import { getGlobalNews, getGCCNews, getIndiaNews } from '@/lib/news-data';
 import { HomeNewsContent } from '@/components/HomeNewsContent';
 import { InsightsSidebar } from '@/components/InsightsSidebar';
 import { TopTrendingSection } from '@/components/TopTrendingSection';
+import { PropTechPulseSection } from '@/components/PropTechPulseSection';
 
 export const metadata: Metadata = {
   title: "Latest Proptech News | XPropTech.in - India's Proptech Community",
@@ -27,7 +28,7 @@ export default function HomePage() {
   const featuredFallback = featured.length >= 2 ? featured : globalNews.slice(0, 2);
 
   return (
-    <div className="max-w-[1440px] mx-auto px-4 mt-0">
+    <div className="max-w-[1440px] mx-auto px-4 pt-24 md:pt-24 pb-8 mt-0">
       {/* Top Section: Trending - Full Width */}
       <TopTrendingSection
         trending={trending}
@@ -47,13 +48,22 @@ export default function HomePage() {
               featured={featuredFallback}
             />
           </div>
+          {/* Desktop view: Stocks at bottom of news feed */}
+          <div className="hidden lg:block mt-8">
+            <PropTechPulseSection />
+          </div>
         </main>
 
         {/* Sidebar restored for Facts & Events */}
-        <aside className="lg:col-span-3 order-2">
+        <aside className="lg:col-span-3 order-2 sticky top-28 self-start h-fit">
           <InsightsSidebar />
         </aside>
 
+      </div>
+
+      {/* Mobile view: Stocks at very bottom above footer */}
+      <div className="block lg:hidden mt-8">
+        <PropTechPulseSection />
       </div>
     </div>
   );

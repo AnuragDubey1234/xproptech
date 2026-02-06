@@ -37,8 +37,8 @@ export function PropTechPulse() {
 
     return (
         <section
-            className="relative w-full h-[600px] mt-8 rounded-[3rem] overflow-hidden bg-[#0a0a0a] border border-neutral-800 perspective-1000 group"
-            style={{ contentVisibility: 'auto', containIntrinsicSize: '0 600px' }}
+            className="relative w-full h-[600px] mt-8 rounded-[3rem] overflow-hidden bg-[#0a0a0a] border border-neutral-800 perspective-1000 group transform-gpu"
+            style={{ contentVisibility: 'auto', containIntrinsicSize: '0 600px', willChange: 'transform' }}
         >
 
             {/* 1. Dynamic Background Grid */}
@@ -152,8 +152,8 @@ export function PropTechPulse() {
 
 
             {/* 4. Bottom Ticker Tape */}
-            <div className="absolute bottom-0 left-0 right-0 h-16 bg-black/60 backdrop-blur-md border-t border-white/5 flex items-center overflow-hidden z-20">
-                <div className="flex animate-scroll whitespace-nowrap gap-12 px-6">
+            <div className="absolute bottom-0 left-0 right-0 h-16 bg-black/60 backdrop-blur-md border-t border-white/5 flex items-center overflow-hidden z-20 transform-gpu">
+                <div className="flex animate-scroll whitespace-nowrap gap-12 px-6 will-change-transform">
                     {/* Duplicated list for seamless scrolling */}
                     {[...stocks, ...stocks, ...stocks].map((stock, i) => (
                         <div key={`${stock.symbol}-${i}`} className="flex items-center gap-3">
@@ -207,8 +207,8 @@ function OrbitingCards({ stocks, radius, duration, direction, onSelect }: { stoc
         <div className="absolute top-1/2 left-1/2 w-0 h-0 group/orbit pointer-events-auto">
             {/* Main Ring */}
             <div
-                className={`absolute inset-0 flex items-center justify-center ${direction === 'normal' ? 'animate-orbit-normal' : 'animate-orbit-reverse'} group-hover/orbit:[animation-play-state:paused]`}
-                style={{ animationDuration: `${duration}s` }}
+                className={`absolute inset-0 flex items-center justify-center ${direction === 'normal' ? 'animate-orbit-normal' : 'animate-orbit-reverse'} group-hover/orbit:[animation-play-state:paused] transform-gpu`}
+                style={{ animationDuration: `${duration}s`, willChange: 'transform' }}
             >
                 {stocks.map((stock, i) => {
                     const angle = (i / stocks.length) * 360;
@@ -283,16 +283,17 @@ function TiltCard({ stock, index, side, onClick }: { stock: Stock, index: number
             }}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
+            whileHover={{ scale: 1.15, zIndex: 100 }} // The "Pop" effect
+            className="relative w-56 cursor-pointer transform-gpu"
             style={{
                 rotateX,
                 rotateY,
                 transformStyle: "preserve-3d",
+                willChange: 'transform'
             }}
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.1, duration: 0.5 }}
-            whileHover={{ scale: 1.15, zIndex: 100 }} // The "Pop" effect
-            className="relative w-56 cursor-pointer"
             role="button"
             tabIndex={0}
             aria-label={`View details for ${stock.name} (${stock.symbol})`}

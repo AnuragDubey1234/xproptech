@@ -31,7 +31,7 @@ const upcomingEventsAndInfra = [
 
 export function InsightsSidebar() {
     return (
-        <aside className="space-y-10 sticky top-24">
+        <div className="space-y-10">
             {/* Newsletter */}
             <div className="bg-white rounded-2xl border border-neutral-200 shadow-lg p-6 md:p-7">
                 <h3 className="text-2xl md:text-3xl font-bold text-neutral-900 mb-3">Newsletter</h3>
@@ -100,6 +100,6 @@ export function InsightsSidebar() {
                     ))}
                 </ul>
             </div>
-        </aside>
+        </div>
     );
 }
