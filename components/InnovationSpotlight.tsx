@@ -39,7 +39,7 @@ export function InnovationSpotlight() {
         <section ref={containerRef} className="relative w-full pt-12 pb-32 overflow-hidden">
             {/* Background Decor - Optimized */}
             <div className="absolute inset-0 bg-neutral-900 skew-y-3 transform origin-top-left scale-110 -z-20 will-change-transform transform-gpu" />
-            <div className="absolute inset-0 bg-gradient-to-b from-neutral-900 via-neutral-800 to-neutral-900 -z-10 transform-gpu" />
+            <div className="absolute inset-0 bg-gradient-to-b from-neutral-900 via-neutral-800 to-neutral-900 -z-10 transform-gpu will-change-transform" />
 
             <div className="max-w-[1600px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 {/* Content */}
@@ -80,9 +80,11 @@ export function InnovationSpotlight() {
                             style={{
                                 y: index % 2 === 0 ? y1 : y2,
                                 rotate: index === 1 ? rotate : 0,
-                                zIndex: features.length - index
+                                zIndex: features.length - index,
+                                willChange: 'transform'
                             }}
-                            className={`absolute top-${index * 24} right-${index * 12} w-80 aspect-[4/5] bg-white rounded-2xl p-2 shadow-2xl border border-white/10 glass-card
+                            transformTemplate={({ y, rotate, scale }) => `translateY(${y}) rotate(${rotate}) translateZ(0)`}
+                            className={`absolute top-${index * 24} right-${index * 12} w-80 aspect-[4/5] bg-white rounded-2xl p-2 shadow-2xl border border-white/10 glass-card transform-gpu
                     ${index === 0 ? 'right-0 top-10' : ''}
                     ${index === 1 ? 'right-40 top-32' : ''}
                     ${index === 2 ? 'right-80 top-0' : ''}

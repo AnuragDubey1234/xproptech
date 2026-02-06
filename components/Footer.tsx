@@ -45,7 +45,7 @@ export function Footer() {
   };
 
   return (
-    <footer className="relative bg-[#050505] text-white pt-12 pb-4 mt-0 overflow-hidden border-t border-white/5 font-sans">
+    <footer className="relative bg-[#050505] text-white pt-20 pb-10 mt-0 overflow-hidden font-sans">
 
       {/* Background Grid & Gloam */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none opacity-20" />
@@ -83,9 +83,10 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ y: -5 }}
+                  aria-label={`Follow us on ${social.label}`}
                   className="w-12 h-12 rounded-full border border-white/10 bg-white/5 flex items-center justify-center text-neutral-400 hover:text-white hover:bg-fire-red hover:border-fire-red transition-all duration-300 group"
                 >
-                  <social.icon size={20} className="group-hover:scale-110 transition-transform" />
+                  <social.icon size={20} className="group-hover:scale-110 transition-transform" aria-hidden="true" />
                 </motion.a>
               ))}
             </div>
@@ -115,14 +116,21 @@ export function Footer() {
             <p className="text-neutral-500 text-sm mb-6">
               Join 15,000+ investors and founders receiving our weekly deep-dive.
             </p>
-            <form className="relative group">
+            <form className="relative group" aria-label="Newsletter subscription">
               <input
                 type="email"
                 placeholder="Enter your email"
+                aria-label="Email address for newsletter"
+                required
                 className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 pr-14 text-white placeholder-neutral-600 focus:outline-none focus:border-fire-red/50 focus:bg-white/10 transition-all shadow-[0_0_40px_-10px_rgba(220,38,38,0.1)] focus:shadow-[0_0_60px_-10px_rgba(220,38,38,0.2)]"
               />
-              <button className="absolute right-2 top-2 bottom-2 w-10 flex items-center justify-center bg-fire-red rounded-lg text-white hover:bg-red-600 transition-colors">
-                <Send size={18} />
+              <button
+                type="submit"
+                aria-label="Subscribe"
+                className="absolute right-2 top-2 bottom-2 w-10 flex items-center justify-center bg-fire-red rounded-lg text-white hover:bg-red-600 transition-colors"
+                onClick={(e) => e.preventDefault()}
+              >
+                <Send size={18} aria-hidden="true" />
               </button>
             </form>
           </div>
@@ -135,10 +143,11 @@ export function Footer() {
           {/* Back to Top - The "Closure" Button */}
           <button
             onClick={scrollToTop}
-            className="group flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 hover:border-fire-red/30 transition-all duration-300"
+            aria-label="Back to top"
+            className="group flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 hover:border-fire-red/30 transition-all duration-300 focus-visible:ring-2 focus-visible:ring-fire-red focus-visible:outline-none"
           >
             <span className="text-neutral-400 group-hover:text-white transition-colors">Back to Top</span>
-            <ArrowUp size={14} className="text-fire-red group-hover:-translate-y-1 transition-transform" />
+            <ArrowUp size={14} className="text-fire-red group-hover:-translate-y-1 transition-transform" aria-hidden="true" />
           </button>
 
           <div className="flex gap-8">

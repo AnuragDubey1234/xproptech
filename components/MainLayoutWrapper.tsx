@@ -10,7 +10,7 @@ export function MainLayoutWrapper({ children }: { children: React.ReactNode }) {
         <main
             className={
                 isFullBleedPage
-                    ? 'min-h-screen overflow-x-hidden'
+                    ? 'min-h-screen overflow-x-clip'
                     : 'min-h-screen pt-16 px-0 pb-12'
             }
         >
