@@ -42,7 +42,7 @@ export function GCCNewsContent({ articles }: GCCNewsContentProps) {
           whileInView="animate"
           viewport={{ once: true }}
           variants={slideIn}
-          className="mb-10 md:mb-12"
+          className="mb-7 md:mb-8"
         >
           <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-[var(--color-gcc-teal)] mb-3">
             Latest from the Gulf

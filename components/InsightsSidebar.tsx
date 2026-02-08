@@ -29,9 +29,15 @@ const upcomingEventsAndInfra = [
     { title: 'Land titling & DLR Phase 3 states', detail: 'Digitization drive · 2026', tag: 'Infra', summary: 'Title verification and proptech integration with state land registries.' },
 ];
 
+const gccMarketPulse = [
+    { label: 'Total Funding (Q4 2025)', value: '$840M', trend: '+12%', color: 'text-emerald-600' },
+    { label: 'Active Startups', value: '180+', trend: 'Rising', color: 'text-blue-600' },
+    { label: 'PropTech Adoption', value: '62%', trend: '+8%', color: 'text-amber-600' },
+];
+
 export function InsightsSidebar() {
     return (
-        <div className="space-y-10">
+        <div className="space-y-10 sticky top-28 self-start">
             {/* Newsletter */}
             <div className="bg-white rounded-2xl border border-neutral-200 shadow-lg p-6 md:p-7">
                 <h3 className="text-2xl md:text-3xl font-bold text-neutral-900 mb-3">Newsletter</h3>
@@ -99,6 +105,30 @@ export function InsightsSidebar() {
                         </div>
                     ))}
                 </ul>
+            </div>
+
+            {/* GCC Market Pulse */}
+            <div className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl border border-white/10 shadow-xl p-6 md:p-7 text-white">
+                <div className="flex items-center gap-2 mb-4">
+                    <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
+                    <h3 className="text-xl font-bold tracking-tight">GCC Market Pulse</h3>
+                </div>
+                <div className="space-y-5">
+                    {gccMarketPulse.map((item, i) => (
+                        <div key={i} className="flex justify-between items-end border-b border-white/5 pb-3 last:border-0 last:pb-0">
+                            <div>
+                                <p className="text-xs text-slate-400 uppercase tracking-wider font-semibold mb-1">{item.label}</p>
+                                <p className="text-2xl font-black">{item.value}</p>
+                            </div>
+                            <div className={`text-xs font-bold px-2 py-1 rounded-md bg-white/5 ${item.color}`}>
+                                {item.trend}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+                <button className="w-full mt-6 py-3 rounded-xl bg-white/10 hover:bg-white/20 border border-white/10 transition-all text-sm font-bold">
+                    View Full Report
+                </button>
             </div>
         </div>
     );
