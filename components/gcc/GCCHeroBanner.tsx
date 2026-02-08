@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -33,14 +33,23 @@ const gccSlides = [
 
 export function GCCHeroBanner() {
   const [index, setIndex] = useState(0);
+  const prevIndex = useRef(0);
 
-  useEffect(() => {
-    const id = setInterval(() => setIndex((i) => (i + 1) % gccSlides.length), 5500);
-    return () => clearInterval(id);
+  const triggerTransition = useCallback((nextIndex: number) => {
+    prevIndex.current = nextIndex;
+    setIndex(nextIndex);
   }, []);
 
+  useEffect(() => {
+    const id = setInterval(() => {
+      const next = (index + 1) % gccSlides.length;
+      triggerTransition(next);
+    }, 5500);
+    return () => clearInterval(id);
+  }, [index, triggerTransition]);
+
   return (
-    <section className="relative rounded-2xl overflow-hidden min-h-[300px] md:min-h-[380px] mb-8 md:mb-10 shadow-xl group/hero">
+    <section className="relative overflow-hidden min-h-[500px] md:min-h-[600px] mb-0 group/hero">
       <div className="absolute inset-0">
         <AnimatePresence mode="wait">
           <motion.div
@@ -100,60 +109,58 @@ export function GCCHeroBanner() {
       <AnimatePresence mode="wait">
         <motion.span
           key={`badge-${index}`}
-          initial={{ opacity: 0, x: -16 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: 16 }}
-          transition={{ duration: 0.4 }}
-          className="absolute top-6 right-6 md:top-8 md:right-8 z-20 px-4 py-2 rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-amber-200 text-sm font-semibold uppercase tracking-wider"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.8 }}
+          className="absolute top-24 right-10 md:top-32 md:right-16 z-20 px-5 py-2 rounded-full bg-amber-500/20 backdrop-blur-xl border border-amber-500/30 text-amber-200 text-sm font-black uppercase tracking-[0.2em] shadow-[0_0_20px_rgba(245,158,11,0.2)]"
         >
           {gccSlides[index].country}
         </motion.span>
       </AnimatePresence>
 
-      <div className="relative z-10 flex flex-col justify-end min-h-[300px] md:min-h-[380px] px-6 md:px-12 pb-8 md:pb-12">
+      <div className="relative z-10 flex flex-col justify-end items-center min-h-[420px] md:min-h-[500px] px-6 md:px-12 pb-20 text-center">
         <AnimatePresence mode="wait">
           <motion.div
             key={index}
             initial={{ opacity: 0, y: 32 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -24 }}
-            transition={{ duration: 0.5, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="max-w-2xl"
+            transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            className="w-full max-w-4xl mx-auto"
           >
             <motion.h1
-              initial={{ opacity: 0, y: 12 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.35, duration: 0.45 }}
-              className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 drop-shadow-lg tracking-tight"
+              transition={{ delay: 0.35, duration: 0.6 }}
+              className="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-6 drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)] tracking-tighter leading-none text-center"
             >
               {gccSlides[index].title}
             </motion.h1>
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.5, duration: 0.4 }}
-              className="text-teal-100 text-lg md:text-xl drop-shadow-md leading-relaxed"
+              transition={{ delay: 0.55, duration: 0.5 }}
+              className="text-teal-100/90 text-lg md:text-2xl drop-shadow-md leading-relaxed max-w-2xl mx-auto font-medium text-center"
             >
               {gccSlides[index].sub}
             </motion.p>
           </motion.div>
         </AnimatePresence>
 
-        {/* Slide indicators - animated */}
-        <div className="flex gap-2.5 mt-8">
+        {/* Slide indicators - centered */}
+        <div className="flex gap-3 justify-center mt-12">
           {gccSlides.map((_, i) => (
             <motion.button
               key={i}
               type="button"
-              onClick={() => setIndex(i)}
-              className={`h-1.5 rounded-full transition-all duration-300 ${
-                i === index
-                  ? 'bg-amber-400 shadow-[0_0_12px_rgba(251,191,36,0.5)]'
-                  : 'bg-white/40 hover:bg-white/70'
-              }`}
-              animate={{ width: i === index ? 40 : 6 }}
-              whileHover={i !== index ? { scale: 1.2 } : {}}
-              transition={{ duration: 0.3 }}
+              onClick={() => triggerTransition(i)}
+              className={`h-2 rounded-full transition-all duration-300 ${i === index
+                ? 'bg-amber-400 shadow-[0_0_15px_rgba(251,191,36,0.6)]'
+                : 'bg-white/30 hover:bg-white/60'
+                }`}
+              animate={{ width: i === index ? 48 : 8 }}
+              whileHover={i !== index ? { scale: 1.25 } : {}}
+              transition={{ duration: 0.4 }}
               aria-label={`Go to slide ${i + 1}`}
             />
           ))}

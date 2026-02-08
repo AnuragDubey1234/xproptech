@@ -52,6 +52,9 @@ export const metadata: Metadata = {
   },
   robots: { index: true, follow: true },
   alternates: { canonical: 'https://xproptech.in' },
+  icons: {
+    icon: '/logo.png',
+  },
 };
 
 export default function RootLayout({
@@ -63,6 +66,7 @@ export default function RootLayout({
     <html lang="en" className="bg-white">
       <head>
         <link rel="manifest" href="/manifest.json" />
+        <link rel="icon" href="/logo.png" />
       </head>
       <body className={`${inter.variable} ${plusJakartaSans.variable} font-sans antialiased bg-white text-neutral-900`}>
         <SectionTitleProvider>

@@ -3,6 +3,7 @@ import { getGCCNews } from '@/lib/news-data';
 import { InsightsSidebar } from '@/components/InsightsSidebar';
 import { GCCHeroBanner } from '@/components/gcc/GCCHeroBanner';
 import { GCCNewsContent } from '@/components/gcc/GCCNewsContent';
+import { ScrollingMarquee } from '@/components/ScrollingMarquee';
 
 export const metadata: Metadata = {
   title: 'GCC PropTech News | XPropTech.in - UAE, Saudi, Middle East',
@@ -16,17 +17,30 @@ export const metadata: Metadata = {
 };
 
 export default function GCCPage() {
-  const gccNews = getGCCNews();
+  const gccNews = getGCCNews(22);
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-10 gap-6 md:gap-8">
-      <main className="lg:col-span-7 min-w-0 order-1">
+    <div className="w-full pb-12">
+      {/* Hero & Marquee Unified Wrapper */}
+      <div className="relative w-full pt-16 rounded-b-[3rem] overflow-hidden shadow-2xl z-10 bg-neutral-900 border-b border-neutral-800">
         <GCCHeroBanner />
-        <GCCNewsContent articles={gccNews} />
-      </main>
-      <aside className="lg:col-span-3 order-2">
-        <InsightsSidebar />
-      </aside>
+        <ScrollingMarquee />
+      </div>
+
+      {/* Content Wrapper */}
+      <div className="max-w-[1800px] mx-auto px-3 md:px-6 lg:px-12 mt-11 md:mt-14">
+        <div className="grid grid-cols-1 lg:grid-cols-10 gap-10 lg:gap-16">
+          {/* Main Content Areas */}
+          <main className="lg:col-span-7 min-w-0">
+            <GCCNewsContent articles={gccNews} />
+          </main>
+
+          {/* Sticky Sidebar Container */}
+          <aside className="lg:col-span-3">
+            <InsightsSidebar />
+          </aside>
+        </div>
+      </div>
     </div>
   );
 }

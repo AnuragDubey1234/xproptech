@@ -4,7 +4,7 @@ import { usePathname } from 'next/navigation';
 
 export function MainLayoutWrapper({ children }: { children: React.ReactNode }) {
     const pathname = usePathname();
-    const isFullBleedPage = ['/', '/india', '/startups', '/about', '/contact', '/careers', '/partners', '/privacy', '/terms', '/cookies'].includes(pathname || '');
+    const isFullBleedPage = ['/', '/india', '/startups', '/gcc', '/about', '/contact', '/careers', '/partners', '/privacy', '/terms', '/cookies'].includes(pathname || '');
 
     return (
         <main
