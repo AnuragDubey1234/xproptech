@@ -1,13 +1,13 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
 import { Send, Linkedin, Twitter, MessageCircle, Instagram, ArrowUp } from 'lucide-react';
 
 const socialLinks = [
   { href: 'https://www.linkedin.com/company/xproptech/', label: 'LinkedIn', icon: Linkedin },
-  { href: 'https://x.com', label: 'X (Twitter)', icon: Twitter },
   { href: 'https://www.instagram.com/xproptech?igsh=MXdsb211bHhsYnJxcA==', label: 'Instagram', icon: Instagram },
 ];
 
@@ -40,6 +40,7 @@ const footerLinks = [
 ];
 
 export function Footer() {
+  const pathname = usePathname();
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -100,7 +101,16 @@ export function Footer() {
                 <ul className="space-y-4">
                   {section.links.map((link) => (
                     <li key={link.label}>
-                      <Link href={link.href} className="text-neutral-500 hover:text-white transition-colors text-sm hover:translate-x-1 inline-block duration-200">
+                      <Link
+                        href={link.href}
+                        onClick={(e) => {
+                          if (pathname === link.href) {
+                            e.preventDefault();
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                          }
+                        }}
+                        className="text-neutral-500 hover:text-white transition-colors text-sm hover:translate-x-1 inline-block duration-200"
+                      >
                         {link.label}
                       </Link>
                     </li>
@@ -150,9 +160,15 @@ export function Footer() {
             <ArrowUp size={14} className="text-fire-red group-hover:-translate-y-1 transition-transform" aria-hidden="true" />
           </button>
 
-          <div className="flex gap-8">
-            <span>MUMBAI</span>
-            <span>PUNE</span>
+          <div className="flex gap-10">
+            {['MUMBAI', 'PUNE'].map((city) => (
+              <span
+                key={city}
+                className="text-neutral-500 font-bold tracking-[0.2em] hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.6)] transition-all duration-300 cursor-default text-sm select-none"
+              >
+                {city}
+              </span>
+            ))}
           </div>
         </div>
       </div>
