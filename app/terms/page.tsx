@@ -10,5 +10,9 @@ export const metadata: Metadata = {
 };
 
 export default function TermsPage() {
-    return <TermsContent />;
+    return (
+        <main className="pt-20 min-h-screen bg-white">
+            <TermsContent />
+        </main>
+    );
 }
