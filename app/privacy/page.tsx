@@ -10,5 +10,9 @@ export const metadata: Metadata = {
 };
 
 export default function PrivacyPage() {
-    return <PrivacyContent />;
+    return (
+        <main className="pt-20 min-h-screen bg-white">
+            <PrivacyContent />
+        </main>
+    );
 }

@@ -10,5 +10,9 @@ export const metadata: Metadata = {
 };
 
 export default function CookiePage() {
-    return <CookieContent />;
+    return (
+        <main className="pt-20 min-h-screen bg-white">
+            <CookieContent />
+        </main>
+    );
 }

@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
-import { news } from '@/lib/news-data';
-import { StartupsContent } from '@/components/StartupsContent';
+import { StartupDirectory } from '@/components/StartupDirectory';
 
 export const metadata: Metadata = {
   title: 'Proptech Startups | XPropTech.in - Companies & Launches',
@@ -9,6 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default function StartupsPage() {
-  const startups = news.filter((a) => a.category === 'Startups').length ? news.filter((a) => a.category === 'Startups') : news.slice(0, 8);
-  return <StartupsContent articles={startups} />;
+  return <StartupDirectory />;
 }

@@ -69,7 +69,7 @@ export const SpotlightCard = ({ children, className = "" }: { children: React.Re
 };
 
 // Simple Spotlight Effect (Gradient follower)
-export const SpotlightEffect = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => {
+export const SpotlightEffect = ({ children, className = "", spotlightColor = "rgba(239, 68, 68, 0.25)" }: { children: React.ReactNode; className?: string, spotlightColor?: string }) => {
     const divRef = useRef<HTMLDivElement>(null);
     const [isFocused, setIsFocused] = useState(false);
     const position = useRef({ x: 0, y: 0 });
@@ -91,12 +91,14 @@ export const SpotlightEffect = ({ children, className = "" }: { children: React.
             className={`relative rounded-xl overflow-hidden group ${className}`}
         >
             <div
-                className={`pointer-events-none absolute -inset-px opacity-0 group-hover:opacity-100 transition duration-300`}
+                className={`pointer-events-none absolute -inset-px opacity-0 group-hover:opacity-100 transition duration-300 z-10`}
                 style={{
-                    background: `radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(255, 76, 76, 0.15), transparent 40%)`,
+                    background: `radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), ${spotlightColor}, transparent 40%)`,
                 }}
             />
-            {children}
+            <div className="relative z-20">
+                {children}
+            </div>
         </div>
     );
 };
