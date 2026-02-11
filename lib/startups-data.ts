@@ -221,6 +221,19 @@ export const STARTUPS: Startup[] = [
         city: 'Dubai',
         fundingStage: 'Undisclosed',
         foundedYear: 2007,
+    },
+    {
+        id: '16',
+        name: 'SmartSpace',
+        slug: 'smartspace',
+        logo: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1920&q=90',
+        description: 'AI-driven workspace management platform for hybrid teams.',
+        sector: 'SaaS',
+        country: 'India',
+        state: 'Karnataka',
+        city: 'Bangalore',
+        fundingStage: 'Series B',
+        foundedYear: 2018,
     }
 ];
 
@@ -234,7 +247,7 @@ export function getFilteredStartups(
     },
     sort: 'newest' | 'oldest' | 'name' = 'name'
 ): Startup[] {
-    let filtered = STARTUPS.filter(startup => {
+    const filtered = STARTUPS.filter(startup => {
         const matchesQuery = startup.name.toLowerCase().includes(query.toLowerCase()) ||
             startup.description.toLowerCase().includes(query.toLowerCase()) ||
             startup.city.toLowerCase().includes(query.toLowerCase());

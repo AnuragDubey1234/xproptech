@@ -17,15 +17,50 @@ interface FeaturedStartupProps {
 export function FeaturedStartup({ startup, searchQuery, setSearchQuery, onNext, onPrev }: FeaturedStartupProps) {
     return (
         <section className="w-full relative bg-white group/section">
-            {/* Clean Background - Removed Fog */}
-            <div className="absolute inset-0 bg-[radial-gradient(#f0f0f0_1px,transparent_1px)] [background-size:60px_60px] opacity-40 -z-10" />
+            {/* Animated Background */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
+                {/* Static Grid */}
+                <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:40px_40px] opacity-30" />
 
-            <div className="w-full relative">
+                {/* Moving Gradient Blobs */}
+                <motion.div
+                    animate={{
+                        scale: [1, 1.1, 1],
+                        rotate: [0, 5, -5, 0],
+                        opacity: [0.3, 0.5, 0.3]
+                    }}
+                    transition={{
+                        duration: 15,
+                        repeat: Infinity,
+                        ease: "linear"
+                    }}
+                    className="absolute -top-[20%] -right-[10%] w-[800px] h-[800px] bg-gradient-to-br from-fire-red/5 to-purple-500/5 rounded-full blur-3xl opacity-30"
+                />
+                <motion.div
+                    animate={{
+                        scale: [1, 1.2, 1],
+                        x: [0, 50, 0],
+                        opacity: [0.2, 0.4, 0.2]
+                    }}
+                    transition={{
+                        duration: 20,
+                        repeat: Infinity,
+                        ease: "linear",
+                        delay: 2
+                    }}
+                    className="absolute top-[40%] -left-[10%] w-[600px] h-[600px] bg-gradient-to-tr from-blue-500/5 to-cyan-500/5 rounded-full blur-3xl opacity-20"
+                />
+
+                {/* Hover Blend - Intense Blue/Red/Orange */}
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-700/80 via-red-600/70 to-orange-500/80 opacity-0 group-hover/section:opacity-100 transition-opacity duration-700 ease-in-out" />
+            </div>
+
+            <div className="w-full relative max-w-[2000px] mx-auto pt-0 pb-0">
                 {/* Navigation Arrows */}
                 {onPrev && (
                     <button
                         onClick={onPrev}
-                        className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-30 p-4 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white hover:text-neutral-900 transition-all duration-300 group hover:scale-110 shadow-lg"
+                        className="absolute left-4 md:left-8 top-[67%] -translate-y-1/2 z-30 p-4 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white hover:text-neutral-900 transition-all duration-300 group hover:scale-110 shadow-lg"
                         aria-label="Previous Startup"
                     >
                         <ArrowRight className="w-6 h-6 rotate-180" />
@@ -35,7 +70,7 @@ export function FeaturedStartup({ startup, searchQuery, setSearchQuery, onNext, 
                 {onNext && (
                     <button
                         onClick={onNext}
-                        className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-30 p-4 rounded-full bg-neutral-900/10 backdrop-blur-md border border-neutral-900/20 text-neutral-900 hover:bg-neutral-900 hover:text-white transition-all duration-300 group hover:scale-110 shadow-lg"
+                        className="absolute right-4 md:right-8 top-[67%] -translate-y-1/2 z-30 p-4 rounded-full bg-neutral-900/10 backdrop-blur-md border border-neutral-900/20 text-neutral-900 hover:bg-neutral-900 hover:text-white transition-all duration-300 group hover:scale-110 shadow-lg"
                         aria-label="Next Startup"
                     >
                         <ArrowRight className="w-6 h-6" />
@@ -50,9 +85,9 @@ export function FeaturedStartup({ startup, searchQuery, setSearchQuery, onNext, 
                     transition={{ duration: 0.8, ease: "circOut" }}
                     className="relative w-full overflow-hidden bg-white"
                 >
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 min-h-[105vh]">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 min-h-[600px]">
                         {/* Image Section - Full Height */}
-                        <div className="relative h-[50vh] lg:h-full min-h-[400px] overflow-hidden bg-neutral-900 flex items-center justify-center">
+                        <div className="relative h-[400px] lg:h-full min-h-[400px] overflow-hidden bg-neutral-900 flex items-center justify-center">
                             <div className="relative w-full h-full">
                                 <Image
                                     src={startup.logo}
@@ -65,8 +100,10 @@ export function FeaturedStartup({ startup, searchQuery, setSearchQuery, onNext, 
                             </div>
                         </div>
 
-                        {/* Content Section - High Contrast */}
-                        <SpotlightEffect className="p-8 md:p-12 flex flex-col justify-center bg-white rounded-none relative">
+                        {/* Content Section - High Contrast - Transparent for Float Effect */}
+                        <SpotlightEffect className="p-8 md:p-12 pt-24 md:pt-32 flex flex-col justify-start bg-white/20 group-hover/section:bg-white/5 transition-colors duration-500 backdrop-blur-xl rounded-none relative overflow-hidden">
+                            {/* Removed Gradient Overlay */}
+
                             <motion.div
                                 initial={{ opacity: 0, x: 30 }}
                                 animate={{ opacity: 1, x: 0 }}
@@ -75,7 +112,7 @@ export function FeaturedStartup({ startup, searchQuery, setSearchQuery, onNext, 
 
 
                                 <motion.h2
-                                    className="text-5xl md:text-7xl font-black text-neutral-900 tracking-tighter leading-[0.85] mb-12 mt-[3.75rem] uppercase inline-block cursor-pointer relative z-10"
+                                    className="text-5xl md:text-7xl font-black text-neutral-900 tracking-tighter leading-[0.85] mb-12 mt-0 uppercase inline-block cursor-pointer relative z-10"
                                     whileHover={{
                                         scale: 1.1,
                                         textShadow: "0px 0px 8px rgba(239, 68, 68, 0.8), 0px 0px 20px rgba(239, 68, 68, 0.4)",
@@ -108,43 +145,27 @@ export function FeaturedStartup({ startup, searchQuery, setSearchQuery, onNext, 
                                     <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform duration-500" />
                                 </button>
 
-                                {searchQuery !== undefined && setSearchQuery ? (
-                                    <div className="mt-8 pt-8 border-t border-neutral-100 w-full max-w-xl">
-                                        <p className="text-neutral-400 text-xs font-bold uppercase tracking-widest mb-4">Found what you're looking for?</p>
-                                        <div className="relative flex items-center bg-neutral-50 border-2 border-neutral-100 rounded-2xl px-6 py-4 transition-all shadow-sm focus-within:shadow-md focus-within:border-fire-red/20 group/search">
-                                            <Search className="w-6 h-6 text-neutral-400 group-focus-within/search:text-fire-red transition-colors" />
-                                            <input
-                                                type="text"
-                                                value={searchQuery}
-                                                onChange={(e) => setSearchQuery(e.target.value)}
-                                                placeholder="Search ecosystem..."
-                                                className="w-full bg-transparent border-none outline-none text-neutral-900 placeholder-neutral-400 ml-4 text-xl font-medium"
-                                            />
+                                <div className="mt-8 pt-8 border-t border-neutral-100 w-full max-w-xl">
+                                    <div className="flex items-center justify-between">
+                                        <div>
+                                            <p className="text-neutral-400 text-xs font-bold uppercase tracking-widest mb-2">Primary Sector</p>
+                                            <p className="text-xl font-black text-neutral-900">{startup.sector}</p>
                                         </div>
-                                    </div>
-                                ) : (
-                                    <div className="mt-8 pt-8 border-t border-neutral-100 w-full max-w-xl">
-                                        <div className="flex items-center justify-between">
-                                            <div>
-                                                <p className="text-neutral-400 text-xs font-bold uppercase tracking-widest mb-2">Primary Sector</p>
-                                                <p className="text-xl font-black text-neutral-900">{startup.sector}</p>
-                                            </div>
-                                            <div className="w-[1px] h-8 bg-neutral-200" />
-                                            <div>
-                                                <p className="text-neutral-400 text-xs font-bold uppercase tracking-widest mb-2">Founded</p>
-                                                <p className="text-xl font-black text-neutral-900">{startup.foundedYear}</p>
-                                            </div>
-                                            <div className="w-[1px] h-8 bg-neutral-200 hidden md:block" />
-                                            <div className="hidden md:block">
-                                                <p className="text-neutral-400 text-xs font-bold uppercase tracking-widest mb-2">Market Status</p>
-                                                <div className="flex items-center gap-2">
-                                                    <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                                                    <p className="text-sm font-bold text-neutral-900 uppercase tracking-wider">Active</p>
-                                                </div>
+                                        <div className="w-[1px] h-8 bg-neutral-200" />
+                                        <div>
+                                            <p className="text-neutral-400 text-xs font-bold uppercase tracking-widest mb-2">Founded</p>
+                                            <p className="text-xl font-black text-neutral-900">{startup.foundedYear}</p>
+                                        </div>
+                                        <div className="w-[1px] h-8 bg-neutral-200 hidden md:block" />
+                                        <div className="hidden md:block">
+                                            <p className="text-neutral-400 text-xs font-bold uppercase tracking-widest mb-2">Market Status</p>
+                                            <div className="flex items-center gap-2">
+                                                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                                                <p className="text-sm font-bold text-neutral-900 uppercase tracking-wider">Active</p>
                                             </div>
                                         </div>
                                     </div>
-                                )}
+                                </div>
                             </motion.div>
                         </SpotlightEffect>
                     </div>
