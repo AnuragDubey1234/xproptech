@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { getIndiaNews } from '@/lib/news-data';
 import { IndiaHero } from '@/components/IndiaHero';
+import { StockTicker } from '@/components/StockTicker';
 import { ScrollingMarquee } from '@/components/ScrollingMarquee';
 import { InnovationSpotlight } from '@/components/InnovationSpotlight';
 import { RegionNewsGrid } from '@/components/RegionNewsGrid';

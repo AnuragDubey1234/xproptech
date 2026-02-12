@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { getGCCNews } from '@/lib/news-data';
 import { InsightsSidebar } from '@/components/InsightsSidebar';
 import { GCCHeroBanner } from '@/components/gcc/GCCHeroBanner';
+import { StockTicker } from '@/components/StockTicker';
 import { GCCNewsContent } from '@/components/gcc/GCCNewsContent';
 import { ScrollingMarquee } from '@/components/ScrollingMarquee';
 
@@ -23,6 +24,7 @@ export default function GCCPage() {
     <div className="w-full pb-12">
       <div className="relative w-full pt-16 rounded-b-[3rem] overflow-hidden shadow-2xl z-10 bg-neutral-900 border-b border-neutral-800">
         <GCCHeroBanner />
+        <StockTicker />
       </div>
 
       {/* Content Wrapper */}
