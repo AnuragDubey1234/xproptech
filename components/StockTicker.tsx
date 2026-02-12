@@ -31,20 +31,16 @@ export function StockTicker({ transparent = false }: { transparent?: boolean }) 
             {/* Glass Shine */}
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent pointer-events-none" />
 
-            <div className="flex animate-scroll whitespace-nowrap gap-16 px-6 will-change-transform items-center">
+            <div className="flex animate-scroll whitespace-nowrap gap-12 px-6 will-change-transform items-center">
                 {/* Duplicated list for seamless scrolling */}
                 {[...stocks, ...stocks, ...stocks, ...stocks].map((stock, i) => (
-                    <div key={`${stock.symbol}-${i}`} className="flex items-center gap-4 group cursor-default">
-                        <div className="flex flex-col">
-                            <span className="font-bold text-xs md:text-sm text-neutral-400 group-hover:text-white transition-colors">{stock.symbol}</span>
-                            <span className="font-bold text-xs md:text-sm text-white">{stock.price}</span>
-                        </div>
-                        <span className={`px-2 py-0.5 rounded-full text-[10px] md:text-xs font-bold flex items-center gap-1 bg-white/5 border border-white/5 ${stock.up ? 'text-green-400 border-green-500/20' : 'text-red-400 border-red-500/20'}`}>
+                    <div key={`${stock.symbol}-${i}`} className="flex items-center gap-2 group cursor-default">
+                        <span className="font-bold text-sm text-neutral-400 group-hover:text-white transition-colors">{stock.symbol}</span>
+                        <span className="font-bold text-sm text-white">{stock.price}</span>
+                        <span className={`text-xs font-bold flex items-center ${stock.up ? 'text-green-400' : 'text-red-400'}`}>
                             {stock.up ? <ArrowUpRight className="w-3 h-3" /> : <ArrowDownRight className="w-3 h-3" />}
                             {stock.change}
                         </span>
-                        {/* Separator Dot */}
-                        <div className="w-1 h-1 rounded-full bg-neutral-800 ml-8" />
                     </div>
                 ))}
             </div>
