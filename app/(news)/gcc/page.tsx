@@ -4,7 +4,6 @@ import { InsightsSidebar } from '@/components/InsightsSidebar';
 import { GCCHeroBanner } from '@/components/gcc/GCCHeroBanner';
 import { StockTicker } from '@/components/StockTicker';
 import { GCCNewsContent } from '@/components/gcc/GCCNewsContent';
-import { ScrollingMarquee } from '@/components/ScrollingMarquee';
 
 export const metadata: Metadata = {
   title: 'GCC PropTech News | XPropTech.in - UAE, Saudi, Middle East',
@@ -25,7 +24,6 @@ export default function GCCPage() {
       <div className="relative w-full pt-16 rounded-b-[3rem] overflow-hidden shadow-2xl z-10 bg-neutral-900 border-b border-neutral-800">
         <GCCHeroBanner />
         <StockTicker />
-        <ScrollingMarquee />
       </div>
 
       {/* Content Wrapper */}
