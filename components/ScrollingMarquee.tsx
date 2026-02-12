@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { STARTUPS } from '@/lib/startups-data';
 
-export function ScrollingMarquee() {
+export function ScrollingMarquee({ transparent = false }: { transparent?: boolean }) {
     const marqueeVariants = {
         animate: {
             x: ["0%", "-50%"],
@@ -23,8 +23,8 @@ export function ScrollingMarquee() {
     const duplicatedStartups = [...STARTUPS, ...STARTUPS];
 
     return (
-        <div className="relative w-full py-8 bg-neutral-900 border-b border-neutral-800 overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-r from-neutral-900 via-transparent to-neutral-900 z-10 pointer-events-none" />
+        <div className={`relative w-full py-8 ${transparent ? 'bg-transparent border-none' : 'bg-neutral-900 border-b border-neutral-800'} overflow-hidden`}>
+            {!transparent && <div className="absolute inset-0 bg-gradient-to-r from-neutral-900 via-transparent to-neutral-900 z-10 pointer-events-none" />}
             <div className="flex whitespace-nowrap overflow-hidden">
                 <motion.div
                     className="flex items-center gap-12 md:gap-20"

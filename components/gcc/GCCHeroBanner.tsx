@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
+import { ScrollingMarquee } from '../ScrollingMarquee';
 
 const gccSlides = [
   {
@@ -118,7 +119,7 @@ export function GCCHeroBanner() {
         </motion.span>
       </AnimatePresence>
 
-      <div className="relative z-10 flex flex-col justify-end items-center min-h-[420px] md:min-h-[500px] px-6 md:px-12 pb-20 text-center">
+      <div className="relative z-10 flex flex-col justify-end items-center min-h-[420px] md:min-h-[500px] px-6 md:px-12 pb-36 text-center">
         <AnimatePresence mode="wait">
           <motion.div
             key={index}
@@ -165,6 +166,9 @@ export function GCCHeroBanner() {
             />
           ))}
         </div>
+      </div>
+      <div className="absolute bottom-0 w-full z-20 border-t border-white/10 bg-black/20 backdrop-blur-sm">
+        <ScrollingMarquee transparent />
       </div>
     </section>
   );

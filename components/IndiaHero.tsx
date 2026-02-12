@@ -3,6 +3,8 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 
+import { ScrollingMarquee } from './ScrollingMarquee';
+
 export function IndiaHero() {
     return (
         <section className="relative w-full h-[85vh] min-h-[500px] md:min-h-[600px] mb-0 isolate text-white overflow-hidden shadow-2xl z-10">
@@ -30,7 +32,7 @@ export function IndiaHero() {
             <div className="absolute inset-0 -z-10 bg-gradient-to-t from-neutral-900 via-neutral-900/40 to-transparent" />
 
             {/* Content */}
-            <div className="absolute bottom-0 left-0 w-full p-6 md:p-16 lg:p-24 flex flex-col justify-end h-full">
+            <div className="absolute bottom-0 left-0 w-full px-6 pt-6 pb-32 md:px-16 md:pt-16 md:pb-40 lg:px-24 lg:pt-24 lg:pb-48 flex flex-col justify-end h-full">
                 <motion.div
                     initial={{ opacity: 0, y: 40 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -55,6 +57,12 @@ export function IndiaHero() {
                     </p>
                 </motion.div>
             </div>
-        </section>
+        </div>
+
+        {/* Scrolling Marquee Overlay */ }
+    <div className="absolute bottom-0 w-full z-20 border-t border-white/10 bg-black/20 backdrop-blur-sm">
+        <ScrollingMarquee transparent />
+    </div>
+    </section >
     );
 }

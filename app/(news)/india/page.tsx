@@ -21,10 +21,8 @@ export default function IndiaPage() {
 
   return (
     <div className="w-full overflow-x-hidden pb-24">
-      {/* Hero & Marquee Unified Wrapper */}
       <div className="relative w-full pt-16 rounded-b-[3rem] overflow-hidden shadow-2xl z-10 bg-neutral-900">
         <IndiaHero />
-        <ScrollingMarquee />
       </div>
 
       {/* Content Wrapper */}
