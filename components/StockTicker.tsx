@@ -8,24 +8,32 @@ interface Stock {
     price: string;
     change: string;
     up: boolean;
-    region: 'IND' | 'USA';
+    region: 'IND' | 'GCC';
 }
 
-const stocks: Stock[] = [
-    { symbol: 'DLF', name: 'DLF Limited', price: '892.45', change: '+2.4%', up: true, region: 'IND' },
-    { symbol: 'GODREJ', name: 'Godrej Props', price: '2,450.10', change: '+1.8%', up: true, region: 'IND' },
-    { symbol: 'Z', name: 'Zillow Group', price: '$54.20', change: '-0.5%', up: false, region: 'USA' },
-    { symbol: 'OBEROI', name: 'Oberoi Realty', price: '1,560.75', change: '+3.1%', up: true, region: 'IND' },
-    { symbol: 'ABNB', name: 'Airbnb Inc.', price: '$135.60', change: '+0.9%', up: true, region: 'USA' },
-    { symbol: 'CSGP', name: 'CoStar Group', price: '$88.90', change: '-1.2%', up: false, region: 'USA' },
-    { symbol: 'PHOENIX', name: 'Phoenix Mills', price: '3,210.00', change: '+0.4%', up: true, region: 'IND' },
-    { symbol: 'RDFN', name: 'Redfin Corp', price: '$7.85', change: '-2.1%', up: false, region: 'USA' },
-    { symbol: 'OPEN', name: 'Opendoor', price: '$2.15', change: '-4.3%', up: false, region: 'USA' },
-    { symbol: 'COMP', name: 'Compass Inc.', price: '$3.45', change: '+1.2%', up: true, region: 'USA' },
-    { symbol: 'MTTR', name: 'Matterport', price: '$2.80', change: '+0.5%', up: true, region: 'USA' },
+const indiaStocks: Stock[] = [
+    { symbol: 'DLF', name: 'DLF Limited', price: '₹892.45', change: '+2.4%', up: true, region: 'IND' },
+    { symbol: 'GODREJ', name: 'Godrej Props', price: '₹2,450.10', change: '+1.8%', up: true, region: 'IND' },
+    { symbol: 'OBEROI', name: 'Oberoi Realty', price: '₹1,560.75', change: '+3.1%', up: true, region: 'IND' },
+    { symbol: 'PHOENIX', name: 'Phoenix Mills', price: '₹3,210.00', change: '+0.4%', up: true, region: 'IND' },
+    { symbol: 'PRESTIGE', name: 'Prestige Est', price: '₹1,240.50', change: '+1.2%', up: true, region: 'IND' },
+    { symbol: 'BRIGADE', name: 'Brigade Ent', price: '₹980.20', change: '-0.8%', up: false, region: 'IND' },
+    { symbol: 'SOBHA', name: 'Sobha Ltd', price: '₹1,450.00', change: '+0.5%', up: true, region: 'IND' },
 ];
 
-export function StockTicker({ transparent = false }: { transparent?: boolean }) {
+const gccStocks: Stock[] = [
+    { symbol: 'EMAAR', name: 'Emaar Properties', price: 'AED 8.45', change: '+1.2%', up: true, region: 'GCC' },
+    { symbol: 'ALDAR', name: 'Aldar Properties', price: 'AED 5.60', change: '+0.8%', up: true, region: 'GCC' },
+    { symbol: 'DAMAC', name: 'Damac Properties', price: 'AED 1.40', change: '+0.5%', up: true, region: 'GCC' },
+    { symbol: 'DEYAAR', name: 'Deyaar Dev', price: 'AED 0.75', change: '-1.2%', up: false, region: 'GCC' },
+    { symbol: 'UNION', name: 'Union Prop', price: 'AED 0.32', change: '+2.1%', up: true, region: 'GCC' },
+    { symbol: 'DAR', name: 'Dar Al Arkan', price: 'SAR 14.20', change: '+0.4%', up: true, region: 'GCC' },
+    { symbol: 'JABAL', name: 'Jabal Omar', price: 'SAR 28.50', change: '-0.5%', up: false, region: 'GCC' },
+];
+
+export function StockTicker({ transparent = false, region = 'IND' }: { transparent?: boolean, region?: 'IND' | 'GCC' }) {
+    const stocks = region === 'GCC' ? gccStocks : indiaStocks;
+
     return (
         <div className={`relative w-full h-14 md:h-16 flex items-center overflow-hidden border-t border-white/5 border-b border-white/5 ${transparent ? 'bg-transparent' : 'bg-neutral-900/60 backdrop-blur-xl supports-[backdrop-filter]:bg-neutral-900/40'}`}>
             {/* Glass Shine */}
