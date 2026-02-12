@@ -55,6 +55,7 @@ export function IndiaHero() {
                     </p>
                 </motion.div>
             </div>
+
         </section>
     );
 }

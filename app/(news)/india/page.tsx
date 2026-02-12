@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { getIndiaNews } from '@/lib/news-data';
 import { IndiaHero } from '@/components/IndiaHero';
-import { ScrollingMarquee } from '@/components/ScrollingMarquee';
+import { StockTicker } from '@/components/StockTicker';
 import { InnovationSpotlight } from '@/components/InnovationSpotlight';
 import { RegionNewsGrid } from '@/components/RegionNewsGrid';
 
@@ -21,10 +21,9 @@ export default function IndiaPage() {
 
   return (
     <div className="w-full overflow-x-hidden pb-24">
-      {/* Hero & Marquee Unified Wrapper */}
       <div className="relative w-full pt-16 rounded-b-[3rem] overflow-hidden shadow-2xl z-10 bg-neutral-900">
         <IndiaHero />
-        <ScrollingMarquee />
+        <StockTicker region="IND" />
       </div>
 
       {/* Content Wrapper */}
