@@ -25,6 +25,7 @@ export default function GCCPage() {
       <div className="relative w-full pt-16 rounded-b-[3rem] overflow-hidden shadow-2xl z-10 bg-neutral-900 border-b border-neutral-800">
         <GCCHeroBanner />
         <StockTicker />
+        <ScrollingMarquee />
       </div>
 
       {/* Content Wrapper */}

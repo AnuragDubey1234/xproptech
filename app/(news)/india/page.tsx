@@ -24,6 +24,8 @@ export default function IndiaPage() {
     <div className="w-full overflow-x-hidden pb-24">
       <div className="relative w-full pt-16 rounded-b-[3rem] overflow-hidden shadow-2xl z-10 bg-neutral-900">
         <IndiaHero />
+        <StockTicker />
+        <ScrollingMarquee />
       </div>
 
       {/* Content Wrapper */}
