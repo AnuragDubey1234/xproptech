@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ScrollingMarquee } from '../ScrollingMarquee';
+import { StockTicker } from '../StockTicker';
 
 const gccSlides = [
   {
@@ -168,7 +168,7 @@ export function GCCHeroBanner() {
         </div>
       </div>
       <div className="absolute bottom-0 w-full z-20 border-t border-white/10 bg-black/20 backdrop-blur-sm">
-        <ScrollingMarquee transparent />
+        <StockTicker transparent />
       </div>
     </section>
   );

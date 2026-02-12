@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { ScrollingMarquee } from './ScrollingMarquee';
+import { StockTicker } from './StockTicker';
 
 export function IndiaHero() {
     return (
@@ -57,9 +57,9 @@ export function IndiaHero() {
                 </motion.div>
             </div>
 
-            {/* Scrolling Marquee Overlay */}
+            {/* Stock Ticker Overlay */}
             <div className="absolute bottom-0 w-full z-20 border-t border-white/10 bg-black/20 backdrop-blur-sm">
-                <ScrollingMarquee transparent />
+                <StockTicker transparent />
             </div>
         </section>
     );
