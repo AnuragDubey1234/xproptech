@@ -75,82 +75,94 @@ export function SignupCard({ onLoginClick, onClose }: SignupCardProps) {
             className="w-full max-w-md relative"
         >
 
-            {/* The Classy Card - Optimized Vertical Height (Stationary) */}
-            <div className="bg-[#0c0c0c] border border-white/10 p-9 md:p-10 rounded-[2.5rem] shadow-[0_32px_64px_-12px_rgba(0,0,0,0.8)] relative overflow-hidden">
+            {/* The Beautiful Card - Balanced & Premium */}
+            <div className="bg-white/80 backdrop-blur-2xl border border-white/60 p-8 md:p-10 rounded-[2.5rem] shadow-[0_30px_60px_-12px_rgba(0,0,0,0.12),0_18px_36px_-18px_rgba(0,0,0,0.15)] relative overflow-hidden ring-1 ring-white/50">
+
+                {/* Subtle sheen reflection for glass effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/40 to-transparent pointer-events-none" />
+
                 {/* Close Button - Top Left */}
                 {onClose && (
                     <button
                         onClick={onClose}
-                        className="absolute top-6 left-6 text-white/30 hover:text-white transition-colors z-20"
+                        className="absolute top-6 left-6 text-neutral-400 hover:text-neutral-900 transition-colors z-20 p-2 hover:bg-white/50 rounded-full"
                         aria-label="Close"
                     >
-                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                         </svg>
                     </button>
                 )}
 
-                {/* Subtle backlight */}
-                <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-fire-red/5 blur-[120px] pointer-events-none" />
-
-                {/* Header */}
-                <div className="text-center mb-7 relative z-10">
+                {/* Header - Balanced */}
+                <div className="text-center mb-6 relative z-10 pt-2">
+                    <motion.div variants={itemVariants} className="mb-4 flex justify-center">
+                        <div className="p-2.5 bg-white/50 rounded-2xl shadow-sm border border-white/60 backdrop-blur-sm">
+                            <img src="/logo.png" alt="XPropTech" className="h-9 w-auto object-contain" />
+                        </div>
+                    </motion.div>
                     <motion.h2
                         variants={itemVariants}
-                        className="text-3xl md:text-4xl font-black mb-1.5 tracking-tighter bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-400 uppercase"
+                        className="text-2xl font-bold mb-1 tracking-tight text-neutral-900"
                     >
-                        SIGN UP
+                        Join XPropTech
                     </motion.h2>
                     <motion.p
                         variants={itemVariants}
-                        className="text-gray-500 text-[10px] font-bold tracking-[0.25em] uppercase opacity-70"
+                        className="text-neutral-500 text-xs font-medium tracking-wide"
                     >
-                        XPropTech Authentication
+                        Access exclusive proptech insights.
                     </motion.p>
                 </div>
 
-                {/* Form - 5 Fields Stacked (Vertical) */}
+                {/* Form - Standard Spacing */}
                 <form className="space-y-3.5 relative z-10" onSubmit={(e) => e.preventDefault()}>
 
                     {/* Full Name */}
                     <motion.div variants={itemVariants}>
-                        <input
-                            type="text" name="fullName" placeholder="Full Name"
-                            value={formData.fullName} onChange={handleChange}
-                            className="w-full bg-white/[0.04] border border-white/10 rounded-xl px-5 py-3.5 text-white placeholder-gray-600 outline-none focus:border-fire-red/40 focus:bg-white/[0.06] transition-all duration-300 text-sm"
-                        />
+                        <div className="relative group">
+                            <input
+                                type="text" name="fullName" placeholder="Full Name"
+                                value={formData.fullName} onChange={handleChange}
+                                className="w-full bg-white/60 border border-neutral-200/60 rounded-xl px-4 py-3 text-neutral-900 placeholder-neutral-400 outline-none focus:border-fire-red focus:bg-white focus:ring-4 focus:ring-fire-red/5 transition-all duration-300 text-sm font-bold backdrop-blur-sm group-hover:bg-white/80"
+                            />
+                        </div>
                     </motion.div>
 
                     {/* Username */}
                     <motion.div variants={itemVariants}>
-                        <input
-                            type="text" name="username" placeholder="Create Username"
-                            value={formData.username} onChange={handleChange}
-                            className="w-full bg-white/[0.04] border border-white/10 rounded-xl px-5 py-3.5 text-white placeholder-gray-600 outline-none focus:border-fire-red/40 focus:bg-white/[0.06] transition-all duration-300 text-sm"
-                        />
+                        <div className="relative group">
+                            <input
+                                type="text" name="username" placeholder="Username"
+                                value={formData.username} onChange={handleChange}
+                                className="w-full bg-white/60 border border-neutral-200/60 rounded-xl px-4 py-3 text-neutral-900 placeholder-neutral-400 outline-none focus:border-fire-red focus:bg-white focus:ring-4 focus:ring-fire-red/5 transition-all duration-300 text-sm font-bold backdrop-blur-sm group-hover:bg-white/80"
+                            />
+                        </div>
                     </motion.div>
 
                     {/* Email */}
                     <motion.div variants={itemVariants}>
-                        <input
-                            type="email" name="email" placeholder="Email Address"
-                            value={formData.email} onChange={handleChange}
-                            className="w-full bg-white/[0.04] border border-white/10 rounded-xl px-5 py-3.5 text-white placeholder-gray-600 outline-none focus:border-fire-red/40 focus:bg-white/[0.06] transition-all duration-300 text-sm"
-                        />
+                        <div className="relative group">
+                            <input
+                                type="email" name="email" placeholder="Email Address"
+                                value={formData.email} onChange={handleChange}
+                                className="w-full bg-white/60 border border-neutral-200/60 rounded-xl px-4 py-3 text-neutral-900 placeholder-neutral-400 outline-none focus:border-fire-red focus:bg-white focus:ring-4 focus:ring-fire-red/5 transition-all duration-300 text-sm font-bold backdrop-blur-sm group-hover:bg-white/80"
+                            />
+                        </div>
                     </motion.div>
 
                     {/* Password */}
                     <motion.div variants={itemVariants}>
-                        <div className="relative">
+                        <div className="relative group">
                             <input
-                                type={showPassword ? "text" : "password"} name="password" placeholder="Create Password"
+                                type={showPassword ? "text" : "password"} name="password" placeholder="Password"
                                 value={formData.password} onChange={handleChange}
-                                className="w-full bg-white/[0.04] border border-white/10 rounded-xl px-5 py-3.5 text-white placeholder-gray-600 outline-none focus:border-fire-red/40 focus:bg-white/[0.06] transition-all duration-300 text-sm pr-12"
+                                className="w-full bg-white/60 border border-neutral-200/60 rounded-xl px-4 py-3 text-neutral-900 placeholder-neutral-400 outline-none focus:border-fire-red focus:bg-white focus:ring-4 focus:ring-fire-red/5 transition-all duration-300 text-sm font-bold backdrop-blur-sm group-hover:bg-white/80 pr-12"
                             />
                             <button
                                 type="button"
                                 onClick={() => setShowPassword(!showPassword)}
-                                className="absolute right-3 top-1/2 -translate-y-1/2 p-1.5 text-gray-500 hover:text-gray-300 transition-colors rounded-lg"
+                                className="absolute right-3 top-1/2 -translate-y-1/2 p-2 text-neutral-400 hover:text-neutral-600 transition-colors rounded-lg hover:bg-neutral-100/50"
                                 aria-label="Toggle password visibility"
                             >
                                 {showPassword ? <EyeOffIcon /> : <EyeIcon />}
@@ -160,16 +172,16 @@ export function SignupCard({ onLoginClick, onClose }: SignupCardProps) {
 
                     {/* Confirm Password */}
                     <motion.div variants={itemVariants}>
-                        <div className="relative">
+                        <div className="relative group">
                             <input
                                 type={showConfirmPassword ? "text" : "password"} name="confirmPassword" placeholder="Confirm Password"
                                 value={formData.confirmPassword} onChange={handleChange}
-                                className="w-full bg-white/[0.04] border border-white/10 rounded-xl px-5 py-3.5 text-white placeholder-gray-600 outline-none focus:border-fire-red/40 focus:bg-white/[0.06] transition-all duration-300 text-sm pr-12"
+                                className="w-full bg-white/60 border border-neutral-200/60 rounded-xl px-4 py-3 text-neutral-900 placeholder-neutral-400 outline-none focus:border-fire-red focus:bg-white focus:ring-4 focus:ring-fire-red/5 transition-all duration-300 text-sm font-bold backdrop-blur-sm group-hover:bg-white/80 pr-12"
                             />
                             <button
                                 type="button"
                                 onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                                className="absolute right-3 top-1/2 -translate-y-1/2 p-1.5 text-gray-500 hover:text-gray-300 transition-colors rounded-lg"
+                                className="absolute right-3 top-1/2 -translate-y-1/2 p-2 text-neutral-400 hover:text-neutral-600 transition-colors rounded-lg hover:bg-neutral-100/50"
                                 aria-label="Toggle confirm password visibility"
                             >
                                 {showConfirmPassword ? <EyeOffIcon /> : <EyeIcon />}
@@ -179,20 +191,21 @@ export function SignupCard({ onLoginClick, onClose }: SignupCardProps) {
 
                     {/* Submit Button */}
                     <motion.div variants={itemVariants} className="pt-4">
-                        <button className="w-full group/btn relative overflow-hidden bg-white text-black font-black text-sm py-4 rounded-xl hover:shadow-[0_0_20px_rgba(255,255,255,0.1)] transition-all active:scale-[0.98]">
-                            <span className="relative z-10 tracking-[0.2em] uppercase">Create Account</span>
-                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-fire-red/10 to-transparent -translate-x-full group-hover/btn:translate-x-full transition-transform duration-1000" />
+                        <button className="w-full group/btn relative overflow-hidden bg-neutral-900 text-white font-bold text-sm py-3.5 rounded-2xl shadow-lg hover:shadow-2xl hover:shadow-neutral-900/20 hover:scale-[1.02] transition-all duration-300">
+                            <span className="relative z-10 tracking-widest uppercase text-xs">Create Account</span>
+                            <div className="absolute inset-0 bg-gradient-to-r from-neutral-800 to-black group-hover/btn:opacity-0 transition-opacity duration-300" />
+                            <div className="absolute inset-0 bg-fire-red opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300 ease-out" />
                         </button>
                     </motion.div>
 
                 </form>
 
                 {/* Footer */}
-                <motion.div variants={itemVariants} className="mt-8 text-center relative z-10 border-t border-white/5 pt-6">
-                    <p className="text-gray-600 text-[10px] font-bold inline mr-3 uppercase tracking-wider">Already a member?</p>
+                <motion.div variants={itemVariants} className="mt-6 text-center relative z-10">
+                    <p className="text-neutral-400 text-xs font-medium inline mr-2">Already a member?</p>
                     <button
                         onClick={onLoginClick}
-                        className="text-white hover:text-fire-red transition-colors text-[10px] font-black uppercase tracking-widest"
+                        className="text-neutral-900 hover:text-fire-red transition-colors text-xs font-black uppercase tracking-wide hover:underline decoration-2 underline-offset-4"
                     >
                         Sign In
                     </button>

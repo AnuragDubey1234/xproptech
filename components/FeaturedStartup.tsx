@@ -93,6 +93,8 @@ export function FeaturedStartup({ startup, searchQuery, setSearchQuery, onNext, 
                                     src={startup.logo}
                                     alt={startup.name}
                                     fill
+                                    quality={60} // Reduced quality for performance
+                                    sizes="(max-width: 768px) 100vw, 50vw"
                                     className="object-cover opacity-90 transition-transform duration-1000 group-hover/section:scale-105"
                                     priority
                                 />
@@ -140,7 +142,10 @@ export function FeaturedStartup({ startup, searchQuery, setSearchQuery, onNext, 
                                     </div>
                                 </div>
 
-                                <button className="group relative flex items-center justify-between bg-neutral-900 text-white px-10 py-6 rounded-2xl md:rounded-3xl font-black uppercase text-[11px] tracking-[0.4em] hover:bg-fire-red transition-all duration-500 shadow-xl hover:shadow-2xl hover:shadow-fire-red/30 w-full md:w-auto min-w-[300px]">
+                                <button
+                                    onClick={() => document.getElementById('startup-directory-grid')?.scrollIntoView({ behavior: 'smooth' })}
+                                    className="group relative flex items-center justify-between bg-neutral-900 text-white px-10 py-6 rounded-2xl md:rounded-3xl font-black uppercase text-[11px] tracking-[0.4em] hover:bg-fire-red transition-all duration-500 shadow-xl hover:shadow-2xl hover:shadow-fire-red/30 w-full md:w-auto min-w-[300px]"
+                                >
                                     <span>Explore Ecosystem Profile</span>
                                     <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform duration-500" />
                                 </button>

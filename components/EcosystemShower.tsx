@@ -1,45 +1,63 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
 export function EcosystemShower() {
-    // Generate static particles to avoid hydration mismatch
-    const [particles, setParticles] = useState<Array<{ id: number; x: number; delay: number; duration: number; height: number }>>([]);
+    const [particles, setParticles] = useState<Array<{ id: number; left: number; delay: number; duration: number; size: number }>>([]);
 
     useEffect(() => {
-        const particleCount = 20;
+        // Generate static particles
+        const particleCount = 40;
         const newParticles = Array.from({ length: particleCount }).map((_, i) => ({
             id: i,
-            x: Math.random() * 100, // Random horizontal position %
-            delay: Math.random() * 5, // Random delay
-            duration: 3 + Math.random() * 4, // Random duration (slow fall)
-            height: 20 + Math.random() * 40, // Random height of the "drop"
+            // Spread across 5-95% to avoid edge cutoff, but cover full width
+            left: 5 + Math.random() * 90,
+            delay: Math.random() * 5,
+            duration: 4 + Math.random() * 5,
+            size: 4 + Math.random() * 4,
         }));
         setParticles(newParticles);
     }, []);
 
     return (
-        <div className="absolute top-0 left-0 w-full h-[600px] pointer-events-none z-0 overflow-hidden">
-            {/* Gradient Mask to Fade Out at Bottom */}
+        <div className="absolute top-0 left-0 w-full h-[400px] pointer-events-none z-0 overflow-hidden" aria-hidden="true">
+            <style jsx>{`
+                @keyframes snowfall {
+                    0% {
+                        transform: translateY(-20px);
+                        opacity: 0;
+                    }
+                    10% {
+                        opacity: 0.8;
+                    }
+                    90% {
+                        opacity: 0.8;
+                    }
+                    100% {
+                        transform: translateY(400px);
+                        opacity: 0;
+                    }
+                }
+            `}</style>
+
+            {/* Gradient Mask */}
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white z-10" />
 
-            {particles.map((particle) => (
-                <motion.div
-                    key={particle.id}
-                    initial={{ y: -100, opacity: 0 }}
-                    animate={{ y: 600, opacity: [0, 1, 1, 0] }}
-                    transition={{
-                        duration: particle.duration,
-                        repeat: Infinity,
-                        delay: particle.delay,
-                        ease: "linear",
-                    }}
+            {particles.map((p) => (
+                <div
+                    key={p.id}
+                    className="absolute rounded-full bg-neutral-600"
                     style={{
-                        left: `${particle.x}%`,
-                        height: `${particle.height}px`,
+                        left: `${p.left}%`,
+                        width: `${p.size}px`,
+                        height: `${p.size}px`,
+                        opacity: 0,
+                        animationName: 'snowfall',
+                        animationDuration: `${p.duration}s`,
+                        animationTimingFunction: 'linear',
+                        animationIterationCount: 'infinite',
+                        animationDelay: `${p.delay}s`,
                     }}
-                    className="absolute w-[1px] bg-gradient-to-b from-transparent via-neutral-300 to-transparent opacity-40 will-change-transform"
                 />
             ))}
         </div>
