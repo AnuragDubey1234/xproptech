@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-
 import { ScrollingMarquee } from './ScrollingMarquee';
 
 export function IndiaHero() {
@@ -57,12 +56,11 @@ export function IndiaHero() {
                     </p>
                 </motion.div>
             </div>
-        </div>
 
-        {/* Scrolling Marquee Overlay */ }
-    <div className="absolute bottom-0 w-full z-20 border-t border-white/10 bg-black/20 backdrop-blur-sm">
-        <ScrollingMarquee transparent />
-    </div>
-    </section >
+            {/* Scrolling Marquee Overlay */}
+            <div className="absolute bottom-0 w-full z-20 border-t border-white/10 bg-black/20 backdrop-blur-sm">
+                <ScrollingMarquee transparent />
+            </div>
+        </section>
     );
 }

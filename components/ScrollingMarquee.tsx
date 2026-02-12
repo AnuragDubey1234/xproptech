@@ -33,13 +33,16 @@ export function ScrollingMarquee({ transparent = false }: { transparent?: boolea
                     animate="animate"
                 >
                     {duplicatedStartups.map((startup, i) => (
-                        <div key={`${startup.id}-${i}`} className="relative h-8 md:h-10 w-24 md:w-32 flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100 cursor-pointer group">
+                        <div key={`${startup.id}-${i}`} className="relative h-8 md:h-10 w-24 md:w-32 flex-shrink-0 transition-all duration-300 opacity-60 hover:opacity-100 cursor-pointer group">
                             <Link href={`/news/${startup.slug}`}>
                                 <Image
                                     src={startup.logo}
                                     alt={startup.name}
                                     fill
-                                    className="object-contain brightness-0 invert group-hover:brightness-100 group-hover:invert-0 transition-all duration-300"
+                                    className={`object-contain transition-all duration-300 ${startup.slug === 'stella-stays'
+                                        ? 'brightness-0 invert group-hover:brightness-100 group-hover:invert-0'
+                                        : 'grayscale group-hover:grayscale-0'
+                                        }`}
                                     sizes="(max-width: 768px) 100px, 150px"
                                 />
                             </Link>
