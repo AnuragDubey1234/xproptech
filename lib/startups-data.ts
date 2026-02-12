@@ -88,7 +88,7 @@ export const STARTUPS: Startup[] = [
         id: '5',
         name: 'Stella Stays',
         slug: 'stella-stays',
-        logo: 'https://images.unsplash.com/photo-1590076215667-875d4ef2d7ee?w=1920&q=90',
+        logo: 'https://images.unsplash.com/photo-1613545325278-f24b0cae1224?w=1920&q=90', // More distinct interior/logo-feel image
         description: 'Tech-enabled hospitality brand offering modern, furnished apartments for flexible stays.',
         sector: 'Co-living',
         country: 'UAE',

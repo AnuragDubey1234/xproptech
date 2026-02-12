@@ -9,8 +9,13 @@ import { StartupCard } from './StartupCard';
 import { StartupSkeleton } from './StartupSkeleton';
 import { getFilteredStartups, getTrendingStartups, getFeaturedStartup, Startup, STARTUPS } from '@/lib/startups-data';
 import { Rocket, Info, ArrowRight, ArrowUpRight } from 'lucide-react';
-import { PropStories } from './PropStories';
+import dynamic from 'next/dynamic';
 import { EcosystemShower } from './EcosystemShower';
+
+const PropStories = dynamic(() => import('./PropStories').then((mod) => mod.PropStories), {
+    loading: () => <div className="h-[500px] bg-neutral-50" />, // Simple placeholder preventing layout shift
+    ssr: true // Keep SSR for SEO as it has content
+});
 
 export function StartupDirectory() {
     const [isLoading, setIsLoading] = useState(false);
@@ -86,7 +91,7 @@ export function StartupDirectory() {
             <div className="relative w-full">
                 <EcosystemShower />
 
-                <section className="pt-24 pb-8 px-4 md:px-8 lg:px-12 container mx-auto relative z-10">
+                <section id="startup-directory-grid" className="pt-24 pb-8 w-full max-w-[95%] mx-auto px-4 relative z-10">
                     <div className="flex flex-col items-center justify-center mb-16 gap-6 text-center">
                         <motion.h2
                             initial={{ opacity: 0, y: 20 }}
@@ -113,7 +118,7 @@ export function StartupDirectory() {
                         ) : filteredStartups.length > 0 ? (
                             <motion.div
                                 layout
-                                className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-10"
+                                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6 md:gap-8"
                             >
                                 {filteredStartups.map((startup, index) => (
                                     <StartupCard key={startup.id} startup={startup} index={index} />
