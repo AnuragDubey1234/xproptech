@@ -37,7 +37,7 @@ export function StockTicker({ transparent = false }: { transparent?: boolean }) 
                     <div key={`${stock.symbol}-${i}`} className="flex items-center gap-4 group cursor-default">
                         <div className="flex flex-col">
                             <span className="font-bold text-xs md:text-sm text-neutral-400 group-hover:text-white transition-colors">{stock.symbol}</span>
-                            <span className="font-mono text-xs md:text-sm text-white font-medium tracking-wide">{stock.price}</span>
+                            <span className="font-bold text-xs md:text-sm text-white">{stock.price}</span>
                         </div>
                         <span className={`px-2 py-0.5 rounded-full text-[10px] md:text-xs font-bold flex items-center gap-1 bg-white/5 border border-white/5 ${stock.up ? 'text-green-400 border-green-500/20' : 'text-red-400 border-red-500/20'}`}>
                             {stock.up ? <ArrowUpRight className="w-3 h-3" /> : <ArrowDownRight className="w-3 h-3" />}
