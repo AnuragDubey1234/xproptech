@@ -5,8 +5,8 @@ import Lenis from '@studio-freight/lenis';
 
 export function SmoothScroll() {
     useEffect(() => {
-        // Mobile Performance Optimization: Disable Lenis on small screens to reduce TBT
-        if (window.innerWidth < 768) return;
+        // Enable Lenis on all devices for consistent smooth scrolling
+        // if (window.innerWidth < 768) return;
 
         const lenis = new Lenis({
             duration: 1.4,

@@ -11,12 +11,12 @@ const FALLBACK_IMAGE = 'https://images.unsplash.com/photo-1486406146926-c627a92a
 
 const variantStyles = {
   default: {
-    border: 'border-red-100 hover:border-fire-red',
-    shadow: 'shadow-xl hover:shadow-2xl',
-    category: 'bg-fire-red',
-    dot: 'bg-fire-red',
-    date: 'text-fire-red',
-    titleHover: 'group-hover:text-fire-red',
+    border: 'border-2 border-slate-200/90 hover:border-orange-400/60',
+    shadow: 'shadow-lg shadow-slate-200/50 hover:shadow-[0_24px_48px_-12px_rgba(234,88,12,0.25),0_0_0_2px_rgba(251,191,36,0.4),0_0_16px_rgba(234,88,12,0.12)]',
+    category: 'bg-orange-600',
+    dot: 'bg-orange-600',
+    date: 'text-orange-600',
+    titleHover: 'group-hover:text-orange-600',
     titleSize: 'text-lg',
     lineClamp: 'line-clamp-2',
   },
@@ -62,11 +62,7 @@ export function NewsCard({ article, size = 'default', compactHeadline = false, v
 
   return (
     <motion.article
-      whileHover={
-        isGccSmall
-          ? { scale: 1.02, y: -6, transition: { duration: 0.25, ease: [0.22, 1, 0.36, 1] } }
-          : { scale: 1.02, y: -4, transition: { duration: 0.2 } }
-      }
+      whileHover={{ scale: 1.02, y: -6, transition: { duration: 0.25, ease: [0.22, 1, 0.36, 1] } }}
       className={`group bg-white/80 backdrop-blur-sm rounded-2xl overflow-hidden flex flex-col h-full transition-all duration-300 ${s.border} ${s.shadow}`}
     >
       <Link href={`/news/${article.slug}`} className="block flex-grow flex flex-col h-full">
