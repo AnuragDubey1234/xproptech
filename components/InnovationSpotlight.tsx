@@ -1,111 +1,160 @@
 'use client';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
-import Image from 'next/image';
+import { motion } from 'framer-motion';
+import Link from 'next/link';
+import { BarChart3, Building2, Leaf, ShieldCheck, Zap } from 'lucide-react';
 
-const features = [
+const pillars = [
     {
-        title: 'Digital Twins',
-        category: 'Analysis',
-        image: 'https://images.unsplash.com/photo-1555679427-1f6dfcce943b?q=80&w=1000&auto=format&fit=crop',
-        desc: 'Simulating urban growth before pavement hits the ground.'
+        title: 'Smart Infrastructure',
+        description: 'IoT-enabled urban planning and next-gen construction tech reshaping India\'s skylines. From smart grids to automated waste management, our cities are becoming sentient.',
+        icon: Building2,
+        color: 'text-blue-600',
+        bg: 'bg-blue-100',
+        pattern: 'radial-gradient(circle at top right, rgba(37,99,235,0.08), transparent 70%)'
     },
     {
-        title: 'Fractional Ownership',
-        category: 'Investment',
-        image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&q=80',
-        desc: 'Democratizing Grade-A commercial real estate for everyone.'
+        title: 'Green Tech',
+        description: 'Sustainable materials and energy-efficient designs driving the net-zero transition. Adopting biophilic architecture for cleaner, greener living spaces.',
+        icon: Leaf,
+        color: 'text-green-600',
+        bg: 'bg-green-100',
+        pattern: 'radial-gradient(circle at bottom left, rgba(22,163,74,0.08), transparent 70%)'
     },
     {
-        title: 'Smart Materials',
-        category: 'Sustainability',
-        image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&q=80',
-        desc: 'Self-healing concrete and energy-generating glass facades.'
+        title: 'Fintech Integration',
+        description: 'Seamless digital transactions, fractional ownership, and blockchain land records making real estate liquid and accessible to a wider investor base.',
+        icon: BarChart3,
+        color: 'text-purple-600',
+        bg: 'bg-purple-100',
+        pattern: 'radial-gradient(circle at top left, rgba(147,51,234,0.08), transparent 70%)'
     },
+    {
+        title: 'Regulatory Tech',
+        description: 'Automated compliance and RERA alignment tools ensuring transparent real estate growth. Building trust through code and standardized digital protocols.',
+        icon: ShieldCheck,
+        color: 'text-orange-600',
+        bg: 'bg-orange-100',
+        pattern: 'radial-gradient(circle at bottom right, rgba(234,88,12,0.08), transparent 70%)'
+    }
 ];
 
 export function InnovationSpotlight() {
-    const containerRef = useRef<HTMLDivElement>(null);
-    const { scrollYProgress } = useScroll({
-        target: containerRef,
-        offset: ['start end', 'end start']
-    });
-
-    const y1 = useTransform(scrollYProgress, [0, 1], [100, -100]);
-    const y2 = useTransform(scrollYProgress, [0, 1], [200, -200]);
-    const rotate = useTransform(scrollYProgress, [0, 1], [5, -5]);
-
     return (
-        <section ref={containerRef} className="relative w-full pt-12 pb-32 overflow-hidden">
-            {/* Background Decor - Optimized */}
-            <div className="absolute inset-0 bg-neutral-900 skew-y-3 transform origin-top-left scale-110 -z-20 will-change-transform transform-gpu" />
-            <div className="absolute inset-0 bg-gradient-to-b from-neutral-900 via-neutral-800 to-neutral-900 -z-10 transform-gpu will-change-transform" />
-
-            <div className="max-w-[1600px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                {/* Content */}
+        <section className="w-full pt-8 pb-16 md:pt-12 md:pb-24 relative overflow-hidden">
+            {/* Side Animations - Tech Brackets appearing on scroll */}
+            <div className="absolute inset-0 pointer-events-none z-30 overflow-visible">
+                {/* Left Side Animation */}
                 <motion.div
-                    initial={{ opacity: 0, x: -50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.8 }}
-                    viewport={{ once: true }}
-                    className="text-white z-10"
+                    initial={{ scaleY: 0, opacity: 0 }}
+                    whileInView={{ scaleY: 1, opacity: 1 }}
+                    viewport={{ once: false, margin: "-10%" }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    className="absolute left-0 top-1/2 -translate-y-1/2 h-[80%] w-[2px] bg-gradient-to-b from-transparent via-orange-500 to-transparent flex items-center"
                 >
-                    <span className="text-fire-red font-bold tracking-[0.2em] uppercase mb-6 block text-sm">
-                        Future Focus
-                    </span>
-                    <h2 className="text-5xl md:text-7xl font-bold mb-8 leading-tight tracking-tight relative group cursor-default">
-                        <span className="relative inline-block text-neutral-500 transition-all duration-500 group-hover:text-white group-hover:drop-shadow-[0_0_30px_rgba(236,72,153,0.8)] group-hover:scale-105">
-                            Shaping the
-                        </span> <br />
-                        <span className="relative inline-block text-neutral-500 transition-all duration-500 group-hover:text-white group-hover:drop-shadow-[0_0_30px_rgba(236,72,153,0.8)] group-hover:scale-105">
-                            Next Decade
-                        </span>
-                        {/* Glow backing for visibility */}
-                        <div className="absolute -inset-4 bg-fire-red/10 blur-3xl -z-10 rounded-full opacity-30 pointer-events-none" />
-                    </h2>
-                    <p className="text-xl text-neutral-400 mb-10 max-w-lg leading-relaxed font-light">
-                        Explore the breakthrough technologies that are redefining how India builds, buys, and lives.
-                    </p>
-                    <button className="group flex items-center gap-3 text-white font-bold text-lg hover:text-fire-red transition-colors">
-                        Explore Innovations
-                        <span className="group-hover:translate-x-1 transition-transform">→</span>
-                    </button>
+                    <div className="absolute left-0 w-[2px] h-48 bg-orange-400 blur-[4px]" />
                 </motion.div>
 
-                {/* 3D Floating Cards */}
-                <div className="relative h-[600px] w-full hidden lg:block perspective-1000">
-                    {features.map((item, index) => (
-                        <motion.div
-                            key={index}
-                            style={{
-                                y: index % 2 === 0 ? y1 : y2,
-                                rotate: index === 1 ? rotate : 0,
-                                zIndex: features.length - index,
-                                willChange: 'transform'
-                            }}
-                            transformTemplate={({ y, rotate, scale }) => `translateY(${y}) rotate(${rotate}) translateZ(0)`}
-                            className={`absolute top-${index * 24} right-${index * 12} w-80 aspect-[4/5] bg-white rounded-2xl p-2 shadow-2xl border border-white/10 glass-card transform-gpu
-                    ${index === 0 ? 'right-0 top-10' : ''}
-                    ${index === 1 ? 'right-40 top-32' : ''}
-                    ${index === 2 ? 'right-80 top-0' : ''}
-                `}
-                        >
-                            <div className="relative w-full h-full rounded-xl overflow-hidden bg-neutral-800 group">
-                                <Image
-                                    src={item.image}
-                                    alt={item.title}
-                                    fill
-                                    className="object-cover transition-transform duration-700 group-hover:scale-110"
-                                    sizes="320px"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent p-6 flex flex-col justify-end">
-                                    <span className="text-xs font-bold text-fire-red uppercase mb-2">{item.category}</span>
-                                    <h3 className="text-xl font-bold text-white mb-2 leading-tight">{item.title}</h3>
-                                    <p className="text-xs text-neutral-400 line-clamp-2">{item.desc}</p>
-                                </div>
-                            </div>
-                        </motion.div>
-                    ))}
+                {/* Right Side Animation */}
+                <motion.div
+                    initial={{ scaleY: 0, opacity: 0 }}
+                    whileInView={{ scaleY: 1, opacity: 1 }}
+                    viewport={{ once: false, margin: "-10%" }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    className="absolute right-0 top-1/2 -translate-y-1/2 h-[80%] w-[2px] bg-gradient-to-b from-transparent via-orange-500 to-transparent flex items-center justify-end"
+                >
+                    <div className="absolute right-0 w-[2px] h-48 bg-orange-400 blur-[4px]" />
+                </motion.div>
+            </div>
+
+            <div className="absolute inset-0 z-0">
+                <motion.div
+                    animate={{ rotate: 360, scale: [1, 1.2, 1] }}
+                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                    className="absolute top-0 -left-1/4 w-[800px] h-[800px] bg-gradient-to-br from-blue-200/40 to-purple-200/40 rounded-full blur-[100px] opacity-70 mix-blend-multiply"
+                    style={{ willChange: 'transform' }}
+                />
+                <motion.div
+                    animate={{ rotate: -360, scale: [1, 1.3, 1] }}
+                    transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+                    className="absolute bottom-0 -right-1/4 w-[600px] h-[600px] bg-gradient-to-tr from-amber-100/40 to-rose-200/40 rounded-full blur-[80px] opacity-70 mix-blend-multiply"
+                    style={{ willChange: 'transform' }}
+                />
+            </div>
+
+            <div className="max-w-[1800px] mx-auto px-4 md:px-8 relative z-10 w-full">
+                <div className="flex flex-col items-center text-center mb-16">
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/60 backdrop-blur-md border border-orange-200/50 mb-6 shadow-sm ring-1 ring-orange-100"
+                    >
+                        <Zap className="w-4 h-4 text-orange-500 fill-orange-500" />
+                        <span className="text-xs font-bold tracking-[0.2em] text-neutral-800 uppercase">
+                            Market Drivers
+                        </span>
+                    </motion.div>
+                    <motion.h2
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.1 }}
+                        className="text-5xl md:text-6xl lg:text-7xl font-serif font-medium text-neutral-900 leading-tight tracking-tight drop-shadow-sm"
+                    >
+                        Defining the <br />
+                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-orange-500 italic">Future Landscape</span>
+                    </motion.h2>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 w-full">
+                    {pillars.map((pillar, index) => {
+                        // Map pillar to topic query param
+                        const topicMap: Record<string, string> = {
+                            'Smart Infrastructure': 'infrastructure',
+                            'Green Tech': 'green-tech',
+                            'Fintech Integration': 'fintech',
+                            'Regulatory Tech': 'regulatory'
+                        };
+                        const topic = topicMap[pillar.title] || 'infrastructure';
+
+                        return (
+                            <Link
+                                key={index}
+                                href={`/india/${topic}`}
+                                className="block h-full relative z-20"
+                            >
+                                <motion.div
+                                    initial={{ opacity: 0, y: 30, scale: 0.95 }}
+                                    whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: index * 0.1, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                                    style={{ background: pillar.pattern }}
+                                    className="group relative overflow-hidden rounded-[2rem] bg-white/90 backdrop-blur-2xl border-2 border-orange-100/50 hover:border-orange-400/80 shadow-[0_10px_40px_-10px_rgba(249,115,22,0.1)] hover:shadow-[0_25px_50px_-12px_rgba(249,115,22,0.2)] transition-all duration-500 p-6 md:p-8 flex flex-col items-start h-full cursor-pointer"
+                                >
+                                    {/* Gradient Overlay for modern polish */}
+                                    <div className="absolute inset-0 bg-gradient-to-b from-white/60 to-transparent pointer-events-none" />
+
+                                    {/* Active Ring Gradient on Hover */}
+                                    <div className="absolute inset-0 rounded-[2rem] ring-0 group-hover:ring-2 ring-orange-400/20 transition-all duration-500" />
+
+                                    <div className="relative z-10 w-full">
+                                        <div className={`w-12 h-12 ${pillar.bg} rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500 shadow-sm ring-2 ring-white`}>
+                                            <pillar.icon className={`w-6 h-6 ${pillar.color}`} />
+                                        </div>
+                                        <h3 className="text-xl md:text-2xl font-bold text-neutral-900 mb-3 group-hover:translate-x-1 transition-transform duration-300">
+                                            {pillar.title}
+                                        </h3>
+                                        <p className="text-neutral-600 text-sm md:text-base leading-relaxed max-w-xl group-hover:text-neutral-900 transition-colors duration-300">
+                                            {pillar.description}
+                                        </p>
+                                    </div>
+
+                                    {/* Decorative Corner Icon - Faded but larger */}
+                                    <pillar.icon className={`absolute -bottom-6 -right-6 w-32 h-32 ${pillar.color} opacity-[0.04] group-hover:opacity-[0.08] group-hover:scale-110 group-hover:-rotate-12 transition-all duration-700`} />
+                                </motion.div>
+                            </Link>
+                        )
+                    })}
                 </div>
             </div>
         </section>

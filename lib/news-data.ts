@@ -33,6 +33,17 @@ const IMAGES = {
 };
 
 export const news: NewsArticle[] = [
+    { slug: 'bangalore-proptech-summit-2026', title: 'Bangalore PropTech Summit 2026: Linking Future Tech', excerpt: 'Key industry leaders to gather in India\'s tech capital to discuss the future of real estate technology and innovation.', category: 'India Launches', image: 'https://images.unsplash.com/photo-1596720426673-e4e14290f0cc?w=600&q=80', author: 'Rohan Sharma', date: 'Jan 30, 2026' },
+    { slug: 'hyderabad-office-tech-boom', title: 'Hyderabad Office Tech Boom: Smart Workspaces Rise', excerpt: 'Demand for IoT-enabled office spaces surges in HITEC City as tech giants expand footprint.', category: 'India Launches', image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80', author: 'Neha Singh', date: 'Jan 29, 2026' },
+    { slug: 'mumbai-redevelopment-tech', title: 'Mumbai Redevelopment: Tech-Driven Project Management', excerpt: 'Dharavi redevelopment project adopts advanced BIM and project tracking tools for efficiency.', category: 'India Launches', image: 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=600&q=80', author: 'Vikram Reddy', date: 'Jan 28, 2026' },
+    { slug: 'gurgaon-luxury-home-automation', title: 'Gurgaon Luxury: Home Automation Standard in New Launches', excerpt: 'Developers mandate smart home features in all upcoming premium residential projects.', category: 'India Launches', image: 'https://images.unsplash.com/photo-1558002038-10559092a5d2?w=600&q=80', author: 'Priya Mehta', date: 'Jan 27, 2026' },
+    { slug: 'chennai-logistics-parks-digitization', title: 'Chennai Logistics Parks: Digital Warehousing Push', excerpt: 'New industrial parks integrate automated storage and retrieval systems to boost efficiency.', category: 'India Launches', image: 'https://images.unsplash.com/photo-1586528116311-ad863c17d0cc?w=600&q=80', author: 'Arjun Kapoor', date: 'Jan 26, 2026' },
+    { slug: 'pune-proptech-incubator', title: 'Pune Launches First Dedicated PropTech Incubator', excerpt: 'City initiative to support early-stage startups solving urban real estate challenges.', category: 'India Launches', image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&q=80', author: 'Rohan Sharma', date: 'Jan 25, 2026' },
+    { slug: 'noida-airport-land-tech', title: 'Noida Airport Region: Land Acquisition Tech Platform', excerpt: 'Government pilots blockchain-based land acquisition system for transparency around Jewar Airport.', category: 'India Launches', image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80', author: 'Vikram Reddy', date: 'Jan 24, 2026' },
+    { slug: 'kolkata-green-building-incentives', title: 'Kolkata Green Building: Tech for Sustainability', excerpt: 'New policy incentivizes developers using green tech and energy-efficient designs.', category: 'India Launches', image: 'https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=600&q=80', author: 'Neha Singh', date: 'Jan 23, 2026' },
+    { slug: 'ahmedabad-gift-city-fintech-proptech', title: 'GIFT City: Fintech-PropTech Convergence Hub', excerpt: 'Cross-border real estate investment platforms find a home in India\'s first IFSC.', category: 'India Launches', image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80', author: 'Priya Mehta', date: 'Jan 22, 2026' },
+    { slug: 'kochi-waterfront-smart-city', title: 'Kochi Smart Waterfront: IoT for Urban Management', excerpt: 'Smart city project integrates water level monitoring and urban planning tech.', category: 'India Launches', image: 'https://images.unsplash.com/photo-1544161515-436cefd1f16d?w=600&q=80', author: 'Arjun Kapoor', date: 'Jan 21, 2026' },
+    { slug: 'jaipur-heritage-proptech', title: 'Jaipur Heritage: 3D Mapping for Conservation', excerpt: 'PropTech startup maps historical sites for preservation and virtual tourism.', category: 'India Launches', image: 'https://images.unsplash.com/photo-1599661046289-e31897846e41?w=600&q=80', author: 'Rohan Sharma', date: 'Jan 20, 2026' },
     { slug: 'ggc-proptech-landscape-2026', title: 'GGC PropTech Landscape 2026: UAE, Saudi & India Corridor', excerpt: 'Deep-dive analysis of PropTech adoption, regulatory alignment, and cross-border deals across UAE, Saudi Arabia, Oman, and India.', category: 'Analysis', image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80', author: 'Rohan Sharma', date: 'Jan 29, 2026' },
     { slug: 'saudi-vision-2030-proptech', title: 'Saudi Vision 2030 & PropTech: Mega Projects and Smart Cities', excerpt: 'How NEOM, Red Sea Project, and giga-projects are driving PropTech investment and proptech adoption across the Kingdom.', category: 'Analysis', image: 'https://images.unsplash.com/photo-1577083288073-40892c0860a4?w=600&q=80', author: 'Priya Mehta', date: 'Jan 28, 2026' },
     { slug: 'uae-dubai-abu-dhabi-proptech-analysis', title: 'UAE PropTech Deep Dive: Dubai vs Abu Dhabi Regulatory & Market Split', excerpt: 'Analysis of listing rules, foreign ownership, and proptech incentives in Dubai and Abu Dhabi—implications for India–GCC expansion.', category: 'Analysis', image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&q=80', author: 'Vikram Reddy', date: 'Jan 28, 2026' },
@@ -97,6 +108,28 @@ export function getGlobalNews(limit?: number): NewsArticle[] {
 
 export function getIndiaNews(limit?: number): NewsArticle[] {
     const filtered = news.filter((a) => getRegion(a) === 'india');
+    return limit ? filtered.slice(0, limit) : filtered;
+}
+
+export function getIndiaNewsByTopic(topic: string, limit?: number): NewsArticle[] {
+    const indiaNews = getIndiaNews();
+    const normalizedTopic = topic.toLowerCase();
+
+    // Define topic keywords
+    const keywords: Record<string, string[]> = {
+        'infrastructure': ['infrastructure', 'smart city', 'construction', 'iot', 'urban'],
+        'green-tech': ['green', 'sustainable', 'energy', 'environment', 'biophilic'],
+        'fintech': ['fintech', 'blockchain', 'investment', 'fractional', 'token'],
+        'regulatory': ['rera', 'compliance', 'legal', 'policy', 'regulation']
+    };
+
+    const topicKeywords = keywords[normalizedTopic] || [normalizedTopic];
+
+    const filtered = indiaNews.filter(article => {
+        const text = `${article.title} ${article.excerpt} ${article.category || ''}`.toLowerCase();
+        return topicKeywords.some(k => text.includes(k));
+    });
+
     return limit ? filtered.slice(0, limit) : filtered;
 }
 
