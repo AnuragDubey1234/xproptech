@@ -33,7 +33,7 @@ export function StartupCard({ startup, index }: { startup: Startup; index: numbe
     };
 
     return (
-        <Link href={`/news/${slugify(startup.name)}`} className="block h-full">
+        <Link href={`/startups/${startup.slug}`} className="block h-full">
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
