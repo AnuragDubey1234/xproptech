@@ -36,7 +36,7 @@ export default function GCCPage() {
 
           {/* Sticky Sidebar Container */}
           <aside className="lg:col-span-3">
-            <InsightsSidebar />
+            <InsightsSidebar hideExtrasOnMobile={true} />
           </aside>
         </div>
       </div>

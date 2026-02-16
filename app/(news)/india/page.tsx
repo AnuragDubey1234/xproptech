@@ -40,8 +40,8 @@ export default function IndiaPage({ searchParams }: { searchParams: { topic?: st
           </main>
 
           {/* Sticky Sidebar Container */}
-          <aside className="lg:col-span-3 hidden lg:block">
-            <InsightsSidebar />
+          <aside className="lg:col-span-3">
+            <InsightsSidebar hideExtrasOnMobile={true} />
           </aside>
         </div>
       </div>

@@ -89,17 +89,7 @@ export function IndiaNewsContent({ articles, topic }: IndiaNewsContentProps) {
                     ))}
                 </motion.div>
 
-                <div className="mt-16 text-center">
-                    <Link href="/india/all" className="inline-block">
-                        <button className="group relative px-8 py-3 bg-neutral-900 text-white font-bold rounded-full overflow-hidden transition-all duration-300 hover:shadow-[0_0_20px_rgba(234,88,12,0.5)]">
-                            <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-red-600 to-orange-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                            <span className="relative z-10 flex items-center gap-2">
-                                View All Stories
-                                <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
-                            </span>
-                        </button>
-                    </Link>
-                </div>
+
             </div>
         </section>
     );
