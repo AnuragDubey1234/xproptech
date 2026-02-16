@@ -106,17 +106,7 @@ export function GCCHeroBanner() {
       </div>
 
       {/* Country badge - animated */}
-      <AnimatePresence mode="wait">
-        <motion.span
-          key={`badge-${index}`}
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.8 }}
-          className="absolute top-24 right-10 md:top-32 md:right-16 z-20 px-5 py-2 rounded-full bg-amber-500/20 backdrop-blur-xl border border-amber-500/30 text-amber-200 text-sm font-black uppercase tracking-[0.2em] shadow-[0_0_20px_rgba(245,158,11,0.2)]"
-        >
-          {gccSlides[index].country}
-        </motion.span>
-      </AnimatePresence>
+
 
       <div className="relative z-10 flex flex-col justify-end items-center min-h-[420px] md:min-h-[500px] px-6 md:px-12 pb-20 text-center">
         <AnimatePresence mode="wait">

@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import { ArrowRight } from 'lucide-react'; // Added import
 
 const factsAndInsights = [
     { stat: '$5B+', label: 'Indian PropTech market size by 2028 (GGC projection)' },
@@ -35,7 +36,9 @@ const gccMarketPulse = [
     { label: 'PropTech Adoption', value: '62%', trend: '+8%', color: 'text-amber-600' },
 ];
 
-export function InsightsSidebar() {
+export function InsightsSidebar({ hideExtrasOnMobile = false }: { hideExtrasOnMobile?: boolean }) {
+    const extraClasses = hideExtrasOnMobile ? 'hidden md:block' : '';
+
     return (
         <div className="space-y-10 sticky top-28 self-start">
             {/* Newsletter */}
@@ -62,7 +65,7 @@ export function InsightsSidebar() {
             </div>
 
             {/* Events & Infra */}
-            <div className="bg-white rounded-2xl border border-amber-100 shadow-lg p-6 md:p-7">
+            <div className={`bg-white rounded-2xl border border-amber-100 shadow-lg p-6 md:p-7 ${extraClasses}`}>
                 <h3 className="text-2xl font-bold text-neutral-900 mb-3">Events & Infra</h3>
                 <p className="text-base text-neutral-600 mb-5 leading-relaxed">
                     Conferences and big-ticket infrastructure driving growth.
@@ -92,7 +95,7 @@ export function InsightsSidebar() {
             </div>
 
             {/* Facts */}
-            <div className="bg-white rounded-2xl border border-red-100 shadow-lg p-6 md:p-7">
+            <div className={`bg-white rounded-2xl border border-red-100 shadow-lg p-6 md:p-7 ${extraClasses}`}>
                 <h3 className="text-2xl font-bold text-neutral-900 mb-3">Market Facts</h3>
                 <ul className="space-y-4">
                     {factsAndInsights.slice(0, 6).map((item, i) => (
@@ -108,7 +111,7 @@ export function InsightsSidebar() {
             </div>
 
             {/* GCC Market Pulse */}
-            <div className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl border border-white/10 shadow-xl p-6 md:p-7 text-white">
+            <div className={`bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl border border-white/10 shadow-xl p-6 md:p-7 text-white ${extraClasses}`}>
                 <div className="flex items-center gap-2 mb-4">
                     <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
                     <h3 className="text-xl font-bold tracking-tight">GCC Market Pulse</h3>
@@ -130,6 +133,21 @@ export function InsightsSidebar() {
                     View Full Report
                 </button>
             </div>
+
+            {/* Mobile-only 'View More Stories' button for GCC/India pages */}
+            {hideExtrasOnMobile && (
+                <div className="md:hidden pt-6 pb-2 flex justify-center">
+                    <Link
+                        href="/news"
+                        className="flex items-center gap-2 px-8 py-3 bg-neutral-900 border border-transparent rounded-full shadow-lg hover:bg-neutral-800 hover:shadow-xl transition-all group"
+                    >
+                        <span className="text-sm font-bold text-white uppercase tracking-wider">View More Stories</span>
+                        <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center text-white group-hover:bg-white group-hover:text-neutral-900 transition-colors">
+                            <ArrowRight className="w-3 h-3" />
+                        </div>
+                    </Link>
+                </div>
+            )}
         </div>
     );
 }

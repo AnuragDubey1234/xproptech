@@ -6,7 +6,7 @@ import Lenis from '@studio-freight/lenis';
 export function SmoothScroll() {
     useEffect(() => {
         // Enable Lenis on all devices for consistent smooth scrolling
-        // if (window.innerWidth < 768) return;
+        if (window.innerWidth < 768) return;
 
         const lenis = new Lenis({
             duration: 1.4,
