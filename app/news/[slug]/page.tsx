@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { news, getArticleBySlug, getRelatedArticles } from '@/lib/news-data';
 import { ArticlePageContent } from '@/components/ArticlePageContent';
+import { generateArticleContent } from '@/lib/content-generator';
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -70,6 +71,11 @@ export default async function ArticlePage({ params }: Props) {
   // Safe to use article here as it's either found or dummy
   const safeArticle = article!;
 
+  // Generate content if not present
+  if (!safeArticle.content && !safeArticle.body) {
+    safeArticle.content = generateArticleContent(safeArticle);
+  }
+
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'NewsArticle',
@@ -89,7 +95,7 @@ export default async function ArticlePage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <div className="py-6 md:py-8">
-        <article className="max-w-4xl mx-auto">
+        <article className="max-w-4xl mx-auto px-4 md:px-0">
           <ArticlePageContent article={safeArticle} related={related} />
         </article>
       </div>

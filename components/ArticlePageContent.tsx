@@ -31,16 +31,11 @@ export function ArticlePageContent({ article, related }: ArticlePageContentProps
         transition={{ duration: 0.5, delay: 0.2 }}
         className="prose prose-neutral max-w-none text-neutral-900 text-base leading-[1.7]"
       >
-        <p className="text-lg text-neutral-600 mb-6">{body}</p>
-        <p className="text-neutral-700">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
-          dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-        </p>
-        <p className="mt-4 text-neutral-700">
-          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
-          Proptech continues to transform real estate across India and the GCC, with funding, policy, and innovation driving growth.
-        </p>
+        {article.content ? (
+          <div dangerouslySetInnerHTML={{ __html: article.content }} />
+        ) : (
+          <p className="text-lg text-neutral-600 mb-6">{body}</p>
+        )}
       </motion.div>
 
       <section className="mt-12 pt-8 border-t border-neutral-200">

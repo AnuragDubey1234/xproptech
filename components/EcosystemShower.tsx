@@ -7,7 +7,7 @@ export function EcosystemShower() {
 
     useEffect(() => {
         // Generate static particles
-        const particleCount = 40;
+        const particleCount = 20;
         const newParticles = Array.from({ length: particleCount }).map((_, i) => ({
             id: i,
             // Spread across 5-95% to avoid edge cutoff, but cover full width

@@ -35,7 +35,7 @@ export function FeaturedStartup({ startup, searchQuery, setSearchQuery, onNext, 
                         repeat: Infinity,
                         ease: "linear"
                     }}
-                    className="absolute -top-[20%] -right-[10%] w-[800px] h-[800px] bg-gradient-to-br from-fire-red/5 to-purple-500/5 rounded-full blur-3xl opacity-30"
+                    className="absolute -top-[20%] -right-[10%] w-[800px] h-[800px] bg-gradient-to-br from-fire-red/5 to-purple-500/5 rounded-full blur-3xl opacity-30 hidden md:block"
                 />
                 <motion.div
                     animate={{
@@ -49,7 +49,7 @@ export function FeaturedStartup({ startup, searchQuery, setSearchQuery, onNext, 
                         ease: "linear",
                         delay: 2
                     }}
-                    className="absolute top-[40%] -left-[10%] w-[600px] h-[600px] bg-gradient-to-tr from-blue-500/5 to-cyan-500/5 rounded-full blur-3xl opacity-20"
+                    className="absolute top-[40%] -left-[10%] w-[600px] h-[600px] bg-gradient-to-tr from-blue-500/5 to-cyan-500/5 rounded-full blur-3xl opacity-20 hidden md:block"
                 />
 
                 {/* Hover Blend - Intense Blue/Red/Orange */}
@@ -61,7 +61,7 @@ export function FeaturedStartup({ startup, searchQuery, setSearchQuery, onNext, 
                 {onPrev && (
                     <button
                         onClick={onPrev}
-                        className="absolute left-4 md:left-8 top-[67%] -translate-y-1/2 z-30 p-4 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white hover:text-neutral-900 transition-all duration-300 group hover:scale-110 shadow-lg"
+                        className="absolute left-4 md:left-8 top-[67%] -translate-y-1/2 z-30 p-4 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white hover:text-neutral-900 transition-all duration-300 group hover:scale-110 shadow-lg hidden md:block"
                         aria-label="Previous Startup"
                     >
                         <ArrowRight className="w-6 h-6 rotate-180" />
@@ -71,7 +71,7 @@ export function FeaturedStartup({ startup, searchQuery, setSearchQuery, onNext, 
                 {onNext && (
                     <button
                         onClick={onNext}
-                        className="absolute right-4 md:right-8 top-[67%] -translate-y-1/2 z-30 p-4 rounded-full bg-neutral-900/10 backdrop-blur-md border border-neutral-900/20 text-neutral-900 hover:bg-neutral-900 hover:text-white transition-all duration-300 group hover:scale-110 shadow-lg"
+                        className="absolute right-4 md:right-8 top-[67%] -translate-y-1/2 z-30 p-4 rounded-full bg-neutral-900/10 backdrop-blur-md border border-neutral-900/20 text-neutral-900 hover:bg-neutral-900 hover:text-white transition-all duration-300 group hover:scale-110 shadow-lg hidden md:block"
                         aria-label="Next Startup"
                     >
                         <ArrowRight className="w-6 h-6" />
@@ -103,8 +103,33 @@ export function FeaturedStartup({ startup, searchQuery, setSearchQuery, onNext, 
                             </div>
                         </div>
 
+                        {/* Mobile Navigation - Between Image and Content */}
+                        <div className="flex md:hidden justify-between items-center px-6 py-2 bg-white border-b border-neutral-100">
+                            {onPrev ? (
+                                <button
+                                    onClick={onPrev}
+                                    className="p-3 rounded-full bg-neutral-100 text-neutral-900 active:scale-95 transition-transform"
+                                    aria-label="Previous Startup"
+                                >
+                                    <ArrowRight className="w-5 h-5 rotate-180" />
+                                </button>
+                            ) : <div className="w-11" />}
+
+                            <span className="text-xs font-bold uppercase tracking-widest text-neutral-400">Featured</span>
+
+                            {onNext ? (
+                                <button
+                                    onClick={onNext}
+                                    className="p-3 rounded-full bg-neutral-900 text-white active:scale-95 transition-transform shadow-lg shadow-neutral-900/20"
+                                    aria-label="Next Startup"
+                                >
+                                    <ArrowRight className="w-5 h-5" />
+                                </button>
+                            ) : <div className="w-11" />}
+                        </div>
+
                         {/* Content Section - High Contrast - Transparent for Float Effect */}
-                        <SpotlightEffect className="p-8 md:p-12 pt-24 md:pt-32 flex flex-col justify-start bg-white/20 group-hover/section:bg-white/5 transition-colors duration-500 backdrop-blur-xl rounded-none relative overflow-hidden">
+                        <SpotlightEffect className="p-8 md:p-12 pt-10 md:pt-32 flex flex-col justify-start bg-white/20 group-hover/section:bg-white/5 transition-colors duration-500 backdrop-blur-xl rounded-none relative overflow-hidden">
                             {/* Removed Gradient Overlay */}
 
                             <motion.div
