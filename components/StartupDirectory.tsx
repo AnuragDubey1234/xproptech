@@ -117,7 +117,6 @@ export function StartupDirectory() {
                             </motion.div>
                         ) : filteredStartups.length > 0 ? (
                             <motion.div
-                                layout
                                 className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6 md:gap-8"
                             >
                                 {filteredStartups.map((startup, index) => (
