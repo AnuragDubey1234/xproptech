@@ -47,7 +47,7 @@ export function GCCNewsContent({ articles }: GCCNewsContentProps) {
           <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-[var(--color-gcc-teal)] mb-3">
             Latest from the Gulf
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[var(--color-gcc-blue)] mb-3 leading-tight">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-900 mb-3 leading-tight font-serif">
             GCC PropTech News
           </h2>
           <p className="text-lg text-neutral-600 max-w-2xl leading-relaxed">

@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Star, Search } from 'lucide-react';
 import Image from 'next/image';
@@ -16,6 +17,20 @@ interface FeaturedStartupProps {
 }
 
 export function FeaturedStartup({ startup, searchQuery, setSearchQuery, onNext, onPrev }: FeaturedStartupProps) {
+    const [activeButton, setActiveButton] = useState<'prev' | 'next' | null>(null);
+
+    const handlePrev = () => {
+        setActiveButton('prev');
+        onPrev?.();
+        setTimeout(() => setActiveButton(null), 300);
+    };
+
+    const handleNext = () => {
+        setActiveButton('next');
+        onNext?.();
+        setTimeout(() => setActiveButton(null), 300);
+    };
+
     return (
         <section className="w-full relative bg-white group/section">
             {/* Animated Background */}
@@ -107,8 +122,11 @@ export function FeaturedStartup({ startup, searchQuery, setSearchQuery, onNext, 
                         <div className="flex md:hidden justify-between items-center px-6 py-2 bg-white border-b border-neutral-100">
                             {onPrev ? (
                                 <button
-                                    onClick={onPrev}
-                                    className="p-3 rounded-full bg-neutral-100 text-neutral-900 active:scale-95 transition-transform"
+                                    onClick={handlePrev}
+                                    className={`p-3 rounded-full transition-all duration-300 active:scale-95 ${activeButton === 'prev'
+                                            ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/30 scale-105'
+                                            : 'bg-neutral-100 text-neutral-900 hover:bg-neutral-200'
+                                        }`}
                                     aria-label="Previous Startup"
                                 >
                                     <ArrowRight className="w-5 h-5 rotate-180" />
@@ -119,8 +137,11 @@ export function FeaturedStartup({ startup, searchQuery, setSearchQuery, onNext, 
 
                             {onNext ? (
                                 <button
-                                    onClick={onNext}
-                                    className="p-3 rounded-full bg-neutral-900 text-white active:scale-95 transition-transform shadow-lg shadow-neutral-900/20"
+                                    onClick={handleNext}
+                                    className={`p-3 rounded-full transition-all duration-300 active:scale-95 ${activeButton === 'next'
+                                            ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/30 scale-105'
+                                            : 'bg-neutral-100 text-neutral-900 hover:bg-neutral-200 shadow-sm'
+                                        }`}
                                     aria-label="Next Startup"
                                 >
                                     <ArrowRight className="w-5 h-5" />
